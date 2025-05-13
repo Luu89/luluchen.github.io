@@ -1,4 +1,4 @@
-body {
+/*body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -9,4 +9,27 @@ body {
 
 h1 {
     color: #333;
+}
+    */
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.word-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.word-card p:first-child {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
 }
