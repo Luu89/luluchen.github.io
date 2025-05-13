@@ -5,9 +5,14 @@
 //    document.body.appendChild(message);
 //});
 
-
-// 添加事件监听器，实现点击单词卡片时翻转
-document.querySelector('.word-card').addEventListener('click', function () {
-    this.querySelector('.card-inner').classList.toggle('flipped');
+// 确保 DOM 加载完成后再添加事件监听器
+document.addEventListener('DOMContentLoaded', function () {
+    // 为单词卡片添加点击事件监听器
+    const wordCard = document.querySelector('.word-card');
+    if (wordCard) {
+        wordCard.addEventListener('click', function () {
+            this.querySelector('.card-inner').classList.toggle('flipped');
+        });
+    }
 });
 
