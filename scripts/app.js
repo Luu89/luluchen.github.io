@@ -5,8 +5,9 @@
 //    document.body.appendChild(message);
 //});
 
-// 示例：点击单词卡片翻转显示释义
-document.querySelector('.word-card').addEventListener('click', function() {
-    this.classList.toggle('flipped');
+
+// 添加事件监听器，实现点击单词卡片时翻转
+document.querySelector('.word-card').addEventListener('click', function () {
+    this.querySelector('.card-inner').classList.toggle('flipped');
 });
 
