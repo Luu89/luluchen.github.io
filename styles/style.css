@@ -38,7 +38,7 @@ body {
 .word-card {
     width: 200px;
     height: 100px;
-    perspective: 1000px; //创建3D效果
+    perspective: 1000px; /*创建3D效果*/
     margin: 20px auto; 
 }
 
@@ -51,7 +51,7 @@ body {
 }
 
 .word-card:hover .card-inner {
-    transform: rotateY(180deg); //实现翻转效果 鼠标悬停时，.card-inner 会翻转，显示卡片背面。
+    transform: rotateY(180deg); /*实现翻转效果 鼠标悬停时，.card-inner 会翻转，显示卡片背面。*/
 }
 
 .card-front, .card-back {
