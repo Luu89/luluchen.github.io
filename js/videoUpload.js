@@ -1,22 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
     const videoInput = document.getElementById('video-input');
-    const uploadedVideo = document.getElementById('uploaded-video');
 
-    // 监听文件上传事件
     videoInput.addEventListener('change', function (event) {
         const file = event.target.files[0]; // 获取上传的文件
 
         if (file) {
-            // 检查文件类型是否为视频
-            if (!file.type.startsWith('video/')) {
-                alert('请选择一个视频文件！');
-                return;
-            }
+            const formData = new FormData();
+            formData.append('video', file);
 
-            // 创建视频的临时 URL
-            const fileURL = URL.createObjectURL(file);
-            uploadedVideo.src = fileURL; // 设置视频源
-            uploadedVideo.style.display = 'block'; // 显示视频播放器
+            // 将视频文件上传到服务器
+            fetch('/upload', { // '/upload' 是服务器的上传接口
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('视频上传成功:', data);
+                alert('视频上传成功！');
+            })
+            .catch(error => {
+                console.error('视频上传失败:', error);
+                alert('视频上传失败，请重试！');
+            });
         }
     });
 });
