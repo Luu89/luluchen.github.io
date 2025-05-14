@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>欢迎来到lulu语言学习分享网</h1>
+        <h1>欢迎来到lulu语言学习世界</h1>
         <nav>
             <a href="#">首页</a>
             <a href="#">课程</a>
@@ -38,12 +38,26 @@
 
             <!-- 语言选择按钮 -->
             <div class="language-buttons">
-                <button class="toggle-language" data-lang="zh-CN">中文</button>
-                <button class="toggle-language" data-lang="en-US">英语</button>
-                <button class="toggle-language" data-lang="de-DE">德语</button>
-                <button class="toggle-language" data-lang="fr-FR">法语</button>
-                <button class="toggle-language" data-lang="da-DK">丹麦语</button>
+                <button onclick="selectAllLanguages()">全选</button>
+                <button onclick="deselectAllLanguages()">全不选</button>
+                <button class="toggle-language selected" data-lang="zh-CN" onclick="toggleLanguage(this)">中文</button>
+                <button class="toggle-language selected" data-lang="en-US" onclick="toggleLanguage(this)">English</button>
+                <button class="toggle-language selected" data-lang="de-DE" onclick="toggleLanguage(this)">Deutsch</button>
+                <button class="toggle-language selected" data-lang="fr-FR" onclick="toggleLanguage(this)">Fraçais</button>
+                <button class="toggle-language selected" data-lang="da-DK" onclick="toggleLanguage(this)">Dansk</button>
+                <button class="toggle-language selected" data-lang="yue-HK" onclick="toggleLanguage(this)">粤语</button>
+                <button class="toggle-language selected" data-lang="sv-SE" onclick="toggleLanguage(this)">Svenska</button>
+                <button class="toggle-language selected" data-lang="no-NO" onclick="toggleLanguage(this)">Norsk</button>
+                <button class="toggle-language selected" data-lang="es-ES" onclick="toggleLanguage(this)">Español</button>
+                <button class="toggle-language selected" data-lang="it-IT" onclick="toggleLanguage(this)">Italiano</button>
+                <button class="toggle-language selected" data-lang="pt-PT" onclick="toggleLanguage(this)">Português</button>
+                <button class="toggle-language selected" data-lang="shanghainese" onclick="toggleLanguage(this)">上海话</button>
+                <button class="toggle-language selected" data-lang="ja-JP" onclick="toggleLanguage(this)">日本語</button>
+                <button class="toggle-language selected" data-lang="ko-KR" onclick="toggleLanguage(this)">한국어</button>
+                <button class="toggle-language selected" data-lang="ru-RU" onclick="toggleLanguage(this)">Русский</button>
+                <button class="toggle-language selected" data-lang="ar-SA" onclick="toggleLanguage(this)">العربية</button>
             </div>
+        
 
             <!-- 单词列表 -->
             <div class="word-list">
@@ -53,6 +67,17 @@
                     <div class="word-column speakable" data-lang="de-DE">Hallo</div> <!-- 德语 -->
                     <div class="word-column speakable" data-lang="fr-FR">Bonjour</div> <!-- 法语 -->
                     <div class="word-column speakable" data-lang="da-DK">Hej</div> <!-- 丹麦语 -->
+                    <div class="word-column speakable" data-lang="yue-HK">你好</div> <!-- 粤语 -->
+                    <div class="word-column speakable" data-lang="sv-SE">Hej</div> <!-- 瑞典语 -->
+                    <div class="word-column speakable" data-lang="no-NO">Hei</div> <!-- 挪威语 -->
+                    <div class="word-column speakable" data-lang="es-ES">Hola</div> <!-- 西班牙语 -->
+                    <div class="word-column speakable" data-lang="it-IT">Ciao</div> <!-- 意大利语 -->
+                    <div class="word-column speakable" data-lang="pt-PT">Olá</div> <!-- 葡萄牙语 -->
+                    <div class="word-column speakable" data-lang="shanghainese">侬好</div> <!-- 上海话 -->
+                    <div class="word-column speakable" data-lang="ja-JP">こんにちは</div> <!-- 日语 -->
+                    <div class="word-column speakable" data-lang="ko-KR">안녕하세요</div> <!-- 韩语 -->
+                    <div class="word-column speakable" data-lang="ru-RU">Здравствуйте</div> <!-- 俄语 -->
+                    <div class="word-column speakable" data-lang="ar-SA">مرحبا</div> <!-- 阿拉伯语 -->
                 </div>
                 <div class="word-row">
                     <div class="word-column speakable" data-lang="zh-CN">谢谢</div> <!-- 中文 -->
@@ -60,21 +85,17 @@
                     <div class="word-column speakable" data-lang="de-DE">Danke</div> <!-- 德语 -->
                     <div class="word-column speakable" data-lang="fr-FR">Merci</div> <!-- 法语 -->
                     <div class="word-column speakable" data-lang="da-DK">Tak</div> <!-- 丹麦语 -->
-                </div>
-                <div class="word-row">
-                    <div class="word-column speakable" data-lang="zh-CN">再见</div> <!-- 中文 -->
-                    <div class="word-column speakable" data-lang="en-US">Goodbye</div> <!-- 英语 -->
-                    <div class="word-column speakable" data-lang="de-DE">Auf Wiedersehen</div> <!-- 德语 -->
-                    <div class="word-column speakable" data-lang="fr-FR">Au revoir</div> <!-- 法语 -->
-                    <div class="word-column speakable" data-lang="da-DK">Farvel</div> <!-- 丹麦语 -->
-                </div>
-                <!-- 新增的单词行 -->
-                <div class="word-row">
-                    <div class="word-column speakable" data-lang="zh-CN">做饭</div> <!-- 中文 -->
-                    <div class="word-column speakable" data-lang="en-US">Cooking</div> <!-- 英语 -->
-                    <div class="word-column speakable" data-lang="de-DE">Kochen</div> <!-- 德语 -->
-                    <div class="word-column speakable" data-lang="fr-FR">Cuisiner</div> <!-- 法语 -->
-                    <div class="word-column speakable" data-lang="da-DK">Madlavning</div> <!-- 丹麦语 -->
+                    <div class="word-column speakable" data-lang="yue-HK">多谢</div> <!-- 粤语 -->
+                    <div class="word-column speakable" data-lang="sv-SE">Tack</div> <!-- 瑞典语 -->
+                    <div class="word-column speakable" data-lang="no-NO">Takk</div> <!-- 挪威语 -->
+                    <div class="word-column speakable" data-lang="es-ES">Gracias</div> <!-- 西班牙语 -->
+                    <div class="word-column speakable" data-lang="it-IT">Grazie</div> <!-- 意大利语 -->
+                    <div class="word-column speakable" data-lang="pt-PT">Obrigado</div> <!-- 葡萄牙语 -->
+                    <div class="word-column speakable" data-lang="shanghainese">谢侬</div> <!-- 上海话 -->
+                    <div class="word-column speakable" data-lang="ja-JP">ありがとうございます</div> <!-- 日语 -->
+                    <div class="word-column speakable" data-lang="ko-KR">감사합니다</div> <!-- 韩语 -->
+                    <div class="word-column speakable" data-lang="ru-RU">Спасибо</div> <!-- 俄语 -->
+                    <div class="word-column speakable" data-lang="ar-SA">شكرا</div> <!-- 阿拉伯语 -->
                 </div>
             </div>
         </section>

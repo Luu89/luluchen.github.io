@@ -65,12 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 为每个按钮添加点击事件
     languageButtons.forEach(button => {
         button.addEventListener('click', function () {
-            const lang = this.getAttribute('data-lang');
-            this.classList.toggle('selected');
-
-            // 切换对应语言列的显示状态
-            const wordColumns = document.querySelectorAll(`.word-column[data-lang="${lang}"]`);
-            wordColumns.forEach(column => column.classList.toggle('hidden'));
+            toggleLanguage(this);
         });
     });
 
@@ -168,5 +163,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const result = dictionary[input];
         resultDiv.textContent = result ? `${input}: ${result}` : 'Word not found in the dictionary.';
+    }
+
+    function selectAllLanguages() {
+        const buttons = document.querySelectorAll('.toggle-language');
+        const words = document.querySelectorAll('.word-column');
+
+        // 将所有按钮设置为选中状态
+        buttons.forEach(button => {
+            if (!button.classList.contains('selected')) {
+                button.classList.add('selected');
+            }
+        });
+
+        // 显示所有单词
+        words.forEach(word => {
+            word.classList.remove('hidden');
+        });
+    }
+
+    function deselectAllLanguages() {
+        const buttons = document.querySelectorAll('.toggle-language');
+        const words = document.querySelectorAll('.word-column');
+
+        // 将所有按钮设置为未选中状态
+        buttons.forEach(button => {
+            if (button.classList.contains('selected')) {
+                button.classList.remove('selected');
+            }
+        });
+
+        // 隐藏所有单词
+        words.forEach(word => {
+            word.classList.add('hidden');
+        });
+    }
+
+    function toggleLanguage(button) {
+        const lang = button.getAttribute('data-lang');
+        const words = document.querySelectorAll(`.word-column[data-lang="${lang}"]`);
+
+        // 切换按钮的选中状态
+        if (button.classList.contains('selected')) {
+            button.classList.remove('selected');
+            words.forEach(word => word.classList.add('hidden')); // 隐藏对应语言的单词
+        } else {
+            button.classList.add('selected');
+            words.forEach(word => word.classList.remove('hidden')); // 显示对应语言的单词
+        }
     }
 });

@@ -144,17 +144,34 @@ footer {
     font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #007BFF; /* 蓝底 */
+    color: #fff; /* 白字 */
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
 }
 
-.language-buttons button:hover {
-    background-color: #007BFF;
-    color: #fff;
+/* 默认选中状态 */
+.language-buttons button.selected {
+    background-color: #007BFF; /* 蓝底 */
+    color: #fff; /* 白字 */
+    border: 1px solid #007BFF;
 }
 
-/* 隐藏的语言列 */
+/* 未选中状态 */
+.language-buttons button {
+    background-color: #fff; /* 白底 */
+    color: #000; /* 黑字 */
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+/* 鼠标悬停效果 */
+.language-buttons button:hover {
+    background-color: #0056b3; /* 深蓝 */
+    color: #fff; /* 白字 */
+}
+
+/* 隐藏未选中的单词 */
 .word-column.hidden {
     display: none;
 }
