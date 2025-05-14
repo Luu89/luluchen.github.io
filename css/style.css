@@ -100,9 +100,68 @@ main {
     padding: 5px;
 }
 
+/* 搜索框样式 */
+.search-container {
+    margin: 10px 0;
+    text-align: center;
+}
+
+#search-input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 footer {
     text-align: center;
     padding: 10px;
     background-color: #2c3e50;
     color: #fff;
+}
+
+/* 可发音单词的样式 */
+.speakable {
+    cursor: pointer;
+    color: #007BFF;
+    text-decoration: underline;
+}
+
+.speakable:hover {
+    color: #0056b3;
+}
+
+/* 语言选择按钮样式 */
+.language-buttons {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.language-buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.language-buttons button:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+/* 选中状态的按钮样式 */
+.language-buttons button.selected {
+    background-color: #007BFF;
+    color: #fff;
+    border-color: #0056b3;
+}
+
+/* 隐藏的语言列 */
+.word-column.hidden {
+    display: none;
 }

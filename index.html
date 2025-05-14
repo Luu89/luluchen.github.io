@@ -16,29 +16,47 @@
             <a href="#">词汇</a>
             <a href="#">语法</a>
         </nav>
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="搜索单词..." />
+        </div>
     </header>
     
     <main>
         <section class="daily-word">
             <h2>今日单词</h2>
+
+            <!-- 语言选择按钮 -->
+            <div class="language-buttons">
+                <button class="toggle-language" data-lang="zh-CN">中文</button>
+                <button class="toggle-language" data-lang="en-US">英语</button>
+                <button class="toggle-language" data-lang="de-DE">德语</button>
+                <button class="toggle-language" data-lang="fr-FR">法语</button>
+                <button class="toggle-language" data-lang="da-DK">丹麦语</button>
+            </div>
+
+            <!-- 单词列表 -->
             <div class="word-list">
                 <div class="word-row">
-                    <div class="word-column">你好</div> <!-- 中文 -->
-                    <div class="word-column">Hello</div> <!-- 英语 -->
-                    <div class="word-column">Hallo</div> <!-- 德语 -->
-                    <div class="word-column">Bonjour</div> <!-- 法语 -->
+                    <div class="word-column speakable" data-lang="zh-CN">你好</div> <!-- 中文 -->
+                    <div class="word-column speakable" data-lang="en-US">Hello</div> <!-- 英语 -->
+                    <div class="word-column speakable" data-lang="de-DE">Hallo</div> <!-- 德语 -->
+                    <div class="word-column speakable" data-lang="fr-FR">Bonjour</div> <!-- 法语 -->
+                    <div class="word-column speakable" data-lang="da-DK">Hej</div> <!-- 丹麦语 -->
                 </div>
                 <div class="word-row">
-                    <div class="word-column">谢谢</div> <!-- 中文 -->
-                    <div class="word-column">Thank you</div> <!-- 英语 -->
-                    <div class="word-column">Danke</div> <!-- 德语 -->
-                    <div class="word-column">Merci</div> <!-- 法语 -->
+                    <div class="word-column speakable" data-lang="zh-CN">谢谢</div> <!-- 中文 -->
+                    <div class="word-column speakable" data-lang="en-US">Thank you</div> <!-- 英语 -->
+                    <div class="word-column speakable" data-lang="de-DE">Danke</div> <!-- 德语 -->
+                    <div class="word-column speakable" data-lang="fr-FR">Merci</div> <!-- 法语 -->
+                    <div class="word-column speakable" data-lang="da-DK">Tak</div> <!-- 丹麦语 -->
                 </div>
                 <div class="word-row">
-                    <div class="word-column">再见</div> <!-- 中文 -->
-                    <div class="word-column">Goodbye</div> <!-- 英语 -->
-                    <div class="word-column">Auf Wiedersehen</div> <!-- 德语 -->
-                    <div class="word-column">Au revoir</div> <!-- 法语 -->
+                    <div class="word-column speakable" data-lang="zh-CN">再见</div> <!-- 中文 -->
+                    <div class="word-column speakable" data-lang="en-US">Goodbye</div> <!-- 英语 -->
+                    <div class="word-column speakable" data-lang="de-DE">Auf Wiedersehen</div> <!-- 德语 -->
+                    <div class="word-column speakable" data-lang="fr-FR">Au revoir</div> <!-- 法语 -->
+                    <div class="word-column speakable" data-lang="da-DK">Farvel</div> <!-- 丹麦语 -->
                 </div>
             </div>
         </section>
