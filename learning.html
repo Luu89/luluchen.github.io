@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>听说读写模式</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>听说读写模式</h1>
+        <nav>
+            <a href="index.html">返回首页</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="german-learning">
+            <h2>听说读写模式</h2>
+
+            <!-- 听 -->
+            <div class="listen-section">
+                <h3>听 (Hören)</h3>
+                <button class="play-audio" data-lang="de-DE" data-text="Hallo">播放发音</button>
+            </div>
+
+            <!-- 说 -->
+            <div class="speak-section">
+                <h3>说 (Sprechen)</h3>
+                <button id="start-speaking">开始说</button>
+                <p id="spoken-text">您说的内容将显示在这里...</p>
+            </div>
+
+            <!-- 读 -->
+            <div class="read-section">
+                <h3>读 (Lesen)</h3>
+                <div class="word-card">
+                    <p class="word">Hallo</p>
+                    <button class="show-translation">显示翻译</button>
+                    <p class="translation" style="display: none;">你好</p>
+                </div>
+            </div>
+
+            <!-- 写 -->
+            <div class="write-section">
+                <h3>写 (Schreiben)</h3>
+                <p>听到的单词: <strong>Hallo</strong></p>
+                <input type="text" id="write-input" placeholder="请输入单词" />
+                <button id="check-writing">检查</button>
+                <p id="write-feedback"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 语言学习网. 版权所有.</p>
+    </footer>
+</body>
+</html>

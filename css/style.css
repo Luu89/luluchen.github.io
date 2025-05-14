@@ -154,6 +154,11 @@ footer {
     color: #fff;
 }
 
+/* 隐藏的语言列 */
+.word-column.hidden {
+    display: none;
+}
+
 /* 选中状态的按钮样式 */
 .language-buttons button.selected {
     background-color: #007BFF;
@@ -161,7 +166,53 @@ footer {
     border-color: #0056b3;
 }
 
-/* 隐藏的语言列 */
-.word-column.hidden {
-    display: none;
+.german-learning {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.german-learning h3 {
+    margin-top: 20px;
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.translation {
+    margin-top: 10px;
+    color: #555;
+}
+
+#write-feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* 跳转按钮样式 */
+.learn-more-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-button:hover {
+    background-color: #0056b3;
 }
