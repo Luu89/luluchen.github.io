@@ -1,52 +1,51 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-    <h1>Hallo</h1>
-    <script src="scripts/app.js"></script>
-</body>
-</html>
--->
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multilanguage Learning</title>
+    <title>语言学习网</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>欢迎来到语言学习网</h1>
+        <h1>欢迎来到lulu语言学习网</h1>
         <nav>
             <a href="#">首页</a>
             <a href="#">课程</a>
             <a href="#">词汇</a>
+            <a href="#">语法</a>
         </nav>
     </header>
     
     <main>
         <section class="daily-word">
             <h2>今日单词</h2>
-            <div class="word-card">
-                <div class="card-inner">
-                    <div class="card-front"> 
-                        <p>Hello</p>
-                    </div>
-                    <div class="card-back">
-                        <p>你好</p>
-                    </div>
+            <div class="word-list">
+                <div class="word-row">
+                    <div class="word-column">你好</div> <!-- 中文 -->
+                    <div class="word-column">Hello</div> <!-- 英语 -->
+                    <div class="word-column">Hallo</div> <!-- 德语 -->
+                    <div class="word-column">Bonjour</div> <!-- 法语 -->
+                </div>
+                <div class="word-row">
+                    <div class="word-column">谢谢</div> <!-- 中文 -->
+                    <div class="word-column">Thank you</div> <!-- 英语 -->
+                    <div class="word-column">Danke</div> <!-- 德语 -->
+                    <div class="word-column">Merci</div> <!-- 法语 -->
+                </div>
+                <div class="word-row">
+                    <div class="word-column">再见</div> <!-- 中文 -->
+                    <div class="word-column">Goodbye</div> <!-- 英语 -->
+                    <div class="word-column">Auf Wiedersehen</div> <!-- 德语 -->
+                    <div class="word-column">Au revoir</div> <!-- 法语 -->
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="js/main.js"></script>
+    <footer>
+        <p>© 2025 语言学习网. 版权所有.</p>
+    </footer>
 </body>
 </html>
