@@ -142,4 +142,31 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // 搜索词典功能
+    document.getElementById('search-button').addEventListener('click', searchWord);
+
+    function searchWord() {
+        const input = document.getElementById('dictionary-input').value.trim();
+        const resultDiv = document.getElementById('dictionary-result');
+
+        if (!input) {
+            resultDiv.textContent = 'Please enter a word to search.';
+            return;
+        }
+
+        const dictionary = {
+            Brautpaar: 'Bride and groom',
+            Outfit: 'Clothing or attire',
+            Braut: 'Bride',
+            Bräutigam: 'Groom',
+            Anzug: 'Suit',
+            Hochzeitsmesse: 'Wedding fair',
+            Eheringe: 'Wedding rings',
+            Juwelier: 'Jeweler'
+        };
+
+        const result = dictionary[input];
+        resultDiv.textContent = result ? `${input}: ${result}` : 'Word not found in the dictionary.';
+    }
 });

@@ -1,0 +1,113 @@
+<div class="right-section">
+    <h2>Dictionary</h2>
+    <div class="dictionary">
+        <input type="text" id="dictionary-input" placeholder="Enter a word..." />
+        <button onclick="searchWord()">Search (Local)</button>
+        <button onclick="searchOnline()">Search (Online DE-EN)</button>
+        <button onclick="searchDuden()">Search (Duden)</button>
+        <div id="dictionary-result" class="dictionary-result">
+            <!-- 查询结果将显示在这里 -->
+        </div>
+    </div>
+
+    <div class="add-word-section">
+        <h3>Add a New Word</h3>
+        <input type="text" id="new-word" placeholder="Enter a German word..." />
+        <input type="text" id="new-translation" placeholder="Enter the translation..." />
+        <button onclick="addWord()">Add Word</button>
+        <p id="add-word-feedback" style="color: green;"></p>
+    </div>
+</div>
+
+<script>
+    // 恢复词典数据
+    const savedDictionary = JSON.parse(localStorage.getItem('dictionary')) || {};
+    const dictionary = {
+        Brautpaar: 'Bride and groom',
+        Outfit: 'Clothing or attire',
+        Braut: 'Bride',
+        Bräutigam: 'Groom',
+        Anzug: 'Suit',
+        Hochzeitsmesse: 'Wedding fair',
+        Eheringe: 'Wedding rings',
+        Juwelier: 'Jeweler',
+        Blumenstrauß: 'Bouquet of flowers',
+        Bühne: 'Stage',
+        Ballon: 'Balloon',
+        ...savedDictionary // 合并本地存储的词典数据
+    };
+
+    // 本地查询功能
+    function searchWord() {
+        const input = document.getElementById('dictionary-input').value.trim();
+        const resultDiv = document.getElementById('dictionary-result');
+
+        if (!input) {
+            resultDiv.textContent = 'Please enter a word to search.';
+            return;
+        }
+
+        const result = dictionary[input];
+        if (result) {
+            resultDiv.textContent = `${input}: ${result}`;
+        } else {
+            resultDiv.textContent = 'Word not found in the local dictionary.';
+        }
+    }
+
+    // 在线查询功能
+    function searchOnline() {
+        const input = document.getElementById('dictionary-input').value.trim();
+
+        if (!input) {
+            alert('Please enter a word to search.');
+            return;
+        }
+
+        const url = `https://www.linguee.com/german-english/search?source=german&query=${encodeURIComponent(input)}`;
+        window.open(url, '_blank');
+    }
+
+    // Duden 查询功能
+    function searchDuden() {
+        const input = document.getElementById('dictionary-input').value.trim();
+        if (!input) {
+            alert('Please enter a word to search.');
+            return;
+        }
+        const url = `https://www.duden.de/rechtschreibung/${encodeURIComponent(input)}`;
+        window.open(url, '_blank');
+    }
+
+    // 添加新单词功能
+    function addWord() {
+        const newWord = document.getElementById('new-word').value.trim();
+        const newTranslation = document.getElementById('new-translation').value.trim();
+        const feedback = document.getElementById('add-word-feedback');
+
+        if (!newWord || !newTranslation) {
+            feedback.textContent = 'Please enter both the word and its translation.';
+            feedback.style.color = 'red';
+            return;
+        }
+
+        if (dictionary[newWord]) {
+            feedback.textContent = 'This word already exists in the dictionary.';
+            feedback.style.color = 'orange';
+            return;
+        }
+
+        // 添加到词典
+        dictionary[newWord] = newTranslation;
+
+        // 保存到 localStorage
+        localStorage.setItem('dictionary', JSON.stringify(dictionary));
+
+        feedback.textContent = `Word "${newWord}" added successfully!`;
+        feedback.style.color = 'green';
+
+        // 清空输入框
+        document.getElementById('new-word').value = '';
+        document.getElementById('new-translation').value = '';
+    }
+</script>

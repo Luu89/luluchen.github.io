@@ -4,29 +4,382 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video and Article Reference</title>
+    <style>
+        /* 布局样式 */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .left-section {
+            width: 50%;
+        }
+
+        .middle-section {
+            width: 50%;
+            padding-left: 20px;
+            border-left: 2px solid #ddd;
+        }
+
+        .right-section {
+            width: 25%;
+            padding-left: 20px;
+            border-left: 2px solid #ddd;
+        }
+
+        .right-section h2 {
+            margin-top: 0;
+        }
+
+        .fill-in-the-blank {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .word-bank {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .word {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: grab;
+        }
+
+        .drop-zone {
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            margin: 0 5px;
+            padding: 5px;
+            border: 1px dashed #ccc;
+            border-radius: 3px;
+            text-align: center;
+            vertical-align: middle;
+            background-color: #fff;
+        }
+
+        .drop-zone.filled {
+            border-color: #4caf50;
+            background-color: #e8f5e9;
+        }
+
+        .dictionary {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .dictionary input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .dictionary button {
+            width: 100%;
+            padding: 5px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .dictionary button:hover {
+            background-color: #45a049;
+        }
+
+        .dictionary-result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
 </head>
 <body>
     <h1>Video and Article Reference</h1>
+    <nav>
+        <a href="index.html">返回首页</a>
+    </nav>
 
-    <!-- Local Video Section -->
-    <h2>Uploaded Video</h2>
-    <video id="local-video" controls width="560" style="margin-top: 10px;">
-        <source src="uploads/LEGEDEU250217_Hochzeit_01SMW_AVC_640x360.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <!-- 新增的字典iframe -->
+    <iframe src="dictionary.html" style="position: fixed; top: 10px; right: 10px; width: 300px; height: 400px; border: none; z-index: 1000;"></iframe>
 
-    <!-- Video Upload Section -->
-    <h2>Upload Your Video</h2>
-    <input type="file" id="video-input" accept="video/*" />
-    <video id="uploaded-video" controls width="560" style="display: none; margin-top: 10px;"></video>
+    <!-- 词汇库 -->
+    <div class="word-bank">
+        <h3>Word Bank</h3>
+        <span class="word" draggable="true" ondragstart="drag(event)" id="Brautpaar">Brautpaar</span>
+        <span class="word" draggable="true" ondragstart="drag(event)" id="Outfit">Outfit</span>
+        <span class="word" draggable="true" ondragstart="drag(event)" id="Braut">Braut</span>
+        <span class="word" draggable="true" ondragstart="drag(event)" id="Bräutigam">Bräutigam</span>
+        <span class="word" draggable="true" ondragstart="drag(event)" id="Anzug">Anzug</span>
+        <span class="word" draggable="true" ondragstart="drag(event)" id="Hochzeitsmesse">Hochzeitsmesse</span>
+        <span class="word" draggable="true" ondragstart="drag(event)" id="Eheringe">Eheringe</span>
+        <span class="word" draggable="true" ondragstart="drag(event)" id="Juwelier">Juwelier</span>
+    </div>
 
-    <!-- Referenced Article -->
-    <h2>Article</h2>
-    <p>
-        For more information, check out this article: 
-        <a href="https://learngerman.dw.com/de/andere-länder-andere-hochzeiten/l-71974262" target="_blank">Read the original article here</a>.
-    </p>
+    <!-- 选词填空题 -->
+    <div class="fill-in-the-blank">
+        <h2>1. Was weißt du über Hochzeiten?</h2>
+        <p>
+            Wenn man eine Hochzeit feiert, braucht das 
+            <span class="drop-zone" data-answer="Brautpaar" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+            natürlich ein passendes 
+            <span class="drop-zone" data-answer="Outfit" ondrop="drop(event)" ondragover="allowDrop(event)"></span>: 
+            Oft trägt die 
+            <span class="drop-zone" data-answer="Braut" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+            ein weißes Kleid und der 
+            <span class="drop-zone" data-answer="Bräutigam" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+            einen 
+            <span class="drop-zone" data-answer="Anzug" ondrop="drop(event)" ondragover="allowDrop(event)"></span>, 
+            aber es gibt inzwischen auch viele Paare, die es ganz anders machen. Auf einer 
+            <span class="drop-zone" data-answer="Hochzeitsmesse" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+            kann man bei den verschiedenen Ausstellern Ideen sammeln: Wie möchte man seine eigene Hochzeit individuell gestalten, wo will man feiern und wie viele Gäste sollen kommen? Wichtig für viele Paare ist auch die Frage, wie ihre 
+            <span class="drop-zone" data-answer="Eheringe" ondrop="drop(event)" ondragover="allowDrop(event)"></span> 
+            aussehen sollen. Dafür geht man am besten zu einem 
+            <span class="drop-zone" data-answer="Juwelier" ondrop="drop(event)" ondragover="allowDrop(event)"></span>. 
+            Man sollte aber vorher finanziell gut geplant haben, denn eine Hochzeit kann schnell Zehntausende Euro und mehr kosten.
+        </p>
+        <button onclick="checkAnswers()">Submit</button>
+        <p id="feedback" style="margin-top: 10px; font-weight: bold;"></p>
+    </div>
 
-    <script src="js/videoUpload.js"></script>
+    <div class="container">
+        <!-- 左侧内容 -->
+        <div class="left-section">
+            <!-- Local Video Section -->
+            <h2>Uploaded Video</h2>
+            <video id="local-video" controls width="100%" style="margin-top: 10px;">
+                <source src="uploads/LEGEDEU250217_Hochzeit_01SMW_AVC_640x360.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Video Upload Section -->
+            <h2>Upload Your Video</h2>
+            <input type="file" id="video-input" accept="video/*" />
+            <video id="uploaded-video" controls width="100%" style="display: none; margin-top: 10px;"></video>
+
+            <!-- Referenced Article -->
+            <h2>Article</h2>
+            <p>
+                For more information, check out this article: 
+                <a href="https://learngerman.dw.com/de/andere-länder-andere-hochzeiten/l-71974262" target="_blank">Read the original article here</a>.
+            </p>
+        </div>
+    
+ 
+    </div>
+
+    <!-- 文本部分 -->
+            <h2>Additional Information</h2>
+            <p>
+                This section contains additional information related to the video and article. 
+                You can add any text, links, or resources here to provide more context or details.
+            </p>
+            <p>
+                For example, you can include:
+                <ul>
+                    <li>Key points from the video</li>
+                    <li>Related topics</li>
+                    <li>External resources</li>
+                </ul>
+            </p>
+            <p style="white-space: pre-line;">
+                Andere Länder, andere Hochzeiten
+                Der schönste Tag im Leben ist für viele Menschen die eigene Hochzeit – egal woher sie kommen. Doch in Deutschland befinden sich immer mehr Geschäfte für Brautmoden und Hochzeitsartikel in der Krise. Die Material- und Geschäftskosten sind hoch und die Menschen wollen nicht mehr so viel Geld für Hochzeiten ausgeben. In Indien dagegen sieht es anders aus. Dort werden Hochzeiten lange geplant und dürfen ruhig etwas mehr kosten. Dabei spielt auch eine Rolle, dass sie dort in der Regel viel größer und länger gefeiert werden.
+                
+                SPRECHERIN:
+                Indische Hochzeiten werden jahrelang vorbereitet, Hunderte oder Tausende kommen zur Feier, der ganze Jahresurlaub kann dabei draufgehen.
+
+                Delhi: Auf der Hochzeitsstraße können die zukünftigen Eheleute und ihre Familie fündig werden, die Konkurrenz ist groß. Denn zu einer Hochzeit werden unterschiedliche Outfits – darunter auch das klassische Lehenga, das typische bauchfreie Kleid – gekauft. Es ist die beste Zeit des Jahres für die Händler.
+
+                JATIN SOLANKI (Verkäufer):
+                Jeden Tag werden hier neue Geschäfte eröffnet, die für viel Konkurrenz sorgen. Wenn uns ein Lehenga circa 50 Euro kostet, verkaufen wir ihn [es] für 56 Euro. Wir verdienen also schlussendlich pro verkauftem Lehenga nur sechs Euro, denn es gibt sehr viele Geschäfte. Auch Personalkosten, Ladenmiete, Stromrechnungen müssen gedeckt werden. Es gibt also viel Konkurrenz und die Gewinnspanne ist sehr niedrig.
+
+                SPRECHERIN:
+                Und natürlich geht in Indien nicht nur das Brautpaar in die Läden, um ausgestattet zu werden, sondern auch der komplette Anhang. Und das lassen sie sich was kosten. Im Schnitt werden allein für die Kleidung schon hunderte Euro pro Person ausgegeben.
+
+                ANIL KUMAR (Verkäufer):
+                Hier bereiten wir den Bräutigam und den Vater des Bräutigams sowie die besonderen Freunde vor. Und ja, auch den Bruder der Braut. Wir bereiten alle VIP-Gäste vor, die an der Hochzeit teilnehmen. Wir bereiten sie alle vor.
+
+                SPRECHERIN:
+                Zur gleichen Zeit in Bayern in Deutschland. Auf einer Hochzeitsmesse gehen die künftigen Brautleute shoppen, gezeigt werden heute bei der Modenschau die Kleider und die Hochzeitsanzüge. Während in Indien Hunderte auf einer Hochzeit feiern, sind die Feiern in Deutschland weniger imposant. Außerdem, so der Veranstalter, geben die Paare wegen der hohen Inflation in Deutschland weniger aus.
+
+                THOMAS DORMEYER (Hochzeitsmessen-Veranstalter):
+                Es gibt auch noch große Hochzeiten, [über die] wir uns auch wirklich freuen. Aber insgesamt: Die Hochzeiten sind kleiner geworden.
+
+                SPRECHERIN:
+                Auf der Messe wird alles verkauft: Die Gäste können sich Ringe anfertigen lassen, ihr Kleid kaufen oder den Fotografen bestellen. Aber die Wirtschaftskrise ist zu spüren. Viele Aussteller kommen einfach nicht mehr.
+
+                THOMAS DORMEYER:
+                Und zumeist hab' ich Absagen, weil sie [eine] Geschäftsaufgabe haben. Und das ist schon emotional wirklich was, wo ich sag', dass ich da Leute hab', die seit vielen Jahren dabei sind und ihr Geschäft aufgeben müssen, weil's einfach nicht mehr geht: Die Personalkosten gehen nach oben, die Mieten gehen nach oben.
+
+                SPRECHERIN:
+                Die teuerste Hochzeit aller Zeiten wurde vor einigen Monaten in Mumbai gefeiert. Der Multimilliardär Anant Ambani und Radhika Merchant haben dafür mehr als 100 Millionen Euro ausgegeben. Anant ist Sohn eines indischen Ölmoguls. Berühmtheiten aus der ganzen Welt waren geladen. Wer etwas auf sich hält, der feiert den wichtigsten Tag im Leben groß in Indien, so wie dieses Paar. Sie leben in Kanada, haben ihre siebentägige Hochzeit fast drei Jahre lang vorbereitet.
+
+                JANHAVI DAWRA (Braut):
+                Ich denke, für jede Braut ist es ein Ereignis, das ihr Leben verändert. Es ist das größte und großartigste Ereignis, das ich in meinem ganzen Leben haben werde. Ich bin drei Monate im Voraus von Kanada nach Indien angereist, und ich bin nur für fünf Tage gekommen – und das nur um einzukaufen, weil die Verkäufer in Indien zurzeit keine Bestellungen annehmen.
+
+                SPRECHERIN:
+                Größer, schöner, teurer! Im Schnitt geben indische Familien bis zu 100.000 Euro für eine Hochzeit aus.
+
+                MANDEEP (Hochzeitsgast):
+                Ich nehme an, für viele indische Paare ist es eine einmalige Gelegenheit in ihrem Leben. Ein weiterer Punkt sind die sozialen Medien, mit denen sie diesen Moment wahrscheinlich wieder und wieder und wieder erleben wollen.
+
+                RAHUL (Hochzeitsgast):
+                Kulturelle Gründe. Ich denke, dass die Inder daran gewöhnt sind, ihren Status anderen Menschen zu zeigen, und das ist es, was sie daran mögen. Das macht den Unterschied zu Hochzeiten in anderen Regionen der Welt aus, würde ich sagen.
+
+                SPRECHERIN:
+                Mehr als 400 Gäste aus aller Welt sind gekommen. 60 Tage hat sich das Paar Urlaub genommen. Zurück nach Deutschland: Während sich auf der Hochzeitsmesse die Anzahl der Besucher noch in Grenzen hält, läuft der Laden dieses Juweliers und Uhrmachers nebenan bestens. Er profitiert von den hohen Goldpreisen und den Hochzeitsringen. Einige Paare kommen sogar am Wochenende, um gemeinsam mit dem Juwelier selbst ihre Ringe herzustellen.
+
+                URBAN AUMANN (Juwelier):
+                Es soll immer was Besonderes sein, was Individuelles. Und, das ganz Besondere ist, dass wir das Gold der Familie dazu verwenden. Also, die Leute bringen Gold mit – und da ist zum Beispiel der Ehering von der verstorbenen Oma dabei, der dann wieder im neuen Ehering weiterlebt.
+
+                SPRECHERIN:
+                Da die Hochzeiten in Indien im Schnitt hunderte bis sogar tausende Besucher haben, leisten sich viele Paare einen Weddingplanner. Sushant Kattar und Noor Sahar haben vor fünf Jahren ihre Firma gegründet. Das hat sich gelohnt.
+
+                SUSHANT KHATTAR (Hochzeitsplaner):
+                Heutzutage geben die Leute mehr Geld für Hochzeiten aus, weil es eine Art Wettbewerb ist. Denn jedes Paar möchte sich von den anderen Paaren unterscheiden. Man muss sich also jedes Mal etwas Neues einfallen lassen, wenn man auf ein neues Paar trifft. Also geben die Leute auch immer mehr Geld aus, denke ich.
+
+                SPRECHERIN:
+                Indien ist ein Land der Gegensätze mit extremer Armut, aber auch einer rasant wachsenden Zahl an sehr reichen Familien. Auch deshalb – so glauben die Weddingplanner – wächst ihr Geschäft noch immer.
+
+                Deutschland: Auch hier kann diese Hochzeitsplanerin dank gut situierter Paare rentabel vom Geschäft leben und organisiert Hochzeiten, die ab 50.000 Euro und aufwärts kosten.
+
+                DIANA NATTERER (Hochzeitsplanerin):
+                In meine[r] Klientel sind die, die auch Vollzeit arbeiten gehen. Und die haben selber eigentlich gar keine Zeit dafür, möchten aber, dass ihre Hochzeit organisiert wird, sodass das Brautpaar sich komplett zurücklehnen kann!
+
+                SPRECHERIN:
+                Diese beiden hier gehen heute zufrieden nach Hause. Sie haben viele Ideen für ihre Feier.
+
+                DENNIS KNOLL (wird bald heiraten):
+                Es sind noch 'n paar Sachen offen – ich brauch' noch was zum Anziehen, sie hat ihr Kleid schon, die Ringe brauchen wir noch. Deswegen stehen wir hier grad. Und so ein paar Eindrücke für Deko und solche Sachen noch.
+
+                SPRECHERIN:
+                In Indien steigt derweil die Party und das Feuerwerk – diese Hochzeit werden die Gäste und das Paar hoffentlich noch lange in Erinnerung behalten.
+            </p>
+        </div>
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData("text");
+            const dropZone = event.target;
+
+            if (!dropZone.classList.contains("filled")) {
+                // 设置填空区域的内容
+                dropZone.textContent = data;
+                dropZone.classList.add("filled");
+                dropZone.setAttribute("data-filled", data);
+
+                // 从词汇库中移除已使用的单词
+                const draggedWord = document.getElementById(data);
+                if (draggedWord) {
+                    draggedWord.parentNode.removeChild(draggedWord);
+                }
+            }
+        }
+
+        function checkAnswers() {
+            const dropZones = document.querySelectorAll(".drop-zone");
+            const feedback = document.getElementById("feedback");
+            let correct = true;
+
+            dropZones.forEach(zone => {
+                const answer = zone.getAttribute("data-answer");
+                const filled = zone.getAttribute("data-filled");
+
+                if (answer !== filled) {
+                    correct = false;
+                }
+            });
+
+            feedback.textContent = correct ? "Correct! Well done!" : "Incorrect. Please try again.";
+            feedback.style.color = correct ? "green" : "red";
+        }
+
+        function searchWord() {
+            const input = document.getElementById('dictionary-input').value.trim();
+
+            if (!input) {
+                alert('Please enter a word to search.');
+                return;
+            }
+
+            // 跳转到 Duden 的查询页面
+            const url = `https://www.duden.de/rechtschreibung/${encodeURIComponent(input)}`;
+            window.open(url, '_blank'); // 在新标签页打开查询结果
+        }
+    </script>
+
+    <!-- 第三大题，原网页脚本 -->
+     <h1>Was siehst du im Video?</h1>
+
+    <div class="task-container">
+        <div class="task-title">Aufgabe:</div>
+        <p>Schau dir das Video einmal an. Achte genau darauf, was passiert. Wähle alle richtigen Aussagen aus.</p>
+        
+        <p>Im Video sieht man ...</p>
+        <div class="options">
+            <div class="option"><input type="checkbox" name="video" id="v1"> <label for="v1">a) Hochzeitsgäste in festlichen Kleidern, die miteinander tanzen.</label></div>
+            <div class="option"><input type="checkbox" name="video" id="v2"> <label for="v2">b) einen Markt, auf dem Stoffe und Kleider verkauft werden.</label></div>
+            <div class="option"><input type="checkbox" name="video" id="v3"> <label for="v3">c) zwei Menschen, die sich auf den Mund küssen.</label></div>
+            <div class="option"><input type="checkbox" name="video" id="v4"> <label for="v4">d) Personen, die Brautkleider und Hochzeitsanzüge auf einer Bühne präsentieren.</label></div>
+            <div class="option"><input type="checkbox" name="video" id="v5"> <label for="v5">e) eine Frau, die einen Blumenstrauß in eine Menge feiernder Gäste wirft.</label></div>
+            <div class="option"><input type="checkbox" name="video" id="v6"> <label for="v6">f) ein Brautpaar, das gefilmt und fotografiert wird.</label></div>
+            <div class="option"><input type="checkbox" name="video" id="v7"> <label for="v7">g) ein Hotelbett, auf dem viele Blüten liegen.</label></div>
+            <div class="option"><input type="checkbox" name="video" id="v8"> <label for="v8">h) ein Auto, an dem bunte Ballons angebracht sind.</label></div>
+            <div class="option"><input type="checkbox" name="video" id="v9"> <label for="v9">i) ein Brautpaar, das aus einer Kirche kommt.</label></div>
+        </div>
+    </div>
+
+    <div class="vocab-section">
+        <div class="vocab-title">Wortschatz:</div>
+        <ul>
+            <li>der Hochzeitsgast, -gäste - wedding guest(s)</li>
+            <li>festlich - festive, formal</li>
+            <li>der Blumenstrauß, -sträuße - bouquet of flowers</li>
+            <li>werfen (wirft, warf, hat geworfen) - to throw</li>
+            <li>der Ballon, -s - balloon</li>
+            <li>anbringen (bringt an, brachte an, hat angebracht) - to attach</li>
+            <li>die Bühne, -n - stage</li>
+            <li>präsentieren - to present</li>
+            <li>das Brautkleid, -er - wedding dress</li>
+            <li>der Hochzeitsanzug, -anzüge - wedding suit</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        Tipp: Schau dir das Video mehrmals an, um alle Details zu erkennen. Achte besonders auf die Kleidung der Personen, die Aktivitäten und die Umgebung.
+    </div>
+
+
 </body>
 </html>
