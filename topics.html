@@ -141,6 +141,21 @@
         <span class="translation">(你们觉得呢？孩子该有手机吗？)</span></p>
     </div>
 
+    <h2>留言板</h2>
+    <div id="message-board">
+        <form id="message-form">
+            <label for="username">用户名:</label><br>
+            <input type="text" id="username" placeholder="请输入您的用户名" required><br><br>
+            <label for="message">留言:</label><br>
+            <textarea id="message" placeholder="请输入您的留言" rows="4" required></textarea><br><br>
+            <button type="submit">提交留言</button>
+        </form>
+        <h3>留言列表</h3>
+        <ul id="message-list">
+            <!-- 留言将动态生成 -->
+        </ul>
+    </div>
+
     <!-- 动态生成的内容 -->
     <div id="topics-container"></div>
 

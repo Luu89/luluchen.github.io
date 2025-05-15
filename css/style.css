@@ -285,7 +285,42 @@ button:hover {
     border-radius: 3px;
 }
 
-#map-container {
+#message-board {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     background-color: #f9f9f9;
+}
+
+#message-form {
+    margin-bottom: 20px;
+}
+
+#message-form input, #message-form textarea, #message-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
 }
+
+#message-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#message-list li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+#message-list li strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+

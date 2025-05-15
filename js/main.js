@@ -213,28 +213,46 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const mindData = {
-        nodeData: {
-            id: 'root',
-            topic: '思维导图主题',
-            children: [
-                { id: 'node1', topic: '子节点 1', children: [] },
-                { id: 'node2', topic: '子节点 2', children: [
-                    { id: 'node2-1', topic: '子节点 2-1', children: [] },
-                    { id: 'node2-2', topic: '子节点 2-2', children: [] }
-                ] },
-            ],
-        },
-        linkData: {},
-    };
+        if (Array.isArray(content)) {
+        const ul = document.createElement('ul');
+        content.forEach(item => {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `word.html?word=${encodeURIComponent(item)}`; // 跳转到 word.html 并传递单词参数
+            link.textContent = item;
+            li.appendChild(link);
+            ul.appendChild(li);
+        });
+        sectionDiv.appendChild(ul);
+    } else {
+        const p = document.createElement('p');
+        p.innerHTML = content;
+        sectionDiv.appendChild(p);
+    }
 
-    const mind = new MindElixir({
-        el: '#map-container',
-        direction: MindElixir.LEFT,
-        data: mindData,
-        draggable: true,
-        editable: true,
+    fetch('definitions.json')
+    .then(response => response.json())
+    .then(wordDefinitions => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const word = urlParams.get('word');
+
+        const wordTitle = document.getElementById('word-title');
+        const wordDefinition = document.getElementById('word-definition');
+
+        if (word && wordDefinitions[word]) {
+            wordTitle.textContent = word;
+            wordDefinition.textContent = wordDefinitions[word];
+        } else {
+            wordTitle.textContent = "单词未找到";
+            wordDefinition.textContent = "抱歉，我们没有找到该单词的解释。";
+        }
+    })
+    .catch(error => {
+        console.error('Error loading definitions:', error);
     });
 
-    mind.init();
+    // 引用 messageBoard.js 文件
+    const script = document.createElement('script');
+    script.src = 'js/messageBoard.js'; // 确保路径正确
+    document.head.appendChild(script);
 });
