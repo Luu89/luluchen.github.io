@@ -212,4 +212,29 @@ document.addEventListener('DOMContentLoaded', function () {
             words.forEach(word => word.classList.remove('hidden')); // 显示对应语言的单词
         }
     }
+
+    const mindData = {
+        nodeData: {
+            id: 'root',
+            topic: '思维导图主题',
+            children: [
+                { id: 'node1', topic: '子节点 1', children: [] },
+                { id: 'node2', topic: '子节点 2', children: [
+                    { id: 'node2-1', topic: '子节点 2-1', children: [] },
+                    { id: 'node2-2', topic: '子节点 2-2', children: [] }
+                ] },
+            ],
+        },
+        linkData: {},
+    };
+
+    const mind = new MindElixir({
+        el: '#map-container',
+        direction: MindElixir.LEFT,
+        data: mindData,
+        draggable: true,
+        editable: true,
+    });
+
+    mind.init();
 });

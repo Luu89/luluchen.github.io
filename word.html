@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单词详情</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .definition {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="word-title">单词详情</h1>
+    <div class="definition" id="word-definition">
+        <!-- 单词解释将通过 JavaScript 动态加载 -->
+    </div>
+
+    <script>
+        // 模拟单词解释数据库
+        const wordDefinitions = {
+            "das Handy": "Ein tragbares Telefon, das für Anrufe, Nachrichten und Apps verwendet wird.",
+            "das Handy haben (拥有手机)": "Bedeutet, ein Handy zu besitzen.",
+            "das Handy benutzen (使用手机)": "Bedeutet, ein Handy für verschiedene Zwecke zu verwenden.",
+            "mit dem Handy spielen (用手机玩)": "Bedeutet, Spiele auf dem Handy zu spielen.",
+            "Nachrichten schicken (发消息)": "Bedeutet, Textnachrichten über das Handy zu senden.",
+            "erlauben": "Bedeutet, etwas zu gestatten oder zu genehmigen. 允许某人做某事。人三物四。erlauben j-m etw.A. 允许某人做某事。",
+            "verbieten": "Bedeutet, etwas zu untersagen oder nicht zu erlauben."
+        };
+
+        // 获取 URL 参数中的单词
+        const urlParams = new URLSearchParams(window.location.search);
+        const word = urlParams.get('word');
+
+        // 显示单词和解释
+        const wordTitle = document.getElementById('word-title');
+        const wordDefinition = document.getElementById('word-definition');
+
+        if (word && wordDefinitions[word]) {
+            wordTitle.textContent = word;
+            wordDefinition.textContent = wordDefinitions[word];
+        } else {
+            wordTitle.textContent = "单词未找到";
+            wordDefinition.textContent = "抱歉，我们没有找到该单词的解释。";
+        }
+    </script>
+
+    <button onclick="window.history.back()">返回</button>
+</body>
+</html>

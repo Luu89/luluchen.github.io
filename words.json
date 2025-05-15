@@ -1,0 +1,18 @@
+[
+    { "lang": "zh-CN", "text": "谢谢" },
+    { "lang": "en-US", "text": "Thank you" },
+    { "lang": "de-DE", "text": "Danke" },
+    { "lang": "fr-FR", "text": "Merci" },
+    { "lang": "da-DK", "text": "Tak" },
+    { "lang": "yue-HK", "text": "多谢" },
+    { "lang": "sv-SE", "text": "Tack" },
+    { "lang": "no-NO", "text": "Takk" },
+    { "lang": "es-ES", "text": "Gracias" },
+    { "lang": "it-IT", "text": "Grazie" },
+    { "lang": "pt-PT", "text": "Obrigado" },
+    { "lang": "shanghainese", "text": "谢侬" },
+    { "lang": "ja-JP", "text": "ありがとうございます" },
+    { "lang": "ko-KR", "text": "감사합니다" },
+    { "lang": "ru-RU", "text": "Спасибо" },
+    { "lang": "ar-SA", "text": "شكرا" }
+]
