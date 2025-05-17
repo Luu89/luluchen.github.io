@@ -8,5 +8,98 @@
 <body>
     <h1>Velkommen til denne side</h1>
     <p>Dette er en simpel tekst på dansk for at vise, hvordan det ser ud.</p>
+
+    <!-- Chat Room Start -->
+    <div id="chat-room" style="border:1px solid #ccc; padding:16px; width:350px; margin-top:30px;">
+        <h2>Chatrum</h2>
+        <div id="chat-messages" style="height:150px; overflow-y:auto; border:1px solid #eee; padding:8px; background:#fafafa; margin-bottom:10px;"></div>
+        <input type="text" id="chat-input" placeholder="Skriv en besked..." style="width:75%;">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script>
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+
+        function loadChatHistory() {
+            const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            chatMessages.innerHTML = '';
+            history.forEach((msg, idx) => {
+                const p = document.createElement('p');
+                p.textContent = msg;
+                // Add edit/resend buttons to the last message
+                if (idx === history.length - 1) {
+                    const editBtn = document.createElement('button');
+                    editBtn.textContent = 'Rediger';
+                    editBtn.style.marginLeft = '8px';
+                    editBtn.onclick = function() { editLastMessage(); };
+
+                    const resendBtn = document.createElement('button');
+                    resendBtn.textContent = 'Send igen';
+                    resendBtn.style.marginLeft = '4px';
+                    resendBtn.onclick = function() { resendLastMessage(); };
+
+                    p.appendChild(editBtn);
+                    p.appendChild(resendBtn);
+                }
+                chatMessages.appendChild(p);
+            });
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function saveMessage(msg) {
+            const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            history.push(msg);
+            localStorage.setItem('chatHistory', JSON.stringify(history));
+        }
+
+        function updateLastMessage(newMsg) {
+            const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            if (history.length > 0) {
+                history[history.length - 1] = newMsg;
+                localStorage.setItem('chatHistory', JSON.stringify(history));
+            }
+        }
+
+        function sendMessage() {
+            const msg = chatInput.value.trim();
+            if (msg) {
+                const fullMsg = "Du: " + msg;
+                saveMessage(fullMsg);
+                loadChatHistory();
+                chatInput.value = '';
+            }
+        }
+
+        function editLastMessage() {
+            const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            if (history.length > 0) {
+                // Remove "Du: " prefix for editing
+                let lastMsg = history[history.length - 1];
+                if (lastMsg.startsWith("Du: ")) lastMsg = lastMsg.slice(4);
+                chatInput.value = lastMsg;
+                chatInput.focus();
+                // Remove last message so it will be replaced on send
+                history.pop();
+                localStorage.setItem('chatHistory', JSON.stringify(history));
+                loadChatHistory();
+            }
+        }
+
+        function resendLastMessage() {
+            const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+            if (history.length > 0) {
+                const lastMsg = history[history.length - 1];
+                saveMessage(lastMsg);
+                loadChatHistory();
+            }
+        }
+
+        chatInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        loadChatHistory();
+    </script>
+    <!-- Chat Room End -->
 </body>
 </html>
