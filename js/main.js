@@ -255,4 +255,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const script = document.createElement('script');
     script.src = 'js/messageBoard.js'; // 确保路径正确
     document.head.appendChild(script);
+
+    // 留言板功能
+    const commentsDiv = document.getElementById('comments');
+    const commentInput = document.getElementById('comment-input');
+
+    // 加载评论
+    async function loadComments() {
+        const response = await fetch('/api/comments');
+        const comments = await response.json();
+        commentsDiv.innerHTML = '';
+        comments.forEach(comment => {
+            const p = document.createElement('p');
+            p.textContent = comment;
+            commentsDiv.appendChild(p);
+        });
+    }
+
+    // 添加评论
+    async function addComment() {
+        const comment = commentInput.value.trim();
+        if (comment) {
+            await fetch('/api/comments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ comment })
+            });
+            commentInput.value = '';
+            loadComments();
+        }
+    }
+
+    // 初始化加载评论
+    loadComments();
 });

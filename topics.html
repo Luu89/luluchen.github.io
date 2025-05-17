@@ -53,6 +53,56 @@
             margin-top: 30px;
             font-size: 1.1em;
         }
+        #search-container {
+            margin-bottom: 20px;
+        }
+        #search-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #message-board {
+            margin-top: 30px;
+        }
+        #message-form {
+            display: flex;
+            flex-direction: column;
+        }
+        #message-form label {
+            margin-bottom: 5px;
+        }
+        #message-form input, #message-form textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #message-form button {
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #message-form button:hover {
+            background-color: #2980b9;
+        }
+        #comments {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+        #comment-input {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +118,7 @@
         <li><a href="topicArbeit.html">工作 (Arbeit)</a></li>
         <li><a href="topicGesundheit.html">健康 (Gesundheit)</a></li>
         <li><a href="topicKinderUndHandy.html">孩子和手机 (Kinder und Handy)</a></li>
-        <li><a href="topicAutomobil.html">汽车 (Automobil)</a></li> <!-- 新增的超链接 -->
+        <li><a href="topicAutomobil.html">汽车 (Automobil)</a> <!-- 新增的超链接 --></li>
         <li><a href="topicFremdsprachen.html">外语 (Fremdsprachen)</a></li>
         <li><a href="topicStadtLand.html">城市和乡村（Stadt und Land）</a></li>
         <li><a href="topicHandyKinder.html">孩子用手机 (Kinder mit Handy)</a></li>
@@ -152,20 +202,14 @@
         <span class="translation">(你们觉得呢？孩子该有手机吗？)</span></p>
     </div>
 
-    <h2>留言板</h2>
-    <div id="message-board">
-        <form id="message-form">
-            <label for="username">用户名:</label><br>
-            <input type="text" id="username" placeholder="请输入您的用户名" required><br><br>
-            <label for="message">留言:</label><br>
-            <textarea id="message" placeholder="请输入您的留言" rows="4" required></textarea><br><br>
-            <button type="submit">提交留言</button>
-        </form>
-        <h3>留言列表</h3>
-        <ul id="message-list">
-            <!-- 留言将动态生成 -->
-        </ul>
-    </div>
+    <section id="comment-section">
+        <h2>留言板</h2>
+        <div id="comments" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 20px; max-width: 600px;">
+            <!-- 评论列表将动态生成 -->
+        </div>
+        <textarea id="comment-input" placeholder="请输入您的评论..." style="width: 100%; height: 80px; margin-bottom: 10px;"></textarea>
+        <button onclick="addComment()">提交评论</button>
+    </section>
 
     <!-- 动态生成的内容 -->
     <div id="topics-container"></div>
@@ -327,8 +371,36 @@
             });
         }
 
+        // 评论功能
+        const commentsDiv = document.getElementById('comments');
+        const commentInput = document.getElementById('comment-input');
+
+        // 加载评论
+        function loadComments() {
+            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+            commentsDiv.innerHTML = '';
+            comments.forEach(comment => {
+                const p = document.createElement('p');
+                p.textContent = comment;
+                commentsDiv.appendChild(p);
+            });
+        }
+
+        // 添加评论
+        function addComment() {
+            const comment = commentInput.value.trim();
+            if (comment) {
+                const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+                comments.push(comment);
+                localStorage.setItem('comments', JSON.stringify(comments));
+                commentInput.value = '';
+                loadComments();
+            }
+        }
+
         // 初始化页面
         renderTopics();
+        loadComments();
     </script>
 </body>
 </html>
