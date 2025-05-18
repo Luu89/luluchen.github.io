@@ -9,16 +9,60 @@
     <h1>Velkommen til denne side</h1>
     <p>Dette er en simpel tekst på dansk for at vise, hvordan det ser ud.</p>
 
-    <!-- Chat Room Start -->
-    <div id="chat-room" style="border:1px solid #ccc; padding:16px; width:350px; margin-top:30px;">
-        <h2>Chatrum</h2>
-        <div id="chat-messages" style="height:150px; overflow-y:auto; border:1px solid #eee; padding:8px; background:#fafafa; margin-bottom:10px;"></div>
-        <input type="text" id="chat-input" placeholder="Skriv en besked..." style="width:75%;">
-        <button onclick="sendMessage()">Send</button>
+    <div id="profile-section" style="margin-bottom:16px; text-align:center;">
+        <img id="profile-pic" src="https://api.dicebear.com/7.x/bottts/svg?seed=danish" alt="Avatar" style="width:60px; height:60px; border-radius:50%; border:2px solid #d72828; object-fit:cover;">
+        <br>
+        <input type="file" id="upload-pic" accept="image/*" style="display:none;">
+        <button onclick="document.getElementById('upload-pic').click()" style="margin-top:6px;">Upload billede</button>
+        <button onclick="chooseAvatar()" style="margin-top:6px;">Vælg avatar</button>
     </div>
+
+    <!-- Chat Room Start -->
+    <div id="chat-room" style="
+        border:1px solid #ccc;
+        padding:16px;
+        width:350px;
+        margin-top:30px;
+        border-radius: 16px;
+        background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80') center/cover no-repeat, linear-gradient(135deg, #fff8 60%, #d7282888 100%);
+        box-shadow: 0 4px 24px rgba(215,40,40,0.08);
+        ">
+        <h2 style="color:#d72828; text-shadow: 1px 1px 6px #fff;">Chatrum 🇩🇰</h2>
+        <div id="chat-messages" style="height:150px; overflow-y:auto; border:1px solid #eee; padding:8px; background:rgba(255,255,255,0.85); margin-bottom:10px; border-radius:8px;"></div>
+        <input type="text" id="chat-input" placeholder="Skriv en besked..." style="width:75%; border-radius:6px; border:1px solid #ccc; padding:4px;">
+        <button onclick="sendMessage()" style="background:#d72828; color:#fff; border:none; border-radius:6px; padding:6px 12px; margin-left:4px;">Send</button>
+    </div>
+    <!-- Chat Room End -->
+
     <script>
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
+        const profilePic = document.getElementById('profile-pic');
+        const uploadPic = document.getElementById('upload-pic');
+
+        // Load saved avatar
+        if(localStorage.getItem('profilePic')) {
+            profilePic.src = localStorage.getItem('profilePic');
+        }
+
+        uploadPic.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                profilePic.src = evt.target.result;
+                localStorage.setItem('profilePic', evt.target.result);
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function chooseAvatar() {
+            // Use DiceBear for random cute avatars
+            const seed = Math.random().toString(36).substring(2, 10);
+            const url = `https://api.dicebear.com/7.x/bottts/svg?seed=${seed}`;
+            profilePic.src = url;
+            localStorage.setItem('profilePic', url);
+        }
 
         function loadChatHistory() {
             const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
@@ -26,20 +70,20 @@
             history.forEach((msg, idx) => {
                 const p = document.createElement('p');
                 p.textContent = msg;
-                // Add edit/resend buttons to the last message
+                // Add edit/recall buttons to the last message
                 if (idx === history.length - 1) {
                     const editBtn = document.createElement('button');
                     editBtn.textContent = 'Rediger';
                     editBtn.style.marginLeft = '8px';
                     editBtn.onclick = function() { editLastMessage(); };
 
-                    const resendBtn = document.createElement('button');
-                    resendBtn.textContent = 'Send igen';
-                    resendBtn.style.marginLeft = '4px';
-                    resendBtn.onclick = function() { resendLastMessage(); };
+                    const recallBtn = document.createElement('button');
+                    recallBtn.textContent = 'Recall';
+                    recallBtn.style.marginLeft = '4px';
+                    recallBtn.onclick = function() { recallLastMessage(); };
 
                     p.appendChild(editBtn);
-                    p.appendChild(resendBtn);
+                    p.appendChild(recallBtn);
                 }
                 chatMessages.appendChild(p);
             });
@@ -85,11 +129,11 @@
             }
         }
 
-        function resendLastMessage() {
+        function recallLastMessage() {
             const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
             if (history.length > 0) {
-                const lastMsg = history[history.length - 1];
-                saveMessage(lastMsg);
+                history.pop();
+                localStorage.setItem('chatHistory', JSON.stringify(history));
                 loadChatHistory();
             }
         }
@@ -100,6 +144,5 @@
 
         loadChatHistory();
     </script>
-    <!-- Chat Room End -->
 </body>
 </html>
