@@ -22,6 +22,25 @@
             text-shadow: 1px 1px 8px #d72828, 0 0 2px #fff;
         }
     </style>
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+    <script>
+        function playDanish(text, gender) {
+            var voice = gender === 'male' ? 'Danish Male' : 'Danish Female';
+            if (typeof responsiveVoice !== "undefined") {
+                responsiveVoice.speak(text, voice, {rate: 1});
+            } else {
+                alert("Tale-funktionen er ikke indlæst endnu. Prøv at genindlæse siden.");
+            }
+        }
+        function playDanishSlow(text, gender) {
+            var voice = gender === 'male' ? 'Danish Male' : 'Danish Female';
+            if (typeof responsiveVoice !== "undefined") {
+                responsiveVoice.speak(text, voice, {rate: 0.7});
+            } else {
+                alert("Tale-funktionen er ikke indlæst endnu. Prøv at genindlæse siden.");
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="cute-formal">
@@ -48,6 +67,211 @@
             <li><a href="#vocab-work">Arbejde</a></li>
             <li><a href="#vocab-advanced">Avanceret ordforråd</a></li>
         </ul>
+    </div>
+
+    <!-- A1: Hilsner og præsentationer -->
+    <div id="a1-convo" style="margin:32px auto; max-width:600px;">
+        <h3 style="color:#d72828;">A1: Hilsner og præsentationer</h3>
+        <p>
+            <strong>A:</strong> Hej! Jeg hedder Anna. Hvad hedder du?
+            <button onclick="playDanish('Hej! Jeg hedder Anna. Hvad hedder du?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Hej! Jeg hedder Anna. Hvad hedder du?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: Hi! My name is Anna. What is your name?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：嗨！我叫安娜。你叫什么名字？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Hej Anna! Jeg hedder Peter.
+            <button onclick="playDanish('Hej Anna! Jeg hedder Peter.', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Hej Anna! Jeg hedder Peter.', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: Hi Anna! My name is Peter.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：嗨安娜！我叫彼得。</span>
+        </p>
+        <p>
+            <strong>A:</strong> Hvor kommer du fra?
+            <button onclick="playDanish('Hvor kommer du fra?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Hvor kommer du fra?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: Where are you from?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：你来自哪里？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Jeg kommer fra Danmark. Og du?
+            <button onclick="playDanish('Jeg kommer fra Danmark. Og du?', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Jeg kommer fra Danmark. Og du?', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I am from Denmark. And you?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我来自丹麦。你呢？</span>
+        </p>
+        <p>
+            <strong>A:</strong> Jeg kommer fra Kina.
+            <button onclick="playDanish('Jeg kommer fra Kina.', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Jeg kommer fra Kina.', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I am from China.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我来自中国。</span>
+        </p>
+    </div>
+
+    <!-- A2: Hverdagsliv -->
+    <div id="a2-convo" style="margin:32px auto; max-width:600px;">
+        <h3 style="color:#d72828;">A2: Hverdagsliv</h3>
+        <p>
+            <strong>A:</strong> Hvad laver du i weekenden?
+            <button onclick="playDanish('Hvad laver du i weekenden?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Hvad laver du i weekenden?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: What do you do on weekends?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：你周末做什么？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Jeg besøger min familie og går en tur i parken. Hvad med dig?
+            <button onclick="playDanish('Jeg besøger min familie og går en tur i parken. Hvad med dig?', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Jeg besøger min familie og går en tur i parken. Hvad med dig?', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I visit my family and take a walk in the park. What about you?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我去看家人，还会去公园散步。你呢？</span>
+        </p>
+        <p>
+            <strong>A:</strong> Jeg slapper af og ser film.
+            <button onclick="playDanish('Jeg slapper af og ser film.', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Jeg slapper af og ser film.', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I relax and watch movies.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我休息一下，看电影。</span>
+        </p>
+    </div>
+
+    <!-- B1: Rejser og oplevelser -->
+    <div id="b1-convo" style="margin:32px auto; max-width:600px;">
+        <h3 style="color:#d72828;">B1: Rejser og oplevelser</h3>
+        <p>
+            <strong>A:</strong> Har du været i udlandet før?
+            <button onclick="playDanish('Har du været i udlandet før?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Har du været i udlandet før?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: Have you been abroad before?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：你以前去过国外吗？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Ja, jeg har været i Tyskland og Sverige. Det var spændende!
+            <button onclick="playDanish('Ja, jeg har været i Tyskland og Sverige. Det var spændende!', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Ja, jeg har været i Tyskland og Sverige. Det var spændende!', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: Yes, I have been to Germany and Sweden. It was exciting!</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：是的，我去过德国和瑞典。很有意思！</span>
+        </p>
+        <p>
+            <strong>A:</strong> Hvilket land kunne du bedst lide?
+            <button onclick="playDanish('Hvilket land kunne du bedst lide?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Hvilket land kunne du bedst lide?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: Which country did you like the most?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：你最喜欢哪个国家？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Jeg kunne bedst lide Sverige, fordi naturen er smuk.
+            <button onclick="playDanish('Jeg kunne bedst lide Sverige, fordi naturen er smuk.', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Jeg kunne bedst lide Sverige, fordi naturen er smuk.', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I liked Sweden the most because the nature is beautiful.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我最喜欢瑞典，因为那里的自然风光很美。</span>
+        </p>
+    </div>
+
+    <!-- B2: Arbejde og studier -->
+    <div id="b2-convo" style="margin:32px auto; max-width:600px;">
+        <h3 style="color:#d72828;">B2: Arbejde og studier</h3>
+        <p>
+            <strong>A:</strong> Hvad arbejder du med?
+            <button onclick="playDanish('Hvad arbejder du med?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Hvad arbejder du med?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: What do you do for work?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：你做什么工作？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Jeg er lærer på en folkeskole. Hvad med dig?
+            <button onclick="playDanish('Jeg er lærer på en folkeskole. Hvad med dig?', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Jeg er lærer på en folkeskole. Hvad med dig?', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I am a teacher at a primary school. What about you?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我是小学老师。你呢？</span>
+        </p>
+        <p>
+            <strong>A:</strong> Jeg studerer på universitetet og arbejder deltid i en butik.
+            <button onclick="playDanish('Jeg studerer på universitetet og arbejder deltid i en butik.', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Jeg studerer på universitetet og arbejder deltid i en butik.', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I study at university and work part-time in a shop.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我在大学学习，还在商店做兼职。</span>
+        </p>
+        <p>
+            <strong>B:</strong> Det lyder travlt! Hvordan balancerer du det?
+            <button onclick="playDanish('Det lyder travlt! Hvordan balancerer du det?', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Det lyder travlt! Hvordan balancerer du det?', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: That sounds busy! How do you balance it?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：听起来很忙！你怎么平衡的？</span>
+        </p>
+        <p>
+            <strong>A:</strong> Jeg planlægger min tid nøje og prøver at slappe af i weekenden.
+            <button onclick="playDanish('Jeg planlægger min tid nøje og prøver at slappe af i weekenden.', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Jeg planlægger min tid nøje og prøver at slappe af i weekenden.', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I plan my time carefully and try to relax on weekends.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我会认真安排时间，周末尽量放松。</span>
+        </p>
+    </div>
+
+    <!-- C1: Samfund og debat -->
+    <div id="c1-convo" style="margin:32px auto; max-width:600px;">
+        <h3 style="color:#d72828;">C1: Samfund og debat</h3>
+        <p>
+            <strong>A:</strong> Hvad mener du om den danske velfærdsmodel?
+            <button onclick="playDanish('Hvad mener du om den danske velfærdsmodel?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Hvad mener du om den danske velfærdsmodel?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: What do you think about the Danish welfare model?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：你怎么看丹麦的福利制度？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Jeg synes, den er god, fordi alle har adgang til sundhed og uddannelse.
+            <button onclick="playDanish('Jeg synes, den er god, fordi alle har adgang til sundhed og uddannelse.', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Jeg synes, den er god, fordi alle har adgang til sundhed og uddannelse.', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: I think it's good because everyone has access to healthcare and education.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我觉得很好，因为每个人都能享受医疗和教育。</span>
+        </p>
+        <p>
+            <strong>A:</strong> Men tror du, det kan fortsætte i fremtiden?
+            <button onclick="playDanish('Men tror du, det kan fortsætte i fremtiden?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Men tror du, det kan fortsætte i fremtiden?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: But do you think it can continue in the future?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：但你觉得将来还能持续吗？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Det afhænger af økonomien og politiske beslutninger, men jeg håber det.
+            <button onclick="playDanish('Det afhænger af økonomien og politiske beslutninger, men jeg håber det.', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Det afhænger af økonomien og politiske beslutninger, men jeg håber det.', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: It depends on the economy and political decisions, but I hope so.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：这取决于经济和政治决策，但我希望可以。</span>
+        </p>
+    </div>
+
+    <!-- C2: Avanceret diskussion -->
+    <div id="c2-convo" style="margin:32px auto; max-width:600px;">
+        <h3 style="color:#d72828;">C2: Avanceret diskussion</h3>
+        <p>
+            <strong>A:</strong> Hvordan ser du på globaliseringens indflydelse på dansk kultur?
+            <button onclick="playDanish('Hvordan ser du på globaliseringens indflydelse på dansk kultur?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Hvordan ser du på globaliseringens indflydelse på dansk kultur?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: How do you see the influence of globalization on Danish culture?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：你怎么看全球化对丹麦文化的影响？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Globalisering har både positive og negative sider. Den bringer nye ideer, men kan også true lokale traditioner.
+            <button onclick="playDanish('Globalisering har både positive og negative sider. Den bringer nye ideer, men kan også true lokale traditioner.', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Globalisering har både positive og negative sider. Den bringer nye ideer, men kan også true lokale traditioner.', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: Globalization has both positive and negative sides. It brings new ideas but can also threaten local traditions.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：全球化有好有坏。它带来新思想，也可能威胁本地传统。</span>
+        </p>
+        <p>
+            <strong>A:</strong> Hvordan kan vi bevare vores kultur i en globaliseret verden?
+            <button onclick="playDanish('Hvordan kan vi bevare vores kultur i en globaliseret verden?', 'female')">🔊</button>
+            <button onclick="playDanishSlow('Hvordan kan vi bevare vores kultur i en globaliseret verden?', 'female')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: How can we preserve our culture in a globalized world?</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：我们如何在全球化的世界中保留自己的文化？</span>
+        </p>
+        <p>
+            <strong>B:</strong> Ved at værdsætte vores sprog, traditioner og samtidig være åbne for forandring.
+            <button onclick="playDanish('Ved at værdsætte vores sprog, traditioner og samtidig være åbne for forandring.', 'male')">🔊</button>
+            <button onclick="playDanishSlow('Ved at værdsætte vores sprog, traditioner og samtidig være åbne for forandring.', 'male')">🐢</button><br>
+            <span style="color:#444; font-size:0.98em;">EN: By valuing our language, traditions, and at the same time being open to change.</span><br>
+            <span style="color:#888; font-size:0.98em;">中文：珍惜我们的语言和传统，同时也要对变化保持开放。</span>
+        </p>
     </div>
 
     <div id="profile-section" style="margin-bottom:16px; text-align:center;">
