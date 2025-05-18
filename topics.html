@@ -391,9 +391,29 @@
             const comment = commentInput.value.trim();
             if (comment) {
                 const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-                comments.push(comment);
+                comments.push("Du: " + comment);
                 localStorage.setItem('comments', JSON.stringify(comments));
                 commentInput.value = '';
+                loadComments();
+
+                // Bot reply (only to the latest comment)
+                botReply(comment);
+            }
+        }
+
+        // Simple bot reply function
+        async function botReply(userMsg) {
+            try {
+                const res = await fetch(`https://api.monkedev.com/fun/chat?msg=${encodeURIComponent(userMsg)}&uid=deutschuser`);
+                const data = await res.json();
+                const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+                comments.push("Bot: " + data.response);
+                localStorage.setItem('comments', JSON.stringify(comments));
+                loadComments();
+            } catch (e) {
+                const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+                comments.push("Bot: Entschuldigung, ich kann gerade nicht antworten.");
+                localStorage.setItem('comments', JSON.stringify(comments));
                 loadComments();
             }
         }

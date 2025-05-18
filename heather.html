@@ -3,11 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dansk Tekst</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Nunito:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .cute-formal {
+            font-family: 'Quicksand', 'Nunito', Arial, sans-serif;
+            font-size: 2.1rem;
+            text-align: center;
+            margin-top: 32px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        .danish-red {
+            color: #d72828;
+            text-shadow: 1px 1px 8px #fff, 0 0 2px #d72828;
+        }
+        .danish-white {
+            color: #fff;
+            text-shadow: 1px 1px 8px #d72828, 0 0 2px #fff;
+        }
+    </style>
 </head>
 <body>
-    <h1>Velkommen til denne side</h1>
-    <p>Dette er en simpel tekst på dansk for at vise, hvordan det ser ud.</p>
+    <div class="cute-formal">
+        <span class="danish-red">Velkommen til Danmark</span><br>
+        <span class="danish-white">og lad os lære dansk sammen!</span>
+    </div>
+
+    <div id="danish-catalog" style="margin: 32px auto 24px auto; max-width: 600px; background: rgba(255,255,255,0.92); border-radius: 16px; box-shadow: 0 2px 12px rgba(215,40,40,0.08); padding: 24px;">
+        <h2 style="color:#d72828; font-family:'Quicksand','Nunito',Arial,sans-serif; text-align:center;">Dansk Samtale Katalog 🇩🇰</h2>
+        <ul style="font-size:1.1rem; line-height:1.7;">
+            <li><a href="#a1-convo">A1: Hilsner og præsentationer</a></li>
+            <li><a href="#a2-convo">A2: Hverdagsliv</a></li>
+            <li><a href="#b1-convo">B1: Rejser og oplevelser</a></li>
+            <li><a href="#b2-convo">B2: Arbejde og studier</a></li>
+            <li><a href="#c1-convo">C1: Samfund og debat</a></li>
+            <li><a href="#c2-convo">C2: Avanceret diskussion</a></li>
+        </ul>
+        <hr style="margin:18px 0;">
+        <h3 style="color:#d72828;">Vocabularium</h3>
+        <ul style="font-size:1.05rem;">
+            <li><a href="#vocab-greetings">Hilsner</a></li>
+            <li><a href="#vocab-travel">Rejseord</a></li>
+            <li><a href="#vocab-daily">Dagligdags udtryk</a></li>
+            <li><a href="#vocab-work">Arbejde</a></li>
+            <li><a href="#vocab-advanced">Avanceret ordforråd</a></li>
+        </ul>
+    </div>
 
     <div id="profile-section" style="margin-bottom:16px; text-align:center;">
         <img id="profile-pic" src="https://api.dicebear.com/7.x/bottts/svg?seed=danish" alt="Avatar" style="width:60px; height:60px; border-radius:50%; border:2px solid #d72828; object-fit:cover;">
@@ -67,9 +108,25 @@
         function loadChatHistory() {
             const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
             chatMessages.innerHTML = '';
-            history.forEach((msg, idx) => {
+            history.forEach((msgObj, idx) => {
+                const msgDiv = document.createElement('div');
+                msgDiv.style.marginBottom = '10px';
+
+                // Main message
                 const p = document.createElement('p');
-                p.textContent = msg;
+                p.textContent = `${msgObj.user}: ${msgObj.text}`;
+                p.style.margin = '0';
+
+                // Translation
+                const t = document.createElement('div');
+                t.textContent = `Oversættelse: ${msgObj.translation}`;
+                t.style.fontSize = '0.95em';
+                t.style.color = '#555';
+                t.style.marginLeft = '12px';
+
+                msgDiv.appendChild(p);
+                msgDiv.appendChild(t);
+
                 // Add edit/recall buttons to the last message
                 if (idx === history.length - 1) {
                     const editBtn = document.createElement('button');
@@ -82,10 +139,11 @@
                     recallBtn.style.marginLeft = '4px';
                     recallBtn.onclick = function() { recallLastMessage(); };
 
-                    p.appendChild(editBtn);
-                    p.appendChild(recallBtn);
+                    msgDiv.appendChild(editBtn);
+                    msgDiv.appendChild(recallBtn);
                 }
-                chatMessages.appendChild(p);
+
+                chatMessages.appendChild(msgDiv);
             });
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -104,13 +162,50 @@
             }
         }
 
-        function sendMessage() {
+        async function translateMessage(text, targetLang = 'en') {
+            // You can change 'en' to any supported language code, e.g., 'da' for Danish, 'de' for German, etc.
+            const res = await fetch('https://libretranslate.de/translate', {
+                method: 'POST',
+                body: JSON.stringify({
+                    q: text,
+                    source: 'auto',
+                    target: targetLang,
+                    format: 'text'
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+            return data.translatedText;
+        }
+
+        async function sendMessage() {
             const msg = chatInput.value.trim();
             if (msg) {
-                const fullMsg = "Du: " + msg;
+                // User message
+                const fullMsg = { user: "Du", text: msg, translation: "" };
                 saveMessage(fullMsg);
                 loadChatHistory();
                 chatInput.value = '';
+
+                // Translate the message and display it
+                const translated = await translateMessage(msg, 'en');
+                fullMsg.translation = translated;
+                updateLastMessage(fullMsg);
+                loadChatHistory();
+
+                // Bot reply (simulate bot only if not empty and not a command)
+                if (msg.length > 0) {
+                    // Call Monkedev API for bot reply
+                    try {
+                        const res = await fetch(`https://api.monkedev.com/fun/chat?msg=${encodeURIComponent(msg)}&uid=danishuser`);
+                        const data = await res.json();
+                        const botMsg = { user: "Bot", text: data.response, translation: await translateMessage(data.response, 'da') };
+                        saveMessage(botMsg);
+                        loadChatHistory();
+                    } catch (error) {
+                        console.error("Error fetching bot reply:", error);
+                    }
+                }
             }
         }
 
@@ -119,8 +214,7 @@
             if (history.length > 0) {
                 // Remove "Du: " prefix for editing
                 let lastMsg = history[history.length - 1];
-                if (lastMsg.startsWith("Du: ")) lastMsg = lastMsg.slice(4);
-                chatInput.value = lastMsg;
+                chatInput.value = lastMsg.text;
                 chatInput.focus();
                 // Remove last message so it will be replaced on send
                 history.pop();
