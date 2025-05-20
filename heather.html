@@ -12,6 +12,14 @@
             margin-top: 32px;
             margin-bottom: 24px;
             letter-spacing: 1px;
+            position: relative;
+            padding: 36px 12px 36px 12px;
+            border-radius: 18px;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(215,40,40,0.15), rgba(255,255,255,0.7)),
+                url('your-uploaded-image-url.jpg') center/cover no-repeat;
+            box-shadow: 0 2px 12px rgba(215,40,40,0.08);
         }
         .danish-red {
             color: #d72828;
@@ -51,12 +59,12 @@
     <div id="danish-catalog" style="margin: 32px auto 24px auto; max-width: 600px; background: rgba(255,255,255,0.92); border-radius: 16px; box-shadow: 0 2px 12px rgba(215,40,40,0.08); padding: 24px;">
         <h2 style="color:#d72828; font-family:'Quicksand','Nunito',Arial,sans-serif; text-align:center;">Dansk Samtale Katalog 🇩🇰</h2>
         <ul style="font-size:1.1rem; line-height:1.7;">
-            <li><a href="#a1-convo">A1: Hilsner og præsentationer</a></li>
-            <li><a href="#a2-convo">A2: Hverdagsliv</a></li>
-            <li><a href="#b1-convo">B1: Rejser og oplevelser</a></li>
-            <li><a href="#b2-convo">B2: Arbejde og studier</a></li>
-            <li><a href="#c1-convo">C1: Samfund og debat</a></li>
-            <li><a href="#c2-convo">C2: Avanceret diskussion</a></li>
+            <li><a href="a1-convo.html" target="_blank">A1: Hilsner og præsentationer</a></li>
+            <li><a href="a2-convo.html" target="_blank">A2: Hverdagsliv</a></li>
+            <li><a href="b1-convo.html" target="_blank">B1: Rejser og oplevelser</a></li>
+            <li><a href="b2-convo.html" target="_blank">B2: Arbejde og studier</a></li>
+            <li><a href="c1-convo.html" target="_blank">C1: Samfund og debat</a></li>
+            <li><a href="c2-convo.html" target="_blank">C2: Avanceret diskussion</a></li>
         </ul>
         <hr style="margin:18px 0;">
         <h3 style="color:#d72828;">Vocabularium</h3>
@@ -66,6 +74,12 @@
             <li><a href="#vocab-daily">Dagligdags udtryk</a></li>
             <li><a href="#vocab-work">Arbejde</a></li>
             <li><a href="#vocab-advanced">Avanceret ordforråd</a></li>
+        </ul>
+        <!-- New topic: Dansk kultur -->
+        <hr style="margin:18px 0;">
+        <h3 style="color:#d72828;">Dansk kultur</h3>
+        <ul style="font-size:1.05rem;">
+            <li><a href="#danish-culture">Dansk kultur (Danish culture)</a></li>
         </ul>
     </div>
 
@@ -187,12 +201,6 @@
         </p>
         <p>
             <strong>A:</strong> Jeg studerer på universitetet og arbejder deltid i en butik.
-            <button onclick="playDanish('Jeg studerer på universitetet og arbejder deltid i en butik.', 'female')">🔊</button>
-            <button onclick="playDanishSlow('Jeg studerer på universitetet og arbejder deltid i en butik.', 'female')">🐢</button><br>
-            <span style="color:#444; font-size:0.98em;">EN: I study at university and work part-time in a shop.</span><br>
-            <span style="color:#888; font-size:0.98em;">中文：我在大学学习，还在商店做兼职。</span>
-        </p>
-        <p>
             <strong>B:</strong> Det lyder travlt! Hvordan balancerer du det?
             <button onclick="playDanish('Det lyder travlt! Hvordan balancerer du det?', 'male')">🔊</button>
             <button onclick="playDanishSlow('Det lyder travlt! Hvordan balancerer du det?', 'male')">🐢</button><br>
@@ -461,6 +469,6 @@
         });
 
         loadChatHistory();
-    </script>
+    </script> 
 </body>
 </html>
