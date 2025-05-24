@@ -10,20 +10,27 @@
             border-radius: 10px;
             padding: 24px;
             max-width: 430px;
+            min-width: 320px;
+            min-height: 568px; /* 适配手机竖屏视频比例 */
+            height: 568px;
             text-align: center;
-            background: #fff;
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .video-exercise-card img {
             width: 260px;
             height: 260px;
             object-fit: contain;
             border-radius: 12px;
-            margin-bottom: 32px;
-            background: #fff;
+            margin-bottom: 10px;
+            background: #333;
         }
         .video-question {
             font-size: 1.5rem;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
+            color: #fff;
         }
         .video-countdown {
             font-size: 2rem;
@@ -35,7 +42,7 @@
             display: flex;
             align-items: baseline;
             justify-content: center;
-            gap: 12px;
+            gap: 18px;
         }
         .noun-m, .noun-n, .noun-f {
             font-size: 2.2rem;
@@ -46,9 +53,9 @@
         .noun-f { color: #e74c3c; }
         .chinese {
             font-size: 1.1rem;
-            color: #333;
+            color: #fff;
             margin-left: 8px;
-            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            font-family: "Kaiti", "楷体";
         }
         .start-video-exercise {
             margin-top: 10px;
@@ -60,81 +67,93 @@
 
 <body>
 
-    <h3 style="text-align:center; margin-top:24px;">水果系列 Obst</h3>
+    <h3 style="text-align:center; margin-top:24px;">肉类系列 Fleisch</h3>
 
-    <!-- 框外的开始按钮 -->
+    <!-- 框外的开始按钮 + 图片 -->
     <div id="start-btn-container" style="text-align:center; margin-bottom: 24px;">
-        <button id="global-start-btn" class="start-video-exercise">开始练习</button>
+        <button id="global-start-btn" class="start-video-exercise">Was ist das?</button>
+        <br>
+        <img src="https://img.freepik.com/vektoren-premium/cartoon-fleisch-set_53562-9388.jpg?w=2000"style="width: 100%; max-width: 400px; margin-top: 10px;">
     </div>
 
     <div class="video-exercise-card" id="card1" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="Apfel">
+        <img src="https://www.schmankerlmanufaktur.tirol/uploads/tx_multishop/images/categories/original/rin/rind.jpeg" alt="Rindfleisch">
+        <div class="chinese">牛肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-m">der Apfel</span> <span class="chinese">苹果</span></div>
+        <div class="video-answer"><span class="noun-n">das Rindfleisch</span></div>
     </div>
 
     <div class="video-exercise-card" id="card2" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Bananas_white_background_DS.jpg" alt="Banane">
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.19a81cf699064faa84713717a2c7db6a?rik=TOyf6mC3XZamjw&pid=ImgRaw&r=0" alt="Schweinefleisch">
+        <div class="chinese">猪肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Banane</span> <span class="chinese">香蕉</span></div>
+        <div class="video-answer"><span class="noun-n">das Schweinefleisch</span></div>
     </div>
 
     <div class="video-exercise-card" id="card3" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://www.plantura.garden/wp-content/uploads/2017/02/Cantaloupe-Melone-2-e1523096889694.jpg" alt="Melone">
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.bd588e02b7a5ebc9de83a16f40e4b021?rik=lsDLoe1KnJp6EA&pid=ImgRaw&r=0" alt="Hähnchenfleisch">
+        <div class="chinese">鸡肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Melone</span> <span class="chinese">哈密瓜/甜瓜</span></div>
+        <div class="video-answer"><span class="noun-n">das Hähnchenfleisch</span></div>
     </div>
 
     <div class="video-exercise-card" id="card4" style="display:none;">
-        <div class="video-question">Was ist das?</div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Cherry_Stella444.jpg" alt="Kirsche">
+        <div class="chinese">Was ist das?</div>
+        <img src="https://www.metzgerei-ammon.de/assets/images/e/AdobeStock_42956760-2109b244.jpeg" alt="Lammfleisch">
+        <div class="video-question">羔羊肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Kirsche</span> <span class="chinese">樱桃</span></div>
+        <div class="video-answer"><span class="noun-n">das Lammfleisch</span></div>
     </div>
 
     <div class="video-exercise-card" id="card5" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.SilD0hVUcb0I_cvKf7p5VwHaE7?rs=1&pid=ImgDetMain" alt="Erdbeere">
+        <img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.Ixe94o6GcSis65vPNOQUIQHaHZ?rs=1&pid=ImgDetMain" alt="Putenfleisch">
+        <div class="chinese">火鸡肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Erdbeere</span> <span class="chinese">草莓</span></div>
+        <div class="video-answer"><span class="noun-n">das Putenfleisch</span></div>
     </div>
 
     <div class="video-exercise-card" id="card6" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/R.01503e68c8ceae6d7b8cc8f2fb54f9ac?rik=3giZNr%2bs4qj1Cg&riu=http%3a%2f%2fwww.1a-die.kochschule.de%2fsites%2fdefault%2ffiles%2fimages%2fkochwissen%2f464%2fheidelbeere.jpg&ehk=m20P1TpJJ4i7EcwTCDWettepBmXfB231fkk25maPTtw%3d&risl=&pid=ImgRaw&r=0" alt="Heidelbeere">
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.b15df6ed44b7079d8ed6fe0edfb8c543?rik=cgYFWWZTplejeA&pid=ImgRaw&r=0" alt="Entenfleisch">
+        <div class="chinese">鸭肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Heidelbeere</span> <span class="chinese">蓝莓</span></div>
+        <div class="video-answer"><span class="noun-n">das Entenfleisch</span></div>
     </div>
 
     <div class="video-exercise-card" id="card7" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.qPGe2N4gFO_ENj-34pl38AHaF2?rs=1&pid=ImgDetMain" alt="Pfirsich">
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.b2241089f72e7c402635d1631e335299?rik=TWCP2lBM9SaWoA&pid=ImgRaw&r=0" alt="Gänsefleisch">
+        <div class="chinese">鹅肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-m">der Pfirsich</span> <span class="chinese">桃子</span></div>
+        <div class="video-answer"><span class="noun-n">das Gänsefleisch</span></div>
     </div>
 
     <div class="video-exercise-card" id="card8" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.kbQpRu_UcxvT9SuBVquXMQHaHI?rs=1&pid=ImgDetMain" alt="Orange">
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.c5e3e1601cc83c10b52b5e7500e88794?rik=jNDkoKNVc6uAQQ&pid=ImgRaw&r=0" alt="Kaninchenfleisch">
+        <div class="chinese">兔肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Orange</span> <span class="chinese">橙子</span></div>
+        <div class="video-answer"><span class="noun-n">das Kaninchenfleisch</span></div>
     </div>
 
     <div class="video-exercise-card" id="card9" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.U-pWh5DR-6MHanbz-8vBGgHaHa?rs=1&pid=ImgDetMain" alt="Wassermelone">
+        <img src="https://www.justspices.de/media/recipe/haehnchenfluegel-heissluftfritteuse.jpg" alt="der Hähnchenflügel">
+        <div class="chinese">鸡翅</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Wassermelone</span> <span class="chinese">西瓜</span></div>
+        <div class="video-answer"><span class="noun-m">der Hähnchenflügel</span></div>
     </div>
 
     <div class="video-exercise-card" id="card10" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.RGTshn9ZuMT1ly7Rs-tqQwHaE7?rs=1&pid=ImgDetMain" alt="Traube">
+        <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.w6anPzQPQSpi06Bf4WtsZAHaFj?rs=1&pid=ImgDetMain" alt="der Speck">
+        <div class="chinese">熏肉</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Traube</span> <span class="chinese">葡萄</span></div>
+        <div class="video-answer"><span class="noun-m">der Speck</span></div>
     </div>
 
     <script>
@@ -152,16 +171,16 @@
 
         // 卡片数据
         const cardData = [
-            {id: 'card1', next: 'card2', answer: 'der Apfel'},
-            {id: 'card2', next: 'card3', answer: 'die Banane'},
-            {id: 'card3', next: 'card4', answer: 'die Melone'},
-            {id: 'card4', next: 'card5', answer: 'die Kirsche'},
-            {id: 'card5', next: 'card6', answer: 'die Erdbeere'},
-            {id: 'card6', next: 'card7', answer: 'die Heidelbeere'},
-            {id: 'card7', next: 'card8', answer: 'der Pfirsich'},
-            {id: 'card8', next: 'card9', answer: 'die Orange'},
-            {id: 'card9', next: 'card10', answer: 'die Wassermelone'},
-            {id: 'card10', next: null, answer: 'die Traube'}
+            {id: 'card1', next: 'card2', answer: 'das Rindfleisch'},
+            {id: 'card2', next: 'card3', answer: 'das Schweinefleisch'},
+            {id: 'card3', next: 'card4', answer: 'das Hähnchenfleisch'},
+            {id: 'card4', next: 'card5', answer: 'das Lammfleisch'},
+            {id: 'card5', next: 'card6', answer: 'das Putenfleisch'},
+            {id: 'card6', next: 'card7', answer: 'das Entenfleisch'},
+            {id: 'card7', next: 'card8', answer: 'das Gänsefleisch'},
+            {id: 'card8', next: 'card9', answer: 'das Kaninchenfleisch'},
+            {id: 'card9', next: 'card10', answer: 'der Hähnchenflügel'},
+            {id: 'card10', next: null, answer: 'der Speck'}
         ];
 
         function playCard(cardId, nextCardId, answerTextDE) {
@@ -212,7 +231,7 @@
         document.getElementById('global-start-btn').onclick = function() {
             document.getElementById('start-btn-container').style.display = 'none';
             document.getElementById('card1').style.display = 'block';
-            playCard('card1', 'card2', 'der Apfel');
+            playCard('card1', 'card2', 'das Rindfleisch');
         };
     </script>
 </body>

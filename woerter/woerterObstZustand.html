@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>水果状态表达</title>
+    <style>
+        .video-exercise-card {
+            margin: 0 auto 24px auto;
+            border: 2px solid #e67e22;
+            border-radius: 10px;
+            padding: 24px;
+            max-width: 430px;
+            text-align: center;
+            background: #fff;
+        }
+        .video-exercise-card img {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            background: #fff;
+        }
+        .video-question {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+        .video-countdown {
+            font-size: 2rem;
+            color: #e67e22;
+            margin-bottom: 16px;
+        }
+        .video-answer {
+            font-size: 1.2rem;
+            color: #e67e22;
+            margin-bottom: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 12px;
+        }
+        .chinese {
+            font-size: 1.05rem;
+            color: #333;
+            margin-left: 8px;
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+        }
+        .start-video-exercise {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            padding: 10px 32px;
+        }
+    </style>
+</head>
+<body>
+    <h3 style="text-align:center; margin-top:24px;">水果状态表达 Obst-Zustände</h3>
+    <div style="text-align:center; margin-bottom: 24px;">
+        <a href="woerter.html" style="font-size:1.1rem; color:#3498db; text-decoration:underline;">返回水果系列 &larr;</a>
+    </div>
+
+    <div id="start-btn-container" style="text-align:center; margin-bottom: 24px;">
+        <button id="global-start-btn" class="start-video-exercise">开始练习</button>
+    </div>
+
+    <div class="video-exercise-card" id="card1" style="display:none;">
+        <div class="video-question">Was ist mit dem Apfel passiert?</div>
+        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="wilted apple">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Der Apfel ist welk. <span class="chinese">苹果蔫了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card2" style="display:none;">
+        <div class="video-question">Was ist mit der Banane passiert?</div>
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="rotten banana">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Die Banane ist faul. <span class="chinese">香蕉烂了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card3" style="display:none;">
+        <div class="video-question">Was ist mit der Orange passiert?</div>
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="moldy orange">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Die Orange ist schimmelig. <span class="chinese">橙子发霉了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card4" style="display:none;">
+        <div class="video-question">Was ist mit der Erdbeere passiert?</div>
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="mushy strawberry">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Die Erdbeere ist matschig. <span class="chinese">草莓烂糊了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card5" style="display:none;">
+        <div class="video-question">Was ist mit der Melone passiert?</div>
+        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="spoiled melon">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Die Melone ist verdorben. <span class="chinese">瓜坏了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card6" style="display:none;">
+        <div class="video-question">Was ist mit der Kirsche passiert?</div>
+        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b41?auto=format&fit=crop&w=400&q=80" alt="moldy cherry">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Die Kirsche ist verschimmelt. <span class="chinese">樱桃发霉了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card7" style="display:none;">
+        <div class="video-question">Was ist mit der Heidelbeere passiert?</div>
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="wrinkled blueberry">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Die Heidelbeere ist schrumpelig. <span class="chinese">蓝莓皱了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card8" style="display:none;">
+        <div class="video-question">Was ist mit der Traube passiert?</div>
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="rotten grape">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Die Traube ist angefault. <span class="chinese">葡萄烂了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card9" style="display:none;">
+        <div class="video-question">Was ist mit dem Pfirsich passiert?</div>
+        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="stinky peach">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Der Pfirsich ist stinkend. <span class="chinese">桃子臭了</span></div>
+    </div>
+    <div class="video-exercise-card" id="card10" style="display:none;">
+        <div class="video-question">Was ist mit der Wassermelone passiert?</div>
+        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="old watermelon">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">Die Wassermelone ist alt. <span class="chinese">西瓜不新鲜了</span></div>
+    </div>
+
+    <script>
+        // 语音播放函数
+        function speakDE(text) {
+            if ('speechSynthesis' in window) {
+                const utter = new window.SpeechSynthesisUtterance(text);
+                const voices = window.speechSynthesis.getVoices();
+                utter.voice = voices.find(v => v.lang === 'de-DE' && v.name.includes('Anna')) ||
+                              voices.find(v => v.lang === 'de-DE');
+                utter.lang = 'de-DE';
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        // 卡片数据
+        const cardData = [
+            {id: 'card1', next: 'card2', answer: 'Der Apfel ist welk.'},
+            {id: 'card2', next: 'card3', answer: 'Die Banane ist faul.'},
+            {id: 'card3', next: 'card4', answer: 'Die Orange ist schimmelig.'},
+            {id: 'card4', next: 'card5', answer: 'Die Erdbeere ist matschig.'},
+            {id: 'card5', next: 'card6', answer: 'Die Melone ist verdorben.'},
+            {id: 'card6', next: 'card7', answer: 'Die Kirsche ist verschimmelt.'},
+            {id: 'card7', next: 'card8', answer: 'Die Heidelbeere ist schrumpelig.'},
+            {id: 'card8', next: 'card9', answer: 'Die Traube ist angefault.'},
+            {id: 'card9', next: 'card10', answer: 'Der Pfirsich ist stinkend.'},
+            {id: 'card10', next: null, answer: 'Die Wassermelone ist alt.'}
+        ];
+
+        function playCard(cardId, nextCardId, answerTextDE) {
+            const card = document.getElementById(cardId);
+            const countdownEl = card.querySelector('.video-countdown');
+            const answerEl = card.querySelector('.video-answer');
+
+            answerEl.style.display = 'none';
+            let count = 3;
+            countdownEl.textContent = count;
+            countdownEl.style.display = 'block';
+
+            // 播放问题语音
+            const questionEl = card.querySelector('.video-question');
+            speakDE(questionEl.textContent);
+
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownEl.textContent = count;
+                } else {
+                    clearInterval(timer);
+                    countdownEl.textContent = '';
+                    answerEl.style.display = 'flex';
+                    speakDE(answerTextDE);
+                    // 自动播放下一张卡片
+                    if (nextCardId) {
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                            document.getElementById(nextCardId).style.display = 'block';
+                            autoPlayCard(nextCardId, cardData.find(c => c.id === nextCardId)?.next, cardData.find(c => c.id === nextCardId)?.answer);
+                        }, 1200);
+                    }
+                }
+            }, 1000);
+        }
+
+        function autoPlayCard(cardId, nextCardId, answerTextDE) {
+            playCard(cardId, nextCardId, answerTextDE);
+        }
+
+        // 初始化所有卡片为隐藏
+        cardData.forEach(card => {
+            const el = document.getElementById(card.id);
+            if (el) el.style.display = 'none';
+        });
+
+        // 全局开始按钮逻辑
+        document.getElementById('global-start-btn').onclick = function() {
+            document.getElementById('start-btn-container').style.display = 'none';
+            document.getElementById('card1').style.display = 'block';
+            playCard('card1', 'card2', 'Der Apfel ist welk.');
+        };
+    </script>
+</body>
+</html>

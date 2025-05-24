@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>视频练习</title>
+    <style>
+        .video-exercise-card {
+            margin: 0 auto 24px auto;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 24px;
+            max-width: 430px;
+            text-align: center;
+            background: #fff;
+        }
+        .video-exercise-card img {
+            width: 260px;
+            height: 260px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            background: #fff;
+        }
+        .video-question {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .video-countdown {
+            font-size: 2rem;
+            color: #e67e22;
+            margin-bottom: 16px;
+        }
+        .video-answer {
+            margin-bottom: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 12px;
+        }
+        .noun-m, .noun-n, .noun-f {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+        .noun-m { color: #2980db; }
+        .noun-n { color: #27ae60; }
+        .noun-f { color: #e74c3c; }
+        .chinese {
+            font-size: 1.1rem;
+            color: #333;
+            margin-left: 8px;
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+        }
+        .start-video-exercise {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            padding: 10px 32px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3 style="text-align:center; margin-top:24px;">水果系列 Obst</h3>
+
+    <!-- 新增蔬菜链接 -->
+    <div style="text-align:center; margin-bottom: 12px;">
+        <a href="woerterGemuese.html" style="font-size:1.1rem; color:#27ae60; text-decoration:underline;">去蔬菜系列 &rarr;</a>
+    </div>
+    <!-- 新增水果状态表达链接 -->
+    <div style="text-align:center; margin-bottom: 24px;">
+        <a href="woerterObstZustand.html" style="font-size:1.1rem; color:#e67e22; text-decoration:underline;">水果状态表达 &rarr;</a>
+    </div>
+
+    <!-- 新增肉类链接 -->
+    <div style="text-align:center; margin-bottom: 24px;">
+        <a href="woerterFleisch.html" style="font-size:1.1rem; color:#e67e22; text-decoration:underline;">去肉类系列 &rarr;</a>
+
+    <!-- 框外的开始按钮 -->
+    <div id="start-btn-container" style="text-align:center; margin-bottom: 24px;">
+        <button id="global-start-btn" class="start-video-exercise">开始练习</button>
+    </div>
+
+    <div class="video-exercise-card" id="card1" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="Apfel">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Apfel</span> <span class="chinese">苹果</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card2" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Bananas_white_background_DS.jpg" alt="Banane">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Banane</span> <span class="chinese">香蕉</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card3" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://www.plantura.garden/wp-content/uploads/2017/02/Cantaloupe-Melone-2-e1523096889694.jpg" alt="Melone">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Melone</span> <span class="chinese">哈密瓜/甜瓜</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card4" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Cherry_Stella444.jpg" alt="Kirsche">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Kirsche</span> <span class="chinese">樱桃</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card5" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://th.bing.com/th/id/OIP.SilD0hVUcb0I_cvKf7p5VwHaE7?rs=1&pid=ImgDetMain" alt="Erdbeere">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Erdbeere</span> <span class="chinese">草莓</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card6" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://th.bing.com/th/id/R.01503e68c8ceae6d7b8cc8f2fb54f9ac?rik=3giZNr%2bs4qj1Cg&riu=http%3a%2f%2fwww.1a-die.kochschule.de%2fsites%2fdefault%2ffiles%2fimages%2fkochwissen%2f464%2fheidelbeere.jpg&ehk=m20P1TpJJ4i7EcwTCDWettepBmXfB231fkk25maPTtw%3d&risl=&pid=ImgRaw&r=0" alt="Heidelbeere">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Heidelbeere</span> <span class="chinese">蓝莓</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card7" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://th.bing.com/th/id/OIP.qPGe2N4gFO_ENj-34pl38AHaF2?rs=1&pid=ImgDetMain" alt="Pfirsich">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Pfirsich</span> <span class="chinese">桃子</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card8" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://th.bing.com/th/id/OIP.kbQpRu_UcxvT9SuBVquXMQHaHI?rs=1&pid=ImgDetMain" alt="Orange">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Orange</span> <span class="chinese">橙子</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card9" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://th.bing.com/th/id/OIP.U-pWh5DR-6MHanbz-8vBGgHaHa?rs=1&pid=ImgDetMain" alt="Wassermelone">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Wassermelone</span> <span class="chinese">西瓜</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card10" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://th.bing.com/th/id/OIP.RGTshn9ZuMT1ly7Rs-tqQwHaE7?rs=1&pid=ImgDetMain" alt="Traube">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Traube</span> <span class="chinese">葡萄</span></div>
+    </div>
+
+    <script>
+        // 语音播放函数
+        function speakDE(text) {
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(text);
+                const voices = window.speechSynthesis.getVoices();
+                utter.voice = voices.find(v => v.lang === 'de-DE' && v.name.includes('Anna')) ||
+                              voices.find(v => v.lang === 'de-DE');
+                utter.lang = 'de-DE';
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        // 卡片数据
+        const cardData = [
+            {id: 'card1', next: 'card2', answer: 'der Apfel'},
+            {id: 'card2', next: 'card3', answer: 'die Banane'},
+            {id: 'card3', next: 'card4', answer: 'die Melone'},
+            {id: 'card4', next: 'card5', answer: 'die Kirsche'},
+            {id: 'card5', next: 'card6', answer: 'die Erdbeere'},
+            {id: 'card6', next: 'card7', answer: 'die Heidelbeere'},
+            {id: 'card7', next: 'card8', answer: 'der Pfirsich'},
+            {id: 'card8', next: 'card9', answer: 'die Orange'},
+            {id: 'card9', next: 'card10', answer: 'die Wassermelone'},
+            {id: 'card10', next: null, answer: 'die Traube'}
+        ];
+
+        function playCard(cardId, nextCardId, answerTextDE) {
+            const card = document.getElementById(cardId);
+            const countdownEl = card.querySelector('.video-countdown');
+            const answerEl = card.querySelector('.video-answer');
+
+            answerEl.style.display = 'none';
+            let count = 3;
+            countdownEl.textContent = count;
+            countdownEl.style.display = 'block';
+
+            // 播放问题语音
+            speakDE("Was ist das?");
+
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownEl.textContent = count;
+                } else {
+                    clearInterval(timer);
+                    countdownEl.textContent = '';
+                    answerEl.style.display = 'block';
+                    speakDE(answerTextDE);
+                    // 自动播放下一张卡片
+                    if (nextCardId) {
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                            document.getElementById(nextCardId).style.display = 'block';
+                            autoPlayCard(nextCardId, cardData.find(c => c.id === nextCardId)?.next, cardData.find(c => c.id === nextCardId)?.answer);
+                        }, 1200);
+                    }
+                }
+            }, 1000);
+        }
+
+        function autoPlayCard(cardId, nextCardId, answerTextDE) {
+            playCard(cardId, nextCardId, answerTextDE);
+        }
+
+        // 初始化所有卡片为隐藏，只有card1在开始后显示
+        cardData.forEach(card => {
+            const el = document.getElementById(card.id);
+            if (el) el.style.display = 'none';
+        });
+
+        // 全局开始按钮逻辑
+        document.getElementById('global-start-btn').onclick = function() {
+            document.getElementById('start-btn-container').style.display = 'none';
+            document.getElementById('card1').style.display = 'block';
+            playCard('card1', 'card2', 'der Apfel');
+        };
+    </script>
+</body>
+</html>
