@@ -10,20 +10,27 @@
             border-radius: 10px;
             padding: 24px;
             max-width: 430px;
+            min-width: 320px;
+            min-height: 568px; /* 适配手机竖屏视频比例 */
+            height: 568px;
             text-align: center;
-            background: #fff;
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .video-exercise-card img {
             width: 260px;
             height: 260px;
             object-fit: contain;
             border-radius: 12px;
-            margin-bottom: 32px;
-            background: #fff;
+            margin-bottom: 10px;
+            background: #333;
         }
         .video-question {
             font-size: 1.5rem;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
+            color: #fff;
         }
         .video-countdown {
             font-size: 2rem;
@@ -35,7 +42,7 @@
             display: flex;
             align-items: baseline;
             justify-content: center;
-            gap: 12px;
+            gap: 18px;
         }
         .noun-m, .noun-n, .noun-f {
             font-size: 2.2rem;
@@ -46,9 +53,9 @@
         .noun-f { color: #e74c3c; }
         .chinese {
             font-size: 1.1rem;
-            color: #333;
+            color: #fff;
             margin-left: 8px;
-            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            font-family: "Kaiti", "楷体";
         }
         .start-video-exercise {
             margin-top: 10px;
@@ -60,98 +67,93 @@
 
 <body>
 
-    <h3 style="text-align:center; margin-top:24px;">水果系列 Obst</h3>
+    <h3 style="text-align:center; margin-top:24px;">常见图形 Formen</h3>
 
-    <!-- 新增蔬菜链接 -->
-    <div style="text-align:center; margin-bottom: 12px;">
-        <a href="woerterGemuese.html" style="font-size:1.1rem; color:#27ae60; text-decoration:underline;">去蔬菜系列 &rarr;</a>
-    </div>
-    <!-- 新增水果状态表达链接 -->
-    <div style="text-align:center; margin-bottom: 24px;">
-        <a href="woerterObstZustand.html" style="font-size:1.1rem; color:#e67e22; text-decoration:underline;">水果状态表达 &rarr;</a>
-    </div>
-
-    <!-- 新增肉类链接 -->
-    <div style="text-align:center; margin-bottom: 24px;">
-        <a href="woerterFleisch.html" style="font-size:1.1rem; color:#e67e22; text-decoration:underline;">去肉类系列 &rarr;</a>
-
-    <!-- 新增数学链接 -->
-    <div style="text-align:center; margin-bottom: 24px;">
-        <a href="woerterMathe.html" style="font-size:1.1rem; color:#e67e22; text-decoration:underline;">去数学系列 &rarr;</a>
-
-    <!-- 框外的开始按钮 -->
+    <!-- 框外的开始按钮 + 图片 -->
     <div id="start-btn-container" style="text-align:center; margin-bottom: 24px;">
-        <button id="global-start-btn" class="start-video-exercise">开始练习</button>
+        <button id="global-start-btn" class="start-video-exercise">Was ist das?</button>
+        <br>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/714MT8jBkML._SX679_.jpg" style="width: 100%; max-width: 400px; margin-top: 10px;">
     </div>
 
     <div class="video-exercise-card" id="card1" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="Apfel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Black_circle.svg" alt="Kreis">
+        <div class="chinese">圆形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-m">der Apfel</span> <span class="chinese">苹果</span></div>
+        <div class="video-answer"><span class="noun-m">der Kreis</span></div>
     </div>
 
     <div class="video-exercise-card" id="card2" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Bananas_white_background_DS.jpg" alt="Banane">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Square_-_black_simple.svg" alt="Quadrat">
+        <div class="chinese">正方形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Banane</span> <span class="chinese">香蕉</span></div>
+        <div class="video-answer"><span class="noun-n">das Quadrat</span></div>
     </div>
 
     <div class="video-exercise-card" id="card3" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://www.plantura.garden/wp-content/uploads/2017/02/Cantaloupe-Melone-2-e1523096889694.jpg" alt="Melone">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Rectangle_example.svg" alt="Rechteck">
+        <div class="chinese">长方形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Melone</span> <span class="chinese">哈密瓜/甜瓜</span></div>
+        <div class="video-answer"><span class="noun-n">das Rechteck</span></div>
     </div>
 
     <div class="video-exercise-card" id="card4" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Cherry_Stella444.jpg" alt="Kirsche">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Triangle_-_black_simple.svg" alt="Dreieck">
+        <div class="chinese">三角形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Kirsche</span> <span class="chinese">樱桃</span></div>
+        <div class="video-answer"><span class="noun-n">das Dreieck</span></div>
     </div>
 
     <div class="video-exercise-card" id="card5" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.SilD0hVUcb0I_cvKf7p5VwHaE7?rs=1&pid=ImgDetMain" alt="Erdbeere">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Black_ellipse.svg" alt="Ellipse">
+        <div class="chinese">椭圆形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Erdbeere</span> <span class="chinese">草莓</span></div>
+        <div class="video-answer"><span class="noun-f">die Ellipse</span></div>
     </div>
 
     <div class="video-exercise-card" id="card6" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/R.01503e68c8ceae6d7b8cc8f2fb54f9ac?rik=3giZNr%2bs4qj1Cg&riu=http%3a%2f%2fwww.1a-die.kochschule.de%2fsites%2fdefault%2ffiles%2fimages%2fkochwissen%2f464%2fheidelbeere.jpg&ehk=m20P1TpJJ4i7EcwTCDWettepBmXfB231fkk25maPTtw%3d&risl=&pid=ImgRaw&r=0" alt="Heidelbeere">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Black_rhombus.svg" alt="Rhombus">
+        <div class="chinese">菱形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Heidelbeere</span> <span class="chinese">蓝莓</span></div>
+        <div class="video-answer"><span class="noun-m">der Rhombus</span></div>
     </div>
 
     <div class="video-exercise-card" id="card7" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.qPGe2N4gFO_ENj-34pl38AHaF2?rs=1&pid=ImgDetMain" alt="Pfirsich">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Black_parallelogram.svg" alt="Parallelogramm">
+        <div class="chinese">平行四边形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-m">der Pfirsich</span> <span class="chinese">桃子</span></div>
+        <div class="video-answer"><span class="noun-n">das Parallelogramm</span></div>
     </div>
 
     <div class="video-exercise-card" id="card8" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.kbQpRu_UcxvT9SuBVquXMQHaHI?rs=1&pid=ImgDetMain" alt="Orange">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Black_trapezoid.svg" alt="Trapez">
+        <div class="chinese">梯形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Orange</span> <span class="chinese">橙子</span></div>
+        <div class="video-answer"><span class="noun-n">das Trapez</span></div>
     </div>
 
     <div class="video-exercise-card" id="card9" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.U-pWh5DR-6MHanbz-8vBGgHaHa?rs=1&pid=ImgDetMain" alt="Wassermelone">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Black_pentagon.svg" alt="Fünfeck">
+        <div class="chinese">五边形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Wassermelone</span> <span class="chinese">西瓜</span></div>
+        <div class="video-answer"><span class="noun-n">das Fünfeck</span></div>
     </div>
 
     <div class="video-exercise-card" id="card10" style="display:none;">
         <div class="video-question">Was ist das?</div>
-        <img src="https://th.bing.com/th/id/OIP.RGTshn9ZuMT1ly7Rs-tqQwHaE7?rs=1&pid=ImgDetMain" alt="Traube">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Black_hexagon.svg" alt="Sechseck">
+        <div class="chinese">六边形</div>
         <div class="video-countdown">3</div>
-        <div class="video-answer"><span class="noun-f">die Traube</span> <span class="chinese">葡萄</span></div>
+        <div class="video-answer"><span class="noun-n">das Sechseck</span></div>
     </div>
 
     <script>
@@ -169,16 +171,16 @@
 
         // 卡片数据
         const cardData = [
-            {id: 'card1', next: 'card2', answer: 'der Apfel'},
-            {id: 'card2', next: 'card3', answer: 'die Banane'},
-            {id: 'card3', next: 'card4', answer: 'die Melone'},
-            {id: 'card4', next: 'card5', answer: 'die Kirsche'},
-            {id: 'card5', next: 'card6', answer: 'die Erdbeere'},
-            {id: 'card6', next: 'card7', answer: 'die Heidelbeere'},
-            {id: 'card7', next: 'card8', answer: 'der Pfirsich'},
-            {id: 'card8', next: 'card9', answer: 'die Orange'},
-            {id: 'card9', next: 'card10', answer: 'die Wassermelone'},
-            {id: 'card10', next: null, answer: 'die Traube'}
+            {id: 'card1', next: 'card2', answer: 'der Kreis'},
+            {id: 'card2', next: 'card3', answer: 'das Quadrat'},
+            {id: 'card3', next: 'card4', answer: 'das Rechteck'},
+            {id: 'card4', next: 'card5', answer: 'das Dreieck'},
+            {id: 'card5', next: 'card6', answer: 'die Ellipse'},
+            {id: 'card6', next: 'card7', answer: 'der Rhombus'},
+            {id: 'card7', next: 'card8', answer: 'das Parallelogramm'},
+            {id: 'card8', next: 'card9', answer: 'das Trapez'},
+            {id: 'card9', next: 'card10', answer: 'das Fünfeck'},
+            {id: 'card10', next: null, answer: 'das Sechseck'}
         ];
 
         function playCard(cardId, nextCardId, answerTextDE) {
@@ -229,7 +231,7 @@
         document.getElementById('global-start-btn').onclick = function() {
             document.getElementById('start-btn-container').style.display = 'none';
             document.getElementById('card1').style.display = 'block';
-            playCard('card1', 'card2', 'der Apfel');
+            playCard('card1', 'card2', 'der Kreis');
         };
     </script>
 </body>
