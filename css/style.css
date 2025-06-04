@@ -2,10 +2,11 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    margin: 0;
+    margin: 10px;
     padding: 0;
     background-color: #e6e6fa;
     color: #333;
+    font-size: 1em;
 }
 
 header {
@@ -326,5 +327,30 @@ button:hover {
     display: block;
     margin-bottom: 5px;
     color: #2c3e50;
+}
+
+.webpage-box {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .webpage-box, .box {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.3em;
+    }
+    .browser-bar input {
+        font-size: 0.95em;
+    }
+    .content {
+        padding: 10px 5px;
+    }
+    .right-wrong {
+        font-size: 1em;
+    }
+    /* 你可以继续加更多适配规则 */
 }
 
