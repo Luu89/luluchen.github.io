@@ -288,4 +288,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 初始化加载评论
     loadComments();
+
+    document.querySelectorAll('.speak-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const speakText = this.getAttribute('data-speak');
+            const lang = this.getAttribute('data-lang') || 'de-DE';
+            const synth = window.speechSynthesis;
+            let utter = new SpeechSynthesisUtterance(speakText);
+            utter.lang = lang;
+            // 优先选择德语/丹麦语 voice
+            const voices = synth.getVoices();
+            let voice = voices.find(v => v.lang === lang);
+            if (voice) utter.voice = voice;
+            synth.speak(utter);
+        });
+    });
 });

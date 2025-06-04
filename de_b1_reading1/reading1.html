@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesen Teil 1</title>
+    <link rel="stylesheet" href="reading1-template.css">
+</head>
+<body>
+    <h1>Lesen Teil 1</h1>
+    <p class="info">Arbeitszeit: 10 Minuten</p>
+    <div class="box">
+        <p>Lesen Sie den Text und die Aufgaben 1 bis 6 dazu.</p>
+        <p class="right-wrong">Wählen Sie: Sind die Aussagen <strong>Richtig</strong> oder <strong>Falsch</strong>?</p>
+    </div>
+    <div style="display: flex; gap: 32px; align-items: flex-start; max-width: 1300px; margin: 0 auto;">
+        <!-- 网页文章框 -->
+        <div class="webpage-box" style="flex:1; min-width:340px; max-width:700px;">
+            <div class="browser-bar">
+                <span style="display:inline-block;width:12px;height:12px;background:#ff5f56;border-radius:50%;margin-right:4px;border:1px solid #e0e0e0;"></span>
+                <span style="display:inline-block;width:12px;height:12px;background:#ffbd2e;border-radius:50%;margin-right:4px;border:1px solid #e0e0e0;"></span>
+                <span style="display:inline-block;width:12px;height:12px;background:#27c93f;border-radius:50%;margin-right:16px;border:1px solid #e0e0e0;"></span>
+                <div style="flex:1;">
+                    <input type="text" readonly value="www.computer-blog.de/internetfallen">
+                </div>
+                <span style="margin-left:12px;color:#bbb;font-size:1.2em;user-select:none;">&#8942;</span>
+            </div>
+            <div class="content">
+                <p>Hallo Leute,</p>
+                <p>
+                    ich habe schon öfter im Internet eingekauft und nie Probleme gehabt. 
+                    Jetzt habe ich zum ersten Mal eine schlechte Erfahrung gemacht. 
+                   
+                    <span class="sentence" data-q="1"> Ich habe vor zwei Monaten im Internet den Shop <span class="bold" data-q="1"> outlet-bazaarXL.com</span>  entdeckt.
+                    <span class="bold" data-q="1"> Dort</span> werden unglaublich günstige Jacken und T-Shirts angeboten. 
+                    Um <span class="bold" data-q="1">in diesem Shop</span> einkaufen zu können, <span class="redbox" data-q="1">muss man sich <span class="kw" data-q="1">anmelden</span></span>, das heißt, man muss seine persönlichen Daten angeben. 
+                    <span class="redbox" data-q="1">Das habe ich gemacht</span>
+                    </span>  
+                    
+                    und dann habe ich eine Lederjacke für 29,95 Euro bestellt. 
+                    Am nächsten Tag habe ich mich sehr gewundert, als ich per E-Mail nicht nur die Rechnung für die Jacke, sondern auch eine Rechnung über 96,00 Euro bekam. 
+                    <span class="sentence" data-q="2">In der E-Mail stand: „Sie haben einen <span class="bold" data-q="2">Abonnementvertrag</span> abgeschlossen. 
+                    Bitte überweisen Sie den Betrag von 96,00 Euro.“ 
+                    Natürlich habe ich sofort zurückgeschrieben, dass ich die Jacke nicht mehr kaufen und auch keinen <span class="bold" data-q="2">Abonnementvertrag</span> abschließen möchte. 
+                    </span>
+
+                    Da ich auf meine Mail keine Antwort erhielt, habe ich mich nicht mehr um diese Sache gekümmert. 
+                    Drei Wochen später schickte der Online-Shop aber eine Mahnung für die 96 Euro. 
+                    Auf meine E-Mails habe ich weiterhin keine Rückmeldung bekommen und wenn ich versucht habe, den Kundenservice des Shops telefonisch zu erreichen, dann schaltete sich immer nur ein Anrufbeantworter ein. 
+                    Weitere zwei Wochen später kam die zweite Mahnung, diesmal waren es 96 Euro plus 10 Euro Mahngebühr! 
+                    Erst, als ich geschrieben habe, dass ich die Sache nun mit meinem Anwalt besprechen werde, haben sie sich nicht mehr gemeldet. 
+                    Da war ich sehr froh, denn ich wollte das Geld natürlich nicht bezahlen und Lust auf einen Rechtsstreit hatte ich auch nicht! 
+                    Nach dieser Erfahrung bin ich vorsichtiger geworden. 
+                    Ich kaufe nun meistens bei Onlineshops ein, die ich schon kenne. 
+                    Wenn ich etwas bei einem Online-Anbieter bestellen möchte, den ich noch nicht kenne, dann schaue ich erst im Internet nach, ob vor diesem Anbieter gewarnt wird und wie andere Kunden ihn bewerten. 
+                    Auch wenn in diesem Fall alles gut gegangen ist, mein Tipp: Nehmt euch Zeit, alles genau durchzulesen, bevor ihr bestellt!
+                    Am besten nur bei bekannten Shops einkaufen.
+                </p>
+                <p>Und Vorsicht natürlich vor outlet-bazaarXL.com!<br><strong>Ricardo</strong></p>
+            </div>
+        </div>
+        <!-- 题目区域 -->
+        <div style="flex:1.1; min-width:340px; position:sticky; top:40px; align-self: flex-start; height:fit-content;" id="quiz-sticky">
+            <h2>Beispiel und Aufgaben 1–6</h2>
+            <form id="quiz-form">
+                <table style="width:100%;border-collapse:collapse;margin-top:20px;background:#fff;">
+                    <tr class="beispiel" style="background:#e6f0ff;">
+                        <td class="question-number" style="width:30px;font-weight:bold;">0</td>
+                        <td>Ricardo hat zum ersten Mal etwas im Internet bestellt.</td>
+                        <td class="choice" style="width:100px;">
+                            <label>
+                                <input type="radio" name="q0" class="custom-radio"> Richtig
+                            </label>
+                        </td>
+                        <td class="choice" style="width:100px;">
+                            <label>
+                                <input type="radio" name="q0" class="custom-radio" checked> Falsch
+                            </label>
+                        </td>
+                    </tr>
+                    <!-- 1 -->
+                    <tr>
+                        <td class="question-number">1</td>
+                        <td>Ricardo <span class="kw" data-q="1"> hat sich </span> bei <span class="bold">outlet-bazaarXL.com</span> <span class="kw" data-q="1">angemeldet</span>.</td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q1" value="Richtig" class="custom-radio"> Richtig
+                            </label>
+                        </td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q1" value="Falsch" class="custom-radio"> Falsch
+                            </label>
+                        </td>
+                        <td>
+                            <span id="mark-q1"></span>
+                        </td>
+                    </tr>
+                    <!-- 修改题目解析区，加入“收回解析”按钮 -->
+                    <tr id="explain-row-q1" style="display:none;">
+                        <td colspan="5" class="explain-row">
+                            <button id="explain-btn-q1" type="button" onclick="showExplanation(1)" style="padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#003399;border:1px solid #bbb;border-radius:5px;cursor:pointer;margin-bottom:6px;display:none;">题目解析</button>
+                            <div id="explain-q1" style="display:none;color:#444;font-size:0.98em;">
+                                <div><strong>正确答案：</strong><span style="color:#c00;">Richtig</span></div>
+                                <div style="margin-top:8px;color:#007700;"><strong>中文解释：</strong>Ricardo在outlet-bazaarXL.com注册了账号。</div>
+                                <div><strong>关键词：</strong>sich anmelden 注册、登记</div>
+                                <div>Ricardo hat sich tatsächlich bei outlet-bazaarXL.com angemeldet, um einkaufen zu können.（他确实注册了账号）</div>
+                                <button type="button" onclick="hideExplanation(1)" style="margin-top:10px;padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#666;border:1px solid #bbb;border-radius:5px;cursor:pointer;">收回解析</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 2 -->
+                    <tr>
+                        <td class="question-number">2</td>
+                        <td>Ricardo wollte den <span class="bold">Abonnementvertrag</span> nicht abschließen.</td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q2" value="Richtig" class="custom-radio"> Richtig
+                            </label>
+                        </td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q2" value="Falsch" class="custom-radio"> Falsch
+                            </label>
+                        </td>
+                        <td>
+                            <span id="mark-q2"></span>
+                        </td>
+                    </tr>
+                    <tr id="explain-row-q2" style="display:none;">
+                        <td colspan="5" class="explain-row">
+                            <button id="explain-btn-q2" type="button" onclick="showExplanation(2)" style="padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#003399;border:1px solid #bbb;border-radius:5px;cursor:pointer;margin-bottom:6px;display:none;">题目解析</button>
+                            <div id="explain-q2" style="display:none;color:#444;font-size:0.98em;">
+                                <div><strong>正确答案</strong> <span style="color:#c00;"> Richtig</span> </div>
+                                <div style="margin-top:8px;color:#007700;"><strong>中文解释：</strong>Ricardo不想签订订阅合同。</div>
+                                <div><strong>关键词：</strong> den Abonnenmentvertrag </div>
+                                Ricardo wollte den Abonnementvertrag nicht abschließen, da er sofort zurückgeschrieben hat, dass er dies nicht möchte.（他立刻回复邮件表示不想订阅）
+                                <button type="button" onclick="hideExplanation(2)" style="margin-top:10px;padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#666;border:1px solid #bbb;border-radius:5px;cursor:pointer;">收回解析</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 3 -->
+                    <tr>
+                        <td class="question-number">3</td>
+                        <td>Er konnte die Mitarbeiter des Shops nicht persönlich erreichen.</td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q3" value="Richtig" class="custom-radio"> Richtig
+                            </label>
+                        </td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q3" value="Falsch" class="custom-radio"> Falsch
+                            </label>
+                        </td>
+                        <td>
+                            <span id="mark-q3"></span>
+                        </td>
+                    </tr>
+                    <tr id="explain-row-q3" style="display:none;">
+                        <td colspan="5" class="explain-row">
+                            <button id="explain-btn-q3" type="button" onclick="showExplanation(3)" style="padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#003399;border:1px solid #bbb;border-radius:5px;cursor:pointer;margin-bottom:6px;display:none;">题目解析</button>
+                            <div id="explain-q3" style="display:none;color:#444;font-size:0.98em;">
+                                Er konnte die Mitarbeiter des Shops nicht persönlich erreichen, weil sich immer nur ein Anrufbeantworter einschaltete.（因为总是接入语音信箱）
+                                <button type="button" onclick="hideExplanation(3)" style="margin-top:10px;padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#666;border:1px solid #bbb;border-radius:5px;cursor:pointer;">收回解析</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 4 -->
+                    <tr>
+                        <td class="question-number">4</td>
+                        <td>Ricardo ist bei seinem Anwalt gewesen.</td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q4" value="Richtig" class="custom-radio"> Richtig
+                            </label>
+                        </td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q4" value="Falsch" class="custom-radio"> Falsch
+                            </label>
+                        </td>
+                        <td>
+                            <span id="mark-q4"></span>
+                        </td>
+                    </tr>
+                    <tr id="explain-row-q4" style="display:none;">
+                        <td colspan="5" class="explain-row">
+                            <button id="explain-btn-q4" type="button" onclick="showExplanation(4)" style="padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#003399;border:1px solid #bbb;border-radius:5px;cursor:pointer;margin-bottom:6px;display:none;">题目解析</button>
+                            <div id="explain-q4" style="display:none;color:#444;font-size:0.98em;">
+                                Ricardo ist nicht persönlich zu seinem Anwalt gegangen, sondern hat nur geschrieben, dass er die Sache mit seinem Anwalt besprechen wird.（他并没有真的去找律师，而是说要和律师商量此事）
+                                <button type="button" onclick="hideExplanation(4)" style="margin-top:10px;padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#666;border:1px solid #bbb;border-radius:5px;cursor:pointer;">收回解析</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 5 -->
+                    <tr>
+                        <td class="question-number">5</td>
+                        <td>Ricardo bestellt jetzt ausschließlich bei Onlineshops, die er schon kennt.</td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q5" value="Richtig" class="custom-radio"> Richtig
+                            </label>
+                        </td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q5" value="Falsch" class="custom-radio"> Falsch
+                            </label>
+                        </td>
+                        <td>
+                            <span id="mark-q5"></span>
+                        </td>
+                    </tr>
+                    <tr id="explain-row-q5" style="display:none;">
+                        <td colspan="5" class="explain-row">
+                            <button id="explain-btn-q5" type="button" onclick="showExplanation(5)" style="padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#003399;border:1px solid #bbb;border-radius:5px;cursor:pointer;margin-bottom:6px;display:none;">题目解析</button>
+                            <div id="explain-q5" style="display:none;color:#444;font-size:0.98em;">
+                                Ricardo bestellt jetzt vorsichtiger und meistens bei bekannten Onlineshops, nachdem er eine schlechte Erfahrung gemacht hat.（经历了一次糟糕的购物经历后，Ricardo 现在大多在熟悉的网店购物）
+                                <button type="button" onclick="hideExplanation(5)" style="margin-top:10px;padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#666;border:1px solid #bbb;border-radius:5px;cursor:pointer;">收回解析</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 6 -->
+                    <tr>
+                        <td class="question-number">6</td>
+                        <td>Ricardo warnt davor, online einzukaufen.</td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q6" value="Richtig" class="custom-radio"> Richtig
+                            </label>
+                        </td>
+                        <td class="choice">
+                            <label>
+                                <input type="radio" name="q6" value="Falsch" class="custom-radio"> Falsch
+                            </label>
+                        </td>
+                        <td>
+                            <span id="mark-q6"></span>
+                        </td>
+                    </tr>
+                    <tr id="explain-row-q6" style="display:none;">
+                        <td colspan="5" class="explain-row">
+                            <button id="explain-btn-q6" type="button" onclick="showExplanation(6)" style="padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#003399;border:1px solid #bbb;border-radius:5px;cursor:pointer;margin-bottom:6px;display:none;">题目解析</button>
+                            <div id="explain-q6" style="display:none;color:#444;font-size:0.98em;">
+                                Ricardo warnt nicht generell vor dem Online-Einkauf, sondern gibt den Rat, vorsichtig zu sein und bekannte Shops zu bevorzugen.（Ricardo 并不是在警告大家不要在网上购物，而是建议大家要小心，并且优先选择熟悉的商店）
+                                <button type="button" onclick="hideExplanation(6)" style="margin-top:10px;padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#666;border:1px solid #bbb;border-radius:5px;cursor:pointer;">收回解析</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <button type="button" onclick="checkQuiz()" style="margin-top:18px;padding:8px 24px;font-size:1.1em;background:#003399;color:#fff;border:none;border-radius:6px;cursor:pointer;">提交答案</button>
+            </form>
+            <div id="quiz-result" style="margin-top:18px;font-weight:bold;font-size:1.1em;color:#003399;"></div>
+            <div id="quiz-actions" style="margin-top:12px;display:none;">
+                <button type="button" onclick="resetQuiz()" style="padding:6px 18px;font-size:1em;background:#eee;color:#003399;border:1px solid #bbb;border-radius:6px;cursor:pointer;margin-right:12px;">重做</button>
+                <button type="button" onclick="showAnswers()" style="padding:6px 18px;font-size:1em;background:#eee;color:#003399;border:1px solid #bbb;border-radius:6px;cursor:pointer;">显示答案</button>
+            </div>
+            <div id="quiz-answers" style="margin-top:12px;font-size:1em;color:#008800;font-weight:bold;display:none;"></div>
+        </div>
+    </div>
+    <div class="tip">
+        <p>Sehen Sie sich den Text kurz an. Lösen Sie die Aufgaben erst nach dem folgenden Training.</p>
+    </div>
+    <div style="max-width:900px;margin:48px auto 0 auto;padding:24px 32px;background:#f8fafd;border-radius:10px;border:1px solid #e0eefe;">
+        <h2 style="color:#003399;">【全文翻译】</h2>
+        <p>
+            大家好，<br>
+            我以前经常在网上购物，从没遇到过问题。这次我第一次遇到了糟糕的经历。两个月前，我在网上发现了outlet-bazaarXL.com这个商店。那里有非常便宜的夹克和T恤。要在这个商店购物，必须先注册，也就是要填写个人信息。我注册了，然后买了一件29.95欧元的皮夹克。第二天，我很惊讶地收到了一封邮件，不仅有夹克的账单，还有一张96欧元的账单。邮件里写着：“您已签订了订阅合同。请汇款96欧元。”我当然马上回复说，我不想再买夹克，也不想签订订阅合同。由于我的邮件没有得到回复，我也就没再管这件事。三周后，这家网店又发来了一封96欧元的催款信。我发的邮件还是没有回音，打电话给客服也总是语音信箱。又过了两周，来了第二封催款信，这次是96欧元加10欧元的催款费！直到我写信说要和我的律师商量这件事，他们才没有再联系我。我很高兴，因为我当然不想付这笔钱，也不想打官司！有了这次经历，我变得更谨慎了。现在我大多只在熟悉的网店购物。如果我要在不熟悉的网店下单，我会先在网上查查有没有人提醒过风险，看看其他顾客的评价。虽然这次最后没出大事，我的建议是：下单前一定要花时间仔细阅读所有信息！最好只在知名商店购物。
+        </p>
+        <p>
+            当然要小心outlet-bazaarXL.com！<br>
+            <strong>Ricardo</strong>
+        </p>
+
+        <h2 style="color:#003399;margin-top:36px;">【德国网络购物文化小知识】</h2>
+        <p style="font-size:1.08em;line-height:1.8;">
+            在德国，网络购物非常普及，但德国消费者普遍非常重视个人信息安全和合同条款。许多德国人下单前会仔细阅读网站的注册、付款、退货和隐私政策，避免掉入“订阅陷阱”（Abofalle）。德国法律规定，网购后14天内可以无理由退货（Widerrufsrecht）。此外，德国消费者喜欢在评价好、知名度高的网站购物，并常常通过比价网站或阅读他人评价来判断商家是否可靠。遇到纠纷时，德国人也会积极寻求消费者保护组织（Verbraucherzentrale）的帮助。
+        </p>
+        <h3 style="color:#007700;margin-top:18px;">【收到催款信（Mahnung）时的注意事项与处理建议】</h3>
+        <ul style="font-size:1.08em;line-height:1.8;margin-bottom:0;">
+            <li><strong>保持冷静：</strong>收到催款信时不要慌张，先核实信件内容和金额是否属实。</li>
+            <li><strong>核查订单和合同：</strong>确认自己是否真的有未付款项或是否签署了相关合同。</li>
+            <li><strong>不要轻易付款：</strong>如果怀疑是误会或诈骗，不要立即付款，也不要随意填写个人信息。</li>
+            <li><strong>及时沟通：</strong>如有疑问，及时与商家或发信方联系，保留所有沟通记录（邮件、信件等）。</li>
+            <li><strong>咨询专业机构：</strong>如无法自行解决，可向德国消费者保护中心（Verbraucherzentrale）或律师咨询，获得专业建议。</li>
+            <li><strong>警惕催收公司：</strong>有些催款信来自第三方催收公司（Inkassobüro），要特别注意核实其合法性。</li>
+            <li><strong>保存证据：</strong>保留所有相关文件、付款凭证和沟通记录，以备后续维权。</li>
+        </ul>
+        <p style="font-size:1.08em;line-height:1.8;">
+            总之，遇到催款信时要理性对待，切勿恐慌或盲目付款，必要时寻求专业帮助，保护好自己的合法权益。
+        </p>
+
+        <!-- 新增B1必掌握词汇内容 -->
+        <h2 style="color:#003399;margin-top:36px;">【本文B1必掌握词汇】</h2>
+        <div style="margin-bottom:12px;">
+            <button onclick="setLang('zh')" style="padding:3px 12px;">中文</button>
+            <button onclick="setLang('en')" style="padding:3px 12px;">English</button>
+        </div>
+        <table id="b1-vocab-table" style="width:100%;font-size:1.08em;line-height:1.8;border-collapse:collapse;">
+            <thead>
+                <tr style="background:#f0f6ff;">
+                    <th>单词</th>
+                    <th>翻译</th>
+                    <th>例句</th>
+                    <th>题号</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=sich+anmelden" target="_blank" style="color:#003399;text-decoration:underline;">sich anmelden</a>
+                    </td>
+                    <td class="trans" data-zh="注册，登记" data-en="to register, to sign up">注册，登记</td>
+                    <td>Um in diesem Shop einkaufen zu können, muss man sich anmelden.</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=persönliche+Daten" target="_blank" style="color:#003399;text-decoration:underline;">persönliche Daten</a>
+                    </td>
+                    <td class="trans" data-zh="个人信息" data-en="personal data">个人信息</td>
+                    <td>...man muss seine persönlichen Daten angeben.</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=Abonnementvertrag" target="_blank" style="color:#003399;text-decoration:underline;">Abonnementvertrag</a>
+                    </td>
+                    <td class="trans" data-zh="订阅合同" data-en="subscription contract">订阅合同</td>
+                    <td>Sie haben einen Abonnementvertrag abgeschlossen.</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=Mahnung" target="_blank" style="color:#003399;text-decoration:underline;">Mahnung</a>
+                    </td>
+                    <td class="trans" data-zh="催款信" data-en="reminder, dunning letter">催款信</td>
+                    <td>Drei Wochen später schickte der Online-Shop aber eine Mahnung für die 96 Euro.</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=Kundenservice" target="_blank" style="color:#003399;text-decoration:underline;">Kundenservice</a>
+                    </td>
+                    <td class="trans" data-zh="客户服务" data-en="customer service">客户服务</td>
+                    <td>...wenn ich versucht habe, den Kundenservice des Shops telefonisch zu erreichen...</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=Anrufbeantworter" target="_blank" style="color:#003399;text-decoration:underline;">Anrufbeantworter</a>
+                    </td>
+                    <td class="trans" data-zh="电话答录机" data-en="answering machine">电话答录机</td>
+                    <td>...dann schaltete sich immer nur ein Anrufbeantworter ein.</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=Rechtsstreit" target="_blank" style="color:#003399;text-decoration:underline;">Rechtsstreit</a>
+                    </td>
+                    <td class="trans" data-zh="法律纠纷" data-en="legal dispute">法律纠纷</td>
+                    <td>...und Lust auf einen Rechtsstreit hatte ich auch nicht!</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=vorsichtig" target="_blank" style="color:#003399;text-decoration:underline;">vorsichtig</a>
+                    </td>
+                    <td class="trans" data-zh="小心的，谨慎的" data-en="careful, cautious">小心的，谨慎的</td>
+                    <td>Nach dieser Erfahrung bin ich vorsichtiger geworden.</td>
+                    <td>5,6</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=bekannt" target="_blank" style="color:#003399;text-decoration:underline;">bekannt</a>
+                    </td>
+                    <td class="trans" data-zh="熟悉的，知名的" data-en="well-known, familiar">熟悉的，知名的</td>
+                    <td>Ich kaufe nun meistens bei Onlineshops ein, die ich schon kenne.</td>
+                    <td>5,6</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://www.bing.com/images/search?q=bewerten" target="_blank" style="color:#003399;text-decoration:underline;">bewerten</a>
+                    </td>
+                    <td class="trans" data-zh="评价" data-en="to evaluate, to rate">评价</td>
+                    <td>...wie andere Kunden ihn bewerten.</td>
+                    <td>6</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="color:#003399;margin-top:36px;">【B1词汇填空练习】</h2>
+        <p style="margin-bottom:18px;">
+            请根据上下文，用上面表格中的词汇（适当形式）填空：
+        </p>
+        <form id="vocab-fill-form" style="font-size:1.08em;line-height:2;">
+            <p>
+                Ricardo wollte online eine Jacke kaufen. Dafür musste er sich 
+                <input type="text" name="blank1" style="width:120px;">, also seine 
+                <input type="text" name="blank2" style="width:120px;"> angeben. Nach der Bestellung bekam er plötzlich eine Rechnung für einen 
+                <input type="text" name="blank3" style="width:120px;">. Er schrieb sofort zurück, aber nach drei Wochen kam eine 
+                <input type="text" name="blank4" style="width:120px;">. Als er den 
+                <input type="text" name="blank5" style="width:120px;"> anrief, meldete sich nur ein 
+                <input type="text" name="blank6" style="width:120px;">. Ricardo hatte keine Lust auf einen 
+                <input type="text" name="blank7" style="width:120px;">. Seitdem ist er viel 
+                <input type="text" name="blank8" style="width:120px;"> and kauft lieber bei 
+                <input type="text" name="blank9" style="width:120px;">en Shops ein. Vor einer Bestellung liest er die Bewertungen anderer Kunden, um den Anbieter richtig zu 
+                <input type="text" name="blank10" style="width:120px;">.
+            </p>
+            <button type="button" onclick="checkVocabFill()" style="margin-top:12px;padding:6px 18px;font-size:1em;background:#003399;color:#fff;border:none;border-radius:6px;cursor:pointer;">提交答案</button>
+            <span id="vocab-fill-result" style="margin-left:18px;font-weight:bold;"></span>
+        </form>
+        <script>
+        function checkVocabFill() {
+            // 正确答案（小写，允许部分变形）
+            const answers = [
+                ['anmelden', 'angemeldet'],
+                ['persönliche daten', 'daten'],
+                ['abonnementvertrag'],
+                ['mahnung'],
+                ['kundenservice'],
+                ['anrufbeantworter'],
+                ['rechtsstreit'],
+                ['vorsichtiger', 'vorsichtig'],
+                ['bekannt'],
+                ['bewerten', 'bewertet']
+            ];
+            let correct = 0;
+            let inputs = document.querySelectorAll('#vocab-fill-form input[type="text"]');
+            inputs.forEach((input, i) => {
+                let val = input.value.trim().toLowerCase();
+                if (answers[i].some(ans => val === ans)) {
+                    input.style.background = '#e0ffe0';
+                    correct++;
+                } else {
+                    input.style.background = '#ffe0e0';
+                }
+            });
+            document.getElementById('vocab-fill-result').textContent = `正确：${correct} / 10`;
+        }
+        </script>
+        <script>
+        function setLang(lang) {
+            document.querySelectorAll('#b1-vocab-table .trans').forEach(function(td){
+                td.textContent = td.getAttribute('data-' + lang);
+            });
+        }
+        </script>
+    </div>
+    <script>
+        let savedRange = null;
+
+document.addEventListener('mouseup', function(e) {
+    // 移除已有的浮动按钮
+    let oldBtn = document.getElementById('float-highlight-btn');
+    if (oldBtn) oldBtn.remove();
+
+    let selection = window.getSelection();
+    if (!selection.rangeCount || selection.isCollapsed) return;
+
+    let range = selection.getRangeAt(0);
+    let rect = range.getBoundingClientRect();
+    if (rect.width === 0 && rect.height === 0) return;
+
+    // 只允许在原文区标记
+    let contentDiv = document.querySelector('.webpage-box .content');
+    // 兼容文本节点
+    let node = range.commonAncestorContainer.nodeType === 1
+        ? range.commonAncestorContainer
+        : range.commonAncestorContainer.parentNode;
+    if (!contentDiv.contains(node)) return;
+
+    // 保存当前选区
+    savedRange = range.cloneRange();
+
+    // 创建浮动按钮
+    let btn = document.createElement('button');
+    btn.id = 'float-highlight-btn';
+    btn.textContent = '标记关键词';
+    btn.style.position = 'fixed';
+    btn.style.zIndex = 9999;
+    btn.style.left = (rect.right + 8) + 'px';
+    btn.style.top = (rect.top - 8) + 'px';
+    btn.style.padding = '4px 12px';
+    btn.style.fontSize = '1em';
+    btn.style.background = '#f6f6f6';
+    btn.style.color = '#003399';
+    btn.style.border = '1px solid #bbb';
+    btn.style.borderRadius = '5px';
+    btn.style.cursor = 'pointer';
+    btn.style.boxShadow = '0 2px 8px #ccc';
+
+    btn.onclick = function() {
+        if (savedRange) {
+            let sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(savedRange);
+            highlightSelection();
+            savedRange = null;
+        }
+        btn.remove();
+    };
+
+    document.body.appendChild(btn);
+
+    // 2秒后自动消失
+    setTimeout(() => {
+        if (btn.parentNode) btn.remove();
+    }, 2000);
+});
+
+function highlightSelection() {
+    var selection = window.getSelection();
+    if (!selection.rangeCount) return;
+    var range = selection.getRangeAt(0);
+    if (range.collapsed) return;
+
+    // 创建高亮span
+    var span = document.createElement("span");
+    span.style.background = "#bbb"; // 更深的灰色
+    span.style.color = "#222";
+    span.style.borderRadius = "3px";
+    span.style.padding = "0 3px";
+    span.style.cursor = "pointer";
+    span.title = "自定义关键词";
+
+    // 包裹选中内容
+    try {
+        range.surroundContents(span);
+        selection.removeAllRanges();
+    } catch (e) {
+        alert("无法标记跨多个标签的内容，请只选中同一段落内的词语。");
+    }
+}
+    </script>
+    <script>
+        function checkQuiz() {
+            const answers = {
+                q1: "Richtig",
+                q2: "Richtig",
+                q3: "Richtig",
+                q4: "Richtig",
+                q5: "Richtig",
+                q6: "Richtig"
+            };
+            let correct = 0, wrong = 0, total = 6;
+            for (let i = 1; i <= total; i++) {
+                const radios = document.getElementsByName('q' + i);
+                let userAnswer = "";
+                for (const r of radios) {
+                    if (r.checked) userAnswer = r.value;
+                }
+                if (userAnswer === answers['q' + i]) {
+                    correct++;
+                } else {
+                    wrong++;
+                }
+                // 清除对错标记
+                const mark = document.getElementById('mark-q' + i);
+                if (mark) mark.textContent = '';
+                // 显示“题目解析”按钮，隐藏解析内容
+                const btn = document.getElementById('explain-btn-q' + i);
+                const exp = document.getElementById('explain-q' + i);
+                const row = document.getElementById('explain-row-q' + i);
+                if (btn) btn.style.display = "inline-block";
+                if (exp) exp.style.display = "none";
+                if (row) row.style.display = "";
+            }
+            const percent = Math.round(correct / total * 100);
+            document.getElementById('quiz-result').innerHTML =
+                `答对：${correct} 题，答错：${wrong} 题，正确率：${percent}%`;
+            document.getElementById('quiz-actions').style.display = "block";
+            document.getElementById('quiz-answers').style.display = "none";
+        }
+
+        function resetQuiz() {
+            for (let i = 1; i <= 6; i++) {
+                const radios = document.getElementsByName('q' + i);
+                for (const r of radios) {
+                    r.checked = false;
+                }
+                // 清除对错标记
+                const mark = document.getElementById('mark-q' + i);
+                if (mark) mark.textContent = '';
+                // 隐藏“题目解析”按钮和内容
+                const btn = document.getElementById('explain-btn-q' + i);
+                const exp = document.getElementById('explain-q' + i);
+                const row = document.getElementById('explain-row-q' + i);
+                if (btn) btn.style.display = "none";
+                if (exp) exp.style.display = "none";
+                if (row) row.style.display = "none";
+            }
+            document.getElementById('quiz-result').innerHTML = "";
+            document.getElementById('quiz-actions').style.display = "none";
+            document.getElementById('quiz-answers').style.display = "none";
+        }
+
+
+        window.addEventListener('DOMContentLoaded', syncQuizHeight);
+window.addEventListener('resize', syncQuizHeight);
+
+function syncQuizHeight() {
+    var left = document.querySelector('.webpage-box');
+    var right = document.getElementById('quiz-sticky');
+    if (left && right) {
+        right.style.maxHeight = left.offsetHeight + 'px';
+    }
+}
+    /* 显示答案，这里修改答案，答案的模板在js文件里面 */
+    window.readingAnswers = {
+        q1: "Richtig",
+        q2: "Falsch",
+        q3: "Richtig",
+        q4: "Falsch",
+        q5: "Richtig",
+        q6: "Falsch"
+    };
+
+    </script>
+
+    /* 答案，解析的显示与隐藏 */
+    <script src="reading1-template.js"></script>
+    
+</body>
+</html>

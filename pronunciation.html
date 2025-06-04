@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <nav>
+        <a href="index.html">返回首页</a>
+    </nav>
+    <meta charset="UTF-8">
+    <title>字母发音表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e6e6fa;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 32px;
+            color: #4B0082;
+        }
+        .lang-btns {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .lang-btn {
+            background: #4B0082;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            padding: 16px 36px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .lang-btn:hover {
+            background: #6a1b9a;
+        }
+        .pronunciation-table {
+            display: none;
+        }
+        .pronunciation-table.active {
+            display: block;
+        }
+        table {
+            margin: 32px auto;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(75,0,130,0.08);
+            min-width: 340px;
+        }
+        th, td {
+            border: 1px solid #d1c4e9;
+            padding: 12px 18px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        th {
+            background: #ede7f6;
+            color: #4B0082;
+        }
+        tr:nth-child(even) {
+            background: #f6f2ff;
+        }
+        .speak-btn {
+            background: #4B0082;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 12px;
+            cursor: pointer;
+        }
+        .speak-btn:hover {
+            background: #6a1b9a;
+        }
+    </style>
+</head>
+<body>
+    <h2>字母发音表</h2>
+    <div class="lang-btns">
+        <button class="lang-btn" onclick="showTable('de')">德语</button>
+        <button class="lang-btn" onclick="showTable('da')">丹麦语</button>
+        <button class="lang-btn" onclick="showTable('en')">英语</button>
+        <button class="lang-btn" onclick="showTable('zh')">中文</button>
+    </div>
+
+    <!-- 英语发音表 -->
+    <div id="table-en" class="pronunciation-table">
+        <h2>英语字母发音表</h2>
+        <table>
+            <tr>
+                <th>字母</th>
+                <th>英语名称</th>
+                <th>发音</th>
+                <th>朗读</th>
+            </tr>
+            <tr><td>A</td><td>ay</td><td>[eɪ]</td><td><button class="speak-btn" data-speak="ay" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>B</td><td>bee</td><td>[biː]</td><td><button class="speak-btn" data-speak="bee" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>C</td><td>cee</td><td>[siː]</td><td><button class="speak-btn" data-speak="cee" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>D</td><td>dee</td><td>[diː]</td><td><button class="speak-btn" data-speak="dee" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>E</td><td>ee</td><td>[iː]</td><td><button class="speak-btn" data-speak="ee" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>F</td><td>ef</td><td>[ɛf]</td><td><button class="speak-btn" data-speak="ef" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>G</td><td>gee</td><td>[dʒiː]</td><td><button class="speak-btn" data-speak="gee" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>H</td><td>aitch</td><td>[eɪtʃ]</td><td><button class="speak-btn" data-speak="aitch" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>I</td><td>eye</td><td>[aɪ]</td><td><button class="speak-btn" data-speak="eye" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>J</td><td>jay</td><td>[dʒeɪ]</td><td><button class="speak-btn" data-speak="jay" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>K</td><td>kay</td><td>[keɪ]</td><td><button class="speak-btn" data-speak="kay" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>L</td><td>el</td><td>[ɛl]</td><td><button class="speak-btn" data-speak="el" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>M</td><td>em</td><td>[ɛm]</td><td><button class="speak-btn" data-speak="em" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>N</td><td>en</td><td>[ɛn]</td><td><button class="speak-btn" data-speak="en" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>O</td><td>oh</td><td>[oʊ]</td><td><button class="speak-btn" data-speak="oh" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>P</td><td>pee</td><td>[piː]</td><td><button class="speak-btn" data-speak="pee" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>Q</td><td>cue</td><td>[kjuː]</td><td><button class="speak-btn" data-speak="cue" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>R</td><td>ar</td><td>[ɑːr]</td><td><button class="speak-btn" data-speak="ar" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>S</td><td>es</td><td>[ɛs]</td><td><button class="speak-btn" data-speak="es" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>T</td><td>tee</td><td>[tiː]</td><td><button class="speak-btn" data-speak="tee" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>U</td><td>you</td><td>[juː]</td><td><button class="speak-btn" data-speak="you" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>V</td><td>vee</td><td>[viː]</td><td><button class="speak-btn" data-speak="vee" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>W</td><td>double-u</td><td>[ˌdʌbəlˈjuː]</td><td><button class="speak-btn" data-speak="double-u" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>X</td><td>ex</td><td>[ɛks]</td><td><button class="speak-btn" data-speak="ex" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>Y</td><td>wy</td><td>[waɪ]</td><td><button class="speak-btn" data-speak="wy" data-lang="en-US">🔊</button></td></tr>
+            <tr><td>Z</td><td>zed</td><td>[zɛd] (英) / [ziː] (美)</td><td><button class="speak-btn" data-speak="zed" data-lang="en-GB">🔊</button> <button class="speak-btn" data-speak="zee" data-lang="en-US">🔊</button></td></tr>
+        </table>
+    </div>
+
+    <!-- 德语发音表 -->
+    <div id="table-de" class="pronunciation-table active">
+        <h2>德语字母发音表</h2>
+        <table>
+            <tr>
+                <th>字母</th>
+                <th>德语名称</th>
+                <th>发音</th>
+                <th>朗读</th>
+            </tr>
+            <tr><td>A</td><td>a</td><td>[aː]</td><td><button class="speak-btn" data-speak="a" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>B</td><td>be</td><td>[beː]</td><td><button class="speak-btn" data-speak="b" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>C</td><td>ce</td><td>[tseː]</td><td><button class="speak-btn" data-speak="c" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>D</td><td>de</td><td>[deː]</td><td><button class="speak-btn" data-speak="d" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>E</td><td>e</td><td>[eː]</td><td><button class="speak-btn" data-speak="e" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>F</td><td>ef</td><td>[ɛf]</td><td><button class="speak-btn" data-speak="ef" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>G</td><td>ge</td><td>[geː]</td><td><button class="speak-btn" data-speak="ge" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>H</td><td>ha</td><td>[haː]</td><td><button class="speak-btn" data-speak="ha" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>I</td><td>i</td><td>[iː]</td><td><button class="speak-btn" data-speak="i" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>J</td><td>jot</td><td>[jɔt]</td><td><button class="speak-btn" data-speak="jot" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>K</td><td>ka</td><td>[kaː]</td><td><button class="speak-btn" data-speak="ka" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>L</td><td>el</td><td>[ɛl]</td><td><button class="speak-btn" data-speak="el" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>M</td><td>em</td><td>[ɛm]</td><td><button class="speak-btn" data-speak="em" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>N</td><td>en</td><td>[ɛn]</td><td><button class="speak-btn" data-speak="en" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>O</td><td>o</td><td>[oː]</td><td><button class="speak-btn" data-speak="o" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>P</td><td>pe</td><td>[peː]</td><td><button class="speak-btn" data-speak="pe" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>Q</td><td>qu</td><td>[kuː]</td><td><button class="speak-btn" data-speak="qu" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>R</td><td>er</td><td>[ɛʁ]</td><td><button class="speak-btn" data-speak="er" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>S</td><td>es</td><td>[ɛs]</td><td><button class="speak-btn" data-speak="es" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>T</td><td>te</td><td>[teː]</td><td><button class="speak-btn" data-speak="te" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>U</td><td>u</td><td>[uː]</td><td><button class="speak-btn" data-speak="u" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>V</td><td>vau</td><td>[faʊ̯]</td><td><button class="speak-btn" data-speak="vau" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>W</td><td>we</td><td>[veː]</td><td><button class="speak-btn" data-speak="we" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>X</td><td>ix</td><td>[ɪks]</td><td><button class="speak-btn" data-speak="ix" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>Y</td><td>ypsilon</td><td>[ˈʏpsilɔn]</td><td><button class="speak-btn" data-speak="ypsilon" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>Z</td><td>zett</td><td>[tsɛt]</td><td><button class="speak-btn" data-speak="zett" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>Ä</td><td>ä</td><td>[ɛː]</td><td><button class="speak-btn" data-speak="ä" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>Ö</td><td>ö</td><td>[øː]</td><td><button class="speak-btn" data-speak="ö" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>Ü</td><td>ü</td><td>[yː]</td><td><button class="speak-btn" data-speak="ü" data-lang="de-DE">🔊</button></td></tr>
+            <tr><td>ß</td><td>Eszett</td><td>[ɛsˈtsɛt]</td><td><button class="speak-btn" data-speak="Eszett" data-lang="de-DE">🔊</button></td></tr>
+        </table>
+    </div>
+
+    <!-- 丹麦语发音表 -->
+    <div id="table-da" class="pronunciation-table">
+        <h2>丹麦语字母发音表</h2>
+        <table>
+            <tr>
+                <th>字母</th>
+                <th>丹麦语名称</th>
+                <th>发音</th>
+                <th>朗读</th>
+            </tr>
+            <tr><td>A</td><td>a</td><td>[æː]</td><td><button class="speak-btn" data-speak="a" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>B</td><td>be</td><td>[be̝ː]</td><td><button class="speak-btn" data-speak="be" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>C</td><td>se</td><td>[se̝ː]</td><td><button class="speak-btn" data-speak="se" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>D</td><td>de</td><td>[de̝ː]</td><td><button class="speak-btn" data-speak="de" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>E</td><td>e</td><td>[e̝ː]</td><td><button class="speak-btn" data-speak="e" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>F</td><td>ef</td><td>[ef]</td><td><button class="speak-btn" data-speak="ef" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>G</td><td>ge</td><td>[ge̝ː]</td><td><button class="speak-btn" data-speak="ge" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>H</td><td>hå</td><td>[hɔː]</td><td><button class="speak-btn" data-speak="hå" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>I</td><td>i</td><td>[iː]</td><td><button class="speak-btn" data-speak="i" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>J</td><td>jot</td><td>[jɔd]</td><td><button class="speak-btn" data-speak="jot" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>K</td><td>ka</td><td>[kʰæː]</td><td><button class="speak-btn" data-speak="ka" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>L</td><td>el</td><td>[el]</td><td><button class="speak-btn" data-speak="el" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>M</td><td>em</td><td>[em]</td><td><button class="speak-btn" data-speak="em" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>N</td><td>en</td><td>[en]</td><td><button class="speak-btn" data-speak="en" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>O</td><td>o</td><td>[oː]</td><td><button class="speak-btn" data-speak="o" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>P</td><td>pe</td><td>[pe̝ː]</td><td><button class="speak-btn" data-speak="pe" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>Q</td><td>qu</td><td>[kʰuː]</td><td><button class="speak-btn" data-speak="qu" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>R</td><td>er</td><td>[æɐ̯]</td><td><button class="speak-btn" data-speak="er" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>S</td><td>es</td><td>[es]</td><td><button class="speak-btn" data-speak="es" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>T</td><td>te</td><td>[tʰe̝ː]</td><td><button class="speak-btn" data-speak="te" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>U</td><td>u</td><td>[uː]</td><td><button class="speak-btn" data-speak="u" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>V</td><td>ve</td><td>[ve̝ː]</td><td><button class="speak-btn" data-speak="ve" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>W</td><td>double-ve</td><td>[ˈdʌbl̩ˌve̝ː]</td><td><button class="speak-btn" data-speak="double-ve" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>X</td><td>eks</td><td>[eks]</td><td><button class="speak-btn" data-speak="eks" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>Y</td><td>y</td><td>[yː]</td><td><button class="speak-btn" data-speak="y" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>Z</td><td>set</td><td>[set]</td><td><button class="speak-btn" data-speak="set" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>Æ</td><td>æ</td><td>[ɛː]</td><td><button class="speak-btn" data-speak="æ" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>Ø</td><td>ø</td><td>[øː]</td><td><button class="speak-btn" data-speak="ø" data-lang="da-DK">🔊</button></td></tr>
+            <tr><td>Å</td><td>å</td><td>[ɔː]</td><td><button class="speak-btn" data-speak="å" data-lang="da-DK">🔊</button></td></tr>
+        </table>
+    </div>
+
+    <!-- 中文拼音声母韵母发音表 -->
+    <div id="table-zh" class="pronunciation-table">
+        <h2>汉语拼音声母表</h2>
+        <table>
+            <tr>
+                <th>声母</th>
+                <th>发音</th>
+                <th>朗读</th>
+            </tr>
+            <tr><td>b</td><td>[p]</td><td><button class="speak-btn" data-speak="b" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>p</td><td>[pʰ]</td><td><button class="speak-btn" data-speak="p" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>m</td><td>[m]</td><td><button class="speak-btn" data-speak="m" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>f</td><td>[f]</td><td><button class="speak-btn" data-speak="f" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>d</td><td>[t]</td><td><button class="speak-btn" data-speak="d" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>t</td><td>[tʰ]</td><td><button class="speak-btn" data-speak="t" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>n</td><td>[n]</td><td><button class="speak-btn" data-speak="n" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>l</td><td>[l]</td><td><button class="speak-btn" data-speak="l" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>g</td><td>[k]</td><td><button class="speak-btn" data-speak="g" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>k</td><td>[kʰ]</td><td><button class="speak-btn" data-speak="k" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>h</td><td>[x]</td><td><button class="speak-btn" data-speak="h" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>j</td><td>[tɕ]</td><td><button class="speak-btn" data-speak="j" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>q</td><td>[tɕʰ]</td><td><button class="speak-btn" data-speak="q" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>x</td><td>[ɕ]</td><td><button class="speak-btn" data-speak="x" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>zh</td><td>[ʈʂ]</td><td><button class="speak-btn" data-speak="zh" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ch</td><td>[ʈʂʰ]</td><td><button class="speak-btn" data-speak="ch" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>sh</td><td>[ʂ]</td><td><button class="speak-btn" data-speak="sh" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>r</td><td>[ʐ]</td><td><button class="speak-btn" data-speak="r" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>z</td><td>[ts]</td><td><button class="speak-btn" data-speak="z" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>c</td><td>[tsʰ]</td><td><button class="speak-btn" data-speak="c" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>s</td><td>[s]</td><td><button class="speak-btn" data-speak="s" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>y</td><td>[j]</td><td><button class="speak-btn" data-speak="y" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>w</td><td>[w]</td><td><button class="speak-btn" data-speak="w" data-lang="zh-CN">🔊</button></td></tr>
+        </table>
+        <h2>汉语拼音韵母表</h2>
+        <table>
+            <tr>
+                <th>韵母</th>
+                <th>发音</th>
+                <th>朗读</th>
+            </tr>
+            <tr><td>a</td><td>[a]</td><td><button class="speak-btn" data-speak="a" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>o</td><td>[o]</td><td><button class="speak-btn" data-speak="o" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>e</td><td>[ɤ]</td><td><button class="speak-btn" data-speak="e" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>i</td><td>[i]</td><td><button class="speak-btn" data-speak="i" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>u</td><td>[u]</td><td><button class="speak-btn" data-speak="u" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ü</td><td>[y]</td><td><button class="speak-btn" data-speak="ü" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ai</td><td>[ai]</td><td><button class="speak-btn" data-speak="ai" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ei</td><td>[ei]</td><td><button class="speak-btn" data-speak="ei" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ui</td><td>[uei]</td><td><button class="speak-btn" data-speak="ui" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ao</td><td>[au]</td><td><button class="speak-btn" data-speak="ao" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ou</td><td>[ou]</td><td><button class="speak-btn" data-speak="ou" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>iu</td><td>[iou]</td><td><button class="speak-btn" data-speak="iu" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ie</td><td>[ie]</td><td><button class="speak-btn" data-speak="ie" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>üe</td><td>[yɛ]</td><td><button class="speak-btn" data-speak="üe" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>er</td><td>[ɚ]</td><td><button class="speak-btn" data-speak="er" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>an</td><td>[an]</td><td><button class="speak-btn" data-speak="an" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>en</td><td>[ən]</td><td><button class="speak-btn" data-speak="en" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>in</td><td>[in]</td><td><button class="speak-btn" data-speak="in" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>un</td><td>[uən]</td><td><button class="speak-btn" data-speak="un" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ün</td><td>[yn]</td><td><button class="speak-btn" data-speak="ün" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ang</td><td>[ɑŋ]</td><td><button class="speak-btn" data-speak="ang" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>eng</td><td>[əŋ]</td><td><button class="speak-btn" data-speak="eng" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ing</td><td>[iŋ]</td><td><button class="speak-btn" data-speak="ing" data-lang="zh-CN">🔊</button></td></tr>
+            <tr><td>ong</td><td>[uŋ]</td><td><button class="speak-btn" data-speak="ong" data-lang="zh-CN">🔊</button></td></tr>
+        </table>
+    </div>
+
+    <script>
+        // 切换语言表格显示
+        function showTable(lang) {
+            document.getElementById('table-de').classList.remove('active');
+            document.getElementById('table-da').classList.remove('active');
+            document.getElementById('table-en').classList.remove('active');
+            document.getElementById('table-zh').classList.remove('active');
+            document.getElementById('table-' + lang).classList.add('active');
+        }
+        // 朗读按钮功能
+        document.querySelectorAll('.speak-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const speakText = this.getAttribute('data-speak');
+                const lang = this.getAttribute('data-lang') || 'zh-CN';
+                const utter = new window.SpeechSynthesisUtterance(speakText);
+                utter.lang = lang;
+                window.speechSynthesis.speak(utter);
+            });
+        });
+    </script>
+</body>
+</html>
