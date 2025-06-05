@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Modalverben 情态动词</title>
+</head>
+<body>
+    <button onclick="window.history.back()" style="margin:16px 0;padding:8px 18px;font-size:1em;border-radius:6px;background:#eee;border:1px solid #bbb;cursor:pointer;">
+        返回上一页
+    </button>
+    <h1>Modalverben 情态动词</h1>
+    <!-- 你的内容 -->
+
+    <div id="referenced-by" style="margin: 24px 0; padding: 12px 18px; background: #f8fafd; border-left: 4px solid #003399; border-radius: 6px;">
+        <strong>本页被以下页面引用：</strong>
+        <ul id="ref-list" style="margin: 8px 0 0 1.5em;"></ul>
+    </div>
+    <script>
+    const references = [
+        {
+            url: "reading1.html",
+            title: "B1 阅读练习 Reading 1",
+            desc: "题目解析区“情态动词”考点",
+            questions: [2, 3]
+        },
+        // 以后有其它引用页面可继续加
+    ];
+
+    const refList = document.getElementById('ref-list');
+    references.forEach(ref => {
+        const qStr = ref.questions ? `（题号：${ref.questions.join(', ')}）` : '';
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${ref.url}" target="_blank">${ref.title}</a>（${ref.desc}）${qStr}`;
+        refList.appendChild(li);
+    });
+    </script>
+
+    <h2> können </h2> 表示可以，类似英语的 can
+        <p>表示能力、可能性或允许。</p>
+        <p>例句：Ich kann gut Deutsch sprechen.（我能说好德语。）</p>
+        <p>例句：Kannst du mir bitte helfen?（你能帮我吗？）</p>
+    <h2> möchten </h2>
+    <h2> wollen </h2>
+    <h2> dürfen </h2>
+    <h2> müssen </h2>
+    <h2> sollen </h2>
+
+    情态动词用得少的 mögen， 用法接近情态动词的 lassen
+    <h2> mögen </h2>
+    <h2> lassen </h2>
+</body>
+</html>
+
