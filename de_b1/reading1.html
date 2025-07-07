@@ -85,7 +85,7 @@
                     <!-- 1 -->
                     <tr>
                         <td class="question-number">1</td>
-                        <td>Ricardo <span class="kw" data-q="1"> hat sich </span> bei <span class="bold">outlet-bazaarXL.com</span> <span class="kw" data-q="1">angemeldet</span>.</td>
+                        <td>Ricardo <span class="kw" data-q="1"> hat sich </span> bei <span class="bold" data-q="1">outlet-bazaarXL.com</span> <span class="kw" data-q="1">angemeldet</span>.</td>
                         <td class="choice">
                             <label>
                                 <input type="radio" name="q1" value="Richtig" class="custom-radio"> Richtig
@@ -105,10 +105,9 @@
                         <td colspan="5" class="explain-row">
                             <button id="explain-btn-q1" type="button" onclick="showExplanation(1)" style="padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#003399;border:1px solid #bbb;border-radius:5px;cursor:pointer;margin-bottom:6px;display:none;">题目解析</button>
                             <div id="explain-q1" style="display:none;color:#444;font-size:0.98em;">
-                                <div><strong>正确答案：</strong><span style="color:#007700;">Richtig</span></div>
-                                <div style="margin-top:8px;color:#007700;"><strong>中文解释：</strong>Ricardo在outlet-bazaarXL.com注册了账号。</div>
-                                <div><strong>关键词：</strong>sich anmelden 注册、登记</div>
-                                <div>Ricardo hat sich tatsächlich bei outlet-bazaarXL.com angemeldet, um einkaufen zu können.（他确实注册了账号）</div>
+                                <div><span style="color:#5d57d9;"> Ricardo在outlet-bazaarXL.com注册了账号。 [<strong>Richtig</strong>]</span></div>
+                                <div>Ricardo hat sich tatsächlich bei outlet-bazaarXL.com angemeldet, um einkaufen zu können. （为了可以购物，他确实注册了账号。） </div>
+                                <div><strong>【词汇】 </strong> sich anmelden 注册、登记</div>
                                 <button type="button" onclick="hideExplanation(1)" style="margin-top:10px;padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#666;border:1px solid #bbb;border-radius:5px;cursor:pointer;">收回解析</button>
                             </div>
                         </td>
@@ -135,13 +134,11 @@
                         <td colspan="5" class="explain-row">
                             <button id="explain-btn-q2" type="button" onclick="showExplanation(2)" style="padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#003399;border:1px solid #bbb;border-radius:5px;cursor:pointer;margin-bottom:6px;display:none;">题目解析</button>
                             <div id="explain-q2" style="display:none;color:#444;font-size:0.98em;">
-                                <div><strong>正确答案</strong> <span style="color:#007700;"> Richtig</span> </div>
-                                <div style="margin-top:8px;color:#007700;"><strong>中文解释：</strong>Ricardo不想签订订阅合同。</div>
-                                <div><strong>关键词：</strong> den Abonnenmentvertrag abschließen 签订订阅合同 </div>
-                                <div><strong>关健语法：</strong> nicht 不 & wollte 想要（过去） </div> 
-                                Ricardo wollte den Abonnementvertrag nicht abschließen, da er sofort zurückgeschrieben hat, dass er dies nicht möchte.（他立刻回复邮件表示不想订阅）
-                                <div><strong>迷惑内容：</strong> 原文中"Wir haben einen Abonnementvertrag abgeschlossen"是商家发来的邮件内容，Ricardo并没有同意这个合同。所以给它写了回信，里面表示不想订阅。</div>
-                                <div><strong>本题考点：</strong> <a href="grammatikk-modalverben.html">情态动词</a> </div>
+                                <div><span style="color:#5d57d9;"> Ricardo不想签订订阅合同。 [<strong>Richtig</strong>]</span></div>
+                                <div> Ricardo wollte den Abonnementvertrag nicht abschließen, da er sofort zurückgeschrieben hat, dass er dies nicht möchte.（他立刻回复邮件表示不想订阅） </div>
+                                <div><strong>【词汇】 </strong> den Abonnenmentvertrag abschließen 签订订阅合同 </div> 
+                                <div><strong>【语法】 </strong> nicht <a href="grammatikk-negative.html"> 否定词 </a>  & wollte 想要（原文发生在过去）<a href="grammatikk-modalverben.html">情态动词 </a> </div> 
+                                <div><strong>【迷惑内容】</strong> 原文中"Wir haben einen Abonnementvertrag abgeschlossen"是商家发来的邮件内容，Ricardo并没有同意这个合同。所以给它写了回信，里面表示不想订阅。</div>
                                 <button type="button" onclick="hideExplanation(2)" style="margin-top:10px;padding:3px 12px;font-size:0.98em;background:#f6f6f6;color:#666;border:1px solid #bbb;border-radius:5px;cursor:pointer;">收回解析</button>
                             </div>
                         </td>
@@ -640,7 +637,18 @@ function syncQuizHeight() {
         right.style.maxHeight = left.offsetHeight + 'px';
     }
 }
-    /* 显示答案，这里修改答案，答案的模板在js文件里面 */
+
+// 在已有的 syncQuizHeight 函数后面添加监听题目解析区的变化
+function observeQuizHeight() {
+    const quiz = document.getElementById('quiz-sticky');
+    if (!quiz) return;
+    // 监听 quiz-sticky 内部高度变化
+    const observer = new MutationObserver(syncQuizHeight);
+    observer.observe(quiz, { childList: true, subtree: true, attributes: true, characterData: true });
+}
+window.addEventListener('DOMContentLoaded', observeQuizHeight);
+
+/* 显示答案，这里修改答案，答案的模板在js文件里面 */
     window.readingAnswers = {
         q1: "Richtig",
         q2: "Richtig",

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body, p, div, label, strong, h2 {
+            font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", Arial, Helvetica, sans-serif;
+        }
+        .trans-btn {
+            font-size: 0.7em;
+            padding: 0 2px;
+            background: #e0eefe;
+            color: #003399;
+            border: 1px solid #bcd;
+            border-radius: 50%;
+            cursor: pointer;
+            vertical-align: super;
+            margin: 0;
+            width: 1.1em;
+            height: 1.1em;
+            line-height: 1em;
+            text-align: center;
+            min-width: unset;
+            box-sizing: border-box;
+        }
+        .trans-popup {
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 1.8em;
+            background: #fffbe6;
+            color: #333;
+            border: 1px solid #ffe58f;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 0.98em;
+            z-index: 10;
+            min-width: 120px;
+            max-width: 320px;
+            box-shadow: 0 2px 8px #eee;
+        }
+        sup {
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<h2 style="color:#003399;">
+    Als Rollstuhlfahrerin auf dem Wasser
+</h2>
+<p style="font-size:1.05em; color:#555; position:relative;">
+    Nomine ist elf Jahre alt und liebt es, sich zu bewegen.<sup style="margin-left:2px;"><button class="trans-btn" onclick="showTrans(this, 'zh')">1</button><span class="trans-popup" style="display:none;">Nomine 是一位十一岁的女孩，热爱运动。</span></sup>
+    Nur laufen kann das querschnittsgelähmte Mädchen nicht.<sup style="margin-left:2px;"><button class="trans-btn" onclick="showTrans(this, 'zh')">2</button><span class="trans-popup" style="display:none;">只是这个截瘫的女孩无法行走。</span></sup>
+    Trotz ihrer Behinderung segelt Nomine seit Jahren auf der Nordsee.<sup style="margin-left:2px;"><button class="trans-btn" onclick="showTrans(this, 'zh')">3</button><span class="trans-popup" style="display:none;">尽管有残疾，Nomine 多年来一直在北海航海。</span></sup>
+    Ihr Traum: einmal zu den Paralympics.<sup style="margin-left:2px;"><button class="trans-btn" onclick="showTrans(this, 'zh')">4</button><span class="trans-popup" style="display:none;">她的梦想：有一天能参加残奥会。</span></sup>
+</p>
+
+<!-- 第一题 听力理解选择题 -->
+<div style="margin: 24px 0; padding: 16px; background: #f8fafd; border-radius: 8px; border-left: 4px solid #3b82f6;">
+    <strong>1. Wovon handelt der Text?</strong><br>
+    Hör dir das Audio an. Worum geht es? Wähl die passende Antwort aus。
+    <form style="margin-top:12px;">
+        <label style="display:block; margin-bottom:8px;">
+            <input type="radio" name="q1" value="a">
+            a) sehr sportlich ist und unter anderem Segelsport macht。
+        </label>
+        <label style="display:block; margin-bottom:8px;">
+            <input type="radio" name="q1" value="b">
+            b) den Traum hat, einmal in einem Boot um die Welt zu segeln。
+        </label>
+        <label style="display:block;">
+            <input type="radio" name="q1" value="c">
+            c) nach einem Unfall einen Weg gefunden hat, so wie vorher im Meer zu schwimmen。
+        </label>
+    </form>
+</div>
+
+<!-- 听力音频 -->
+<div style="margin: 18px 0;">
+    <strong>听力音频：</strong>
+    <audio controls>
+        <source src="Top-Thema-mit-Vokabeln-2025-06-06-Als-Rollstuhlfahrerin-auf-dem-Wasser.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放。
+    </audio>
+</div>
+
+<script>
+function showTrans(btn, lang) {
+    // 隐藏所有弹窗
+    document.querySelectorAll('.trans-popup').forEach(e => e.style.display = 'none');
+    // 当前弹窗
+    const popup = btn.nextElementSibling;
+    if (popup) {
+        popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'inline-block' : 'none';
+    }
+}
+</script>
+</body>
+</html>
+
+

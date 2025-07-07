@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>欧路词典生词本与笔记API演示</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f9f9f9;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 480px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 32px 24px 36px 24px;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #2d6ca2;
+        }
+        #result, #note-result {
+            margin-top: 18px;
+            background: #f4f8fd;
+            border-radius: 6px;
+            padding: 16px;
+            min-height: 40px;
+            font-size: 1.08rem;
+            word-break: break-all;
+        }
+        .api-tip {
+            color: #888;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+        input, button {
+            font-size: 1rem;
+        }
+        #search-btn, #note-btn, #find-note-btn {
+            background: #2d6ca2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 18px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        #search-btn:hover, #note-btn:hover, #find-note-btn:hover {
+            background: #17426b;
+        }
+        .note-search-row {
+            margin-top: 24px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>欧路词典生词本查词</h2>
+        <div class="api-tip">
+            请输入你要查找的生词本名称（如 <b>default</b>），点击“查词”可获取该生词本的单词列表。<br>
+            需在欧路开放平台申请 <a href="https://my.godic.net/OpenAPI/" target="_blank">API Key</a> 并替换下方代码中的 <code>YOUR_API_KEY</code>。
+        </div>
+        <input type="text" id="book-input" placeholder="生词本名称，如 default" style="padding:8px;width:60%;">
+        <button id="search-btn">查词</button>
+        <div id="result"></div>
+
+        <h3 style="margin-top:40px;">欧路词典笔记API演示</h3>
+        <div class="api-tip">
+            点击“获取我的笔记”可获取所有笔记。<br>
+            也可输入单词（如“丙炔”）查找该词的笔记。
+        </div>
+        <button id="note-btn">获取我的笔记</button>
+        <div class="note-search-row">
+            <input type="text" id="note-word-input" placeholder="输入单词查笔记，如 丙炔" style="padding:8px;flex:1;">
+            <button id="find-note-btn">查找该词笔记</button>
+        </div>
+        <div id="note-result"></div>
+    </div>
+    <script>
+        // 替换为你自己的API Key
+        const apiKey = 'NIS Bp6a9QUZxPOsynnJm2SX/t1JhLi33W7gjkEDVXLqC9t4ftvgODLRCA==';
+
+        // 生词本查词
+        document.getElementById('search-btn').onclick = function() {
+            const book = document.getElementById('book-input').value.trim();
+            const resultDiv = document.getElementById('result');
+            if (!book) {
+                resultDiv.textContent = '请输入生词本名称';
+                return;
+            }
+            resultDiv.textContent = '查询中...';
+
+            fetch(`https://api.frdic.com/api/open/v1/studylist/words?language=en&category=${encodeURIComponent(book)}&pageSize=100&pageIndex=1`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + apiKey
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data && Array.isArray(data.words)) {
+                    if (data.words.length === 0) {
+                        resultDiv.textContent = '该生词本暂无单词。';
+                    } else {
+                        resultDiv.innerHTML = '<b>单词列表：</b><br>' + 
+                            data.words.map(w => 
+                                `<div style="margin-bottom:6px;">
+                                    <b>${w.word}</b> 
+                                    ${w.trans ? (' - ' + w.trans) : ''}
+                                </div>`
+                            ).join('');
+                    }
+                } else if (data.message) {
+                    resultDiv.textContent = '错误：' + data.message;
+                } else {
+                    resultDiv.textContent = '未获取到数据。';
+                }
+            })
+            .catch(err => {
+                resultDiv.textContent = '查询失败，请检查API Key或网络。';
+            });
+        };
+
+        // 获取所有笔记
+        document.getElementById('note-btn').onclick = function() {
+            const resultDiv = document.getElementById('note-result');
+            resultDiv.textContent = '查询中...';
+            fetch('https://api.frdic.com/api/open/v1/studynotes?language=en&pageSize=100&pageIndex=1', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + apiKey
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data && Array.isArray(data.notes)) {
+                    if (data.notes.length === 0) {
+                        resultDiv.textContent = '暂无笔记。';
+                    } else {
+                        resultDiv.innerHTML = '<b>笔记列表：</b><br>' +
+                            data.notes.map(n =>
+                                `<div style="margin-bottom:8px;">
+                                    <b>${n.word}</b>：${n.note}
+                                </div>`
+                            ).join('');
+                    }
+                } else if (data.message) {
+                    resultDiv.textContent = '错误：' + data.message;
+                } else {
+                    resultDiv.textContent = '未获取到数据。';
+                }
+            })
+            .catch(err => {
+                resultDiv.textContent = '查询失败，请检查API Key或网络。';
+            });
+        };
+
+        // 查找某个单词的笔记
+        document.getElementById('find-note-btn').onclick = function() {
+            const word = document.getElementById('note-word-input').value.trim();
+            const resultDiv = document.getElementById('note-result');
+            if (!word) {
+                resultDiv.textContent = '请输入要查找的单词';
+                return;
+            }
+            resultDiv.textContent = '查询中...';
+            fetch('https://api.frdic.com/api/open/v1/studynotes?language=en&pageSize=100&pageIndex=1', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + apiKey
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data && Array.isArray(data.notes)) {
+                    const note = data.notes.find(n => n.word === word);
+                    if (note) {
+                        resultDiv.innerHTML = `<b>${note.word}</b>：${note.note}`;
+                    } else {
+                        resultDiv.textContent = `没有找到“${word}”的笔记。`;
+                    }
+                } else if (data.message) {
+                    resultDiv.textContent = '错误：' + data.message;
+                } else {
+                    resultDiv.textContent = '未获取到数据。';
+                }
+            })
+            .catch(err => {
+                resultDiv.textContent = '查询失败，请检查API Key或网络。';
+            });
+        };
+    </script>
+</body>
+</html>

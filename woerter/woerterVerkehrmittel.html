@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>交通工具 Verkehrsmittel</title>
+    <style>
+        body {
+            background: #111;
+        }
+        .video-exercise-card {
+            margin: 0 auto 32px auto;
+            border: 2px solid #3498db;
+            border-radius: 0;
+            padding: 32px;
+            max-width: 450px;
+            min-width: 350px;
+            width: 405px;
+            height: 720px;
+            min-height: 720px;
+            text-align: center;
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .video-exercise-card img {
+            width: auto;
+            height: 50%;
+            max-width: 100%;
+            max-height: 50%;
+            object-fit: contain;
+            border-radius: 16px;
+            margin: 0 auto;
+            background: #191919;
+            display: block;
+        }
+        .video-question {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-size: 2rem;
+            color: #fff;
+            font-weight: normal;
+        }
+        .video-countdown {
+            font-size: 2.2rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        .video-answer {
+            margin-bottom: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 18px;
+        }
+        .noun-m, .noun-n, .noun-f {
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+        .noun-m { color: #2980db; }
+        .noun-n { color: #27ae60; }
+        .noun-f { color: #e74c3c; }
+        .chinese {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-left: 8px;
+            font-family: "Kaiti", "楷体";
+        }
+        .start-video-exercise {
+            margin-top: 14px;
+            font-size: 1.3rem;
+            padding: 12px 36px;
+        }
+        .video-content-bottom {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-exercise-card" id="start-btn-container" style="display:block;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <button id="global-start-btn" class="start-video-exercise" style="margin-top:18px;">Was ist das?</button>
+        <img src="https://static.islcollective.com/storage/preview/201403/1532x1084/verkehrsmittel-bildworterbucher-leseverstandnis_67050_3.jpg" alt="Verkehrsmittel">
+    </div>
+
+    <div class="video-exercise-card" id="card1" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://www.carmada.de/wp-content/uploads/2023/08/artikelbild-01-was-ist-der-unterschied-zwischen-e-roller-und-e-scooter-gettyimages-1458807121.jpg" alt="Roller">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Roller</span><span class="chinese">滑板车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card2" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://thumbs.dreamstime.com/z/vector-roller-das-moped-das-schwarze-tinte-gezeichnet-wird-93466304.jpg?w=768" alt="Moped/Mofa">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Moped/Mofa</span><span class="chinese">轻便摩托</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card3" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://www.bodystreet.com/api/v1/static/images/artikel/2023/Juni/iStock-1430800922_medium.jpg" alt="Fahrrad">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Fahrrad</span><span class="chinese">自行车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card4" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://www.bmwmotorcyclesoftemecula.com/wp-content/uploads/2023/06/2023-BMW-R-12-NineT.jpeg" alt="Motorrad">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Motorrad</span><span class="chinese">摩托车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card5" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.af4674368fd6f0c029340f04610be06d?rik=3x7hGDpI4ZyjRw&riu=http%3a%2f%2fp7.itc.cn%2fimages01%2f20200812%2f396e58a3b6c64d2ab979d7c6dc32cfa8.jpeg&ehk=oBtOV%2bHqwKW%2bYGDNtV9s%2bjVe%2bVIzzCKxxnCzwE3IN84%3d&risl=&pid=ImgRaw&r=0" alt="Auto">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Auto</span><span class="chinese">汽车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card6" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.e6df1387ef75ae45214838023caa57a0?rik=VNLtkhFUDHWWYA&pid=ImgRaw&r=0" alt="Zug">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Zug</span><span class="chinese">火车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card7" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://muenchenunterwegs.de/content/1646/2022-09-16-mvg-pm-c2-auf-u5-2.jpg?resize=w%5B1280%5Dh%5B900%5De%5Btrue%5Ds%5Bfalse%5D" alt="U-Bahn">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die U-Bahn</span><span class="chinese">地铁</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card8" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://zentrum-online.at/wp-content/uploads/2018/12/FLEXITY-Straßenbahn-Wienjpg.jpg" alt="Straßenbahn">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Straßenbahn</span><span class="chinese">有轨电车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card9" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://www.berlin.de/binaries/asset/image_assets/7932642/ratio_4_3/1671521918/800x600/" alt="Taxi">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Taxi</span><span class="chinese">出租车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card10" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://img.wallpapic.de/i5938-047-121/medium/lastwagen-berge-anhanger-lkw-autos-hintergrundbild.jpg" alt="Lastwagen">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Lastwagen</span><span class="chinese">卡车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card11" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://hurraki.de/w/images/5/57/Tandem.jpg" alt="Tandem">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Tandem</span><span class="chinese">双人自行车</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card12" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.539d803ba69d43cf42c5dbab2fc4f0a8?rik=evYlbDVAYCVk6Q&riu=http%3a%2f%2fimg.fotocommunity.com%2fadac-hubschrauber-149beb6f-1074-46ad-aa06-ead9183cc506.jpg%3fwidth%3d1000&ehk=yGQIS2juu2GoT59f0G07KdYLqpvIBYwO1guhS2zoTeU%3d&risl=&pid=ImgRaw&r=0" alt="Hubschrauber">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Hubschrauber</span><span class="chinese">直升机</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card13" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.3b602438f89e54bd99843ff82d92bf85?rik=XKBXSLyVnFZ0tg&pid=ImgRaw&r=0" alt="Flugzeug">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Flugzeug</span><span class="chinese">飞机</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card14" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://www.techfacts.de/wp-content/uploads/2020/01/hotair-1200x794.jpg" alt="Heißluftballon">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Heißluftballon</span><span class="chinese">热气球</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card15" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.VUcbPZ28GHhL25LKOtT3AgHaHa?rs=1&pid=ImgDetMain" alt="Rakete">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Rakete</span><span class="chinese">火箭</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card16" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.aa8a70ea2332bfd29aa530d79e7f5611?rik=hgPP3CLXjSbRnQ&pid=ImgRaw&r=0" alt="Fähre">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Fähre</span><span class="chinese">渡轮</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card17" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.3aed8517ea4ebc407b61ca5ca2d1d2ba?rik=JIH7Ip5KPCuVLA&riu=http%3a%2f%2ftuicruises.com%2fblog%2fwp-content%2fuploads%2f2016%2f10%2f20160816_Rendering-Außenansicht-neue-Mein-Schiff-1_cTUI-Cruises.jpg&ehk=FPlVTXj6cuhsAWEUtQK9l%2b83i2Xk8P3i%2fk4hiqeo9HM%3d&risl=&pid=ImgRaw&r=0" alt="Schiff">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Schiff</span><span class="chinese">船</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card18" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">交通工具 Verkehrsmittel</h3>
+        <div class="video-question">Was ist das?</div>
+        <img src="https://www.seilbahnen.de/wp-content/uploads/Hochfelln-Seilbahn-Fahrt-von-der-Mittelstation-zum-Gipfel-So-1-scaled.jpg" alt="Seilbahn">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Seilbahn</span><span class="chinese">缆车</span></div>
+    </div>
+
+    <script>
+        // 语音播放函数
+        function speakDE(text) {
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(text);
+                const voices = window.speechSynthesis.getVoices();
+                utter.voice = voices.find(v => v.lang === 'de-DE' && v.name.includes('Anna')) ||
+                              voices.find(v => v.lang === 'de-DE');
+                utter.lang = 'de-DE';
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        // 卡片数据
+        const cardData = [
+            {id: 'card1', next: 'card2', answer: 'der Roller'},
+            {id: 'card2', next: 'card3', answer: 'das Moped das Mofa'},
+            {id: 'card3', next: 'card4', answer: 'das Fahrrad'},
+            {id: 'card4', next: 'card5', answer: 'das Motorrad'},
+            {id: 'card5', next: 'card6', answer: 'das Auto'},
+            {id: 'card6', next: 'card7', answer: 'der Zug'},
+            {id: 'card7', next: 'card8', answer: 'die U-Bahn'},
+            {id: 'card8', next: 'card9', answer: 'die Straßenbahn'},
+            {id: 'card9', next: 'card10', answer: 'das Taxi'},
+            {id: 'card10', next: 'card11', answer: 'der Lastwagen'},
+            {id: 'card11', next: 'card12', answer: 'das Tandem'},
+            {id: 'card12', next: 'card13', answer: 'der Hubschrauber'},
+            {id: 'card13', next: 'card14', answer: 'das Flugzeug'},
+            {id: 'card14', next: 'card15', answer: 'der Heißluftballon'},
+            {id: 'card15', next: 'card16', answer: 'die Rakete'},
+            {id: 'card16', next: 'card17', answer: 'die Fähre'},
+            {id: 'card17', next: 'card18', answer: 'das Schiff'},
+            {id: 'card18', next: null, answer: 'die Seilbahn'}
+        ];
+
+        function playCard(cardId, nextCardId, answerTextDE) {
+            const card = document.getElementById(cardId);
+            const countdownEl = card.querySelector('.video-countdown');
+            const answerEl = card.querySelector('.video-answer');
+            const chineseEl = answerEl ? answerEl.querySelector('.chinese') : null;
+
+            if (answerEl) answerEl.style.display = 'none';
+            if (chineseEl) chineseEl.style.display = 'none';
+            let count = 3;
+            countdownEl.textContent = count;
+            countdownEl.style.display = 'block';
+
+            speakDE("Was ist das?");
+
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownEl.textContent = count;
+                } else {
+                    clearInterval(timer);
+                    countdownEl.textContent = '';
+                    if (answerEl) answerEl.style.display = 'flex';
+                    if (chineseEl) chineseEl.style.display = 'inline';
+                    speakDE(answerTextDE);
+                    if (nextCardId) {
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                            document.getElementById(nextCardId).style.display = 'block';
+                            autoPlayCard(nextCardId, cardData.find(c => c.id === nextCardId)?.next, cardData.find(c => c.id === nextCardId)?.answer);
+                        }, 2000);
+                    }
+                }
+            }, 1000);
+        }
+
+        function autoPlayCard(cardId, nextCardId, answerTextDE) {
+            playCard(cardId, nextCardId, answerTextDE);
+        }
+
+        // 初始化所有卡片为隐藏，只有card1在开始后显示
+        cardData.forEach(card => {
+            const el = document.getElementById(card.id);
+            if (el) el.style.display = 'none';
+        });
+
+        // 全局开始按钮逻辑
+        document.getElementById('global-start-btn').onclick = function() {
+            document.getElementById('start-btn-container').style.display = 'none';
+            document.getElementById('card1').style.display = 'block';
+            playCard('card1', cardData[0].next, cardData[0].answer);
+        };
+    </script>
+</body>
+</html>

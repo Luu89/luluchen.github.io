@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>物品名称 Dinge</title>
+    <style>
+        body {
+            background: #111;
+        }
+        .video-exercise-card {
+            margin: 0 auto 32px auto;
+            border: 2px solid #3498db;
+            border-radius: 0;
+            padding: 32px;
+            max-width: 450px;
+            min-width: 350px;
+            width: 405px;
+            height: 720px;
+            min-height: 720px;
+            text-align: center;
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .video-exercise-card img {
+            width: auto;
+            height: 50%;
+            max-width: 100%;
+            max-height: 50%;
+            object-fit: contain;
+            border-radius: 16px;
+            margin: 0 auto;
+            background: #191919;
+            display: block;
+        }
+        .video-question {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-size: 2rem;
+            color: #fff;
+            font-weight: normal;
+        }
+        .video-countdown {
+            font-size: 2.2rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        .video-answer {
+            margin-bottom: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 18px;
+        }
+        .noun-m, .noun-n, .noun-f {
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+        .noun-m { color: #2980db; }
+        .noun-n { color: #27ae60; }
+        .noun-f { color: #e74c3c; }
+        .chinese {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-left: 8px;
+            font-family: "Kaiti", "楷体";
+        }
+        .start-video-exercise {
+            margin-top: 14px;
+            font-size: 1.3rem;
+            padding: 12px 36px;
+        }
+        .video-content-bottom {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-exercise-card" id="start-btn-container" style="display:block;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <button id="global-start-btn" class="start-video-exercise" style="margin-top:18px;">Wie heißt das?</button>
+        <img src="./photos/DL1_16_1.png" alt="Dinge">
+    </div>
+
+    <div class="video-exercise-card" id="card1" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_1.png" alt="Stift">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Stift</span><span class="chinese">笔</span></div>
+    </div>
+    <div class="video-exercise-card" id="card2" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_2.png" alt="Handy">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Handy</span><span class="chinese">手机</span></div>
+    </div>
+    <div class="video-exercise-card" id="card3" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_3.png" alt="Buch">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Buch</span><span class="chinese">书</span></div>
+    </div>
+    <div class="video-exercise-card" id="card4" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_4.png" alt="Schlüssel">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Schlüssel</span><span class="chinese">钥匙</span></div>
+    </div>
+    <div class="video-exercise-card" id="card5" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_5.png" alt="Schokolade">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Schokolade</span><span class="chinese">巧克力</span></div>
+    </div>
+    <div class="video-exercise-card" id="card6" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_6.png" alt="Flasche">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Flasche</span><span class="chinese">瓶子</span></div>
+    </div>
+    <div class="video-exercise-card" id="card7" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_7.png" alt="Portmonee">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Portmonee</span><span class="chinese">钱包</span></div>
+    </div>
+    <div class="video-exercise-card" id="card8" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_8.png" alt="Brille">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Brille</span><span class="chinese">眼镜</span></div>
+    </div>
+    <div class="video-exercise-card" id="card9" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_9.png" alt="Taschentuch">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Taschentuch</span><span class="chinese">纸巾</span></div>
+    </div>
+    <div class="video-exercise-card" id="card10" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_10.png" alt="Lippenstift">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Lippenstift</span><span class="chinese">口红</span></div>
+    </div>
+    <div class="video-exercise-card" id="card11" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_11.png" alt="Foto">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Foto</span><span class="chinese">照片</span></div>
+    </div>
+    <div class="video-exercise-card" id="card12" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_12.png" alt="Zigarette">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Zigarette</span><span class="chinese">香烟</span></div>
+    </div>
+    <div class="video-exercise-card" id="card13" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_13.png" alt="Zeitung">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Zeitung</span><span class="chinese">报纸</span></div>
+    </div>
+    <div class="video-exercise-card" id="card14" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_14.png" alt="Spiegel">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-m">der Spiegel</span><span class="chinese">镜子</span></div>
+    </div>
+    <div class="video-exercise-card" id="card15" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_15.png" alt="Heft">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-n">das Heft</span><span class="chinese">本子</span></div>
+    </div>
+    <div class="video-exercise-card" id="card16" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">物品名称 Dinge</h3>
+        <div class="video-question">Wie heißt das?</div>
+        <img src="./photos/DL1_16_16.png" alt="Zahnbürste">
+        <div class="video-countdown">3</div>
+        <div class="video-answer"><span class="noun-f">die Zahnbürste</span><span class="chinese">牙刷</span></div>
+    </div>
+
+    <script>
+        // 语音播放函数
+        function speakDE(text) {
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(text);
+                const voices = window.speechSynthesis.getVoices();
+                utter.voice = voices.find(v => v.lang === 'de-DE' && v.name.includes('Anna')) ||
+                              voices.find(v => v.lang === 'de-DE');
+                utter.lang = 'de-DE';
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        // 卡片数据
+        const cardData = [
+            {id: 'card1', next: 'card2', answer: 'der Stift'},
+            {id: 'card2', next: 'card3', answer: 'das Handy'},
+            {id: 'card3', next: 'card4', answer: 'das Buch'},
+            {id: 'card4', next: 'card5', answer: 'der Schlüssel'},
+            {id: 'card5', next: 'card6', answer: 'die Schokolade'},
+            {id: 'card6', next: 'card7', answer: 'die Flasche'},
+            {id: 'card7', next: 'card8', answer: 'das Portmonee'},
+            {id: 'card8', next: 'card9', answer: 'die Brille'},
+            {id: 'card9', next: 'card10', answer: 'das Taschentuch'},
+            {id: 'card10', next: 'card11', answer: 'der Lippenstift'},
+            {id: 'card11', next: 'card12', answer: 'das Foto'},
+            {id: 'card12', next: 'card13', answer: 'die Zigarette'},
+            {id: 'card13', next: 'card14', answer: 'die Zeitung'},
+            {id: 'card14', next: 'card15', answer: 'der Spiegel'},
+            {id: 'card15', next: 'card16', answer: 'das Heft'},
+            {id: 'card16', next: null, answer: 'die Zahnbürste'}
+        ];
+
+        function playCard(cardId, nextCardId, answerTextDE) {
+            const card = document.getElementById(cardId);
+            const countdownEl = card.querySelector('.video-countdown');
+            const answerEl = card.querySelector('.video-answer');
+            const chineseEl = answerEl ? answerEl.querySelector('.chinese') : null;
+
+            if (answerEl) answerEl.style.display = 'none';
+            if (chineseEl) chineseEl.style.display = 'none';
+            let count = 3;
+            countdownEl.textContent = count;
+            countdownEl.style.display = 'block';
+
+            speakDE("Wie heißt das?");
+
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownEl.textContent = count;
+                } else {
+                    clearInterval(timer);
+                    countdownEl.textContent = '';
+                    if (answerEl) answerEl.style.display = 'flex';
+                    if (chineseEl) chineseEl.style.display = 'inline';
+                    speakDE(answerTextDE);
+                    if (nextCardId) {
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                            document.getElementById(nextCardId).style.display = 'block';
+                            autoPlayCard(nextCardId, cardData.find(c => c.id === nextCardId)?.next, cardData.find(c => c.id === nextCardId)?.answer);
+                        }, 2000);
+                    }
+                }
+            }, 1000);
+        }
+
+        function autoPlayCard(cardId, nextCardId, answerTextDE) {
+            playCard(cardId, nextCardId, answerTextDE);
+        }
+
+        // 初始化所有卡片为隐藏，只有card1在开始后显示
+        cardData.forEach(card => {
+            const el = document.getElementById(card.id);
+            if (el) el.style.display = 'none';
+        });
+
+        // 全局开始按钮逻辑
+        document.getElementById('global-start-btn').onclick = function() {
+            document.getElementById('start-btn-container').style.display = 'none';
+            document.getElementById('card1').style.display = 'block';
+            playCard('card1', cardData[0].next, cardData[0].answer);
+        };
+    </script>
+</body>
+</html>

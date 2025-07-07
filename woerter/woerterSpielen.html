@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ich spiele gern ...</title>
+    <style>
+        body {
+            background: #fff;
+        }
+        .video-exercise-card {
+            margin: 0 auto 32px auto;
+            border: 2px solid #3498db;
+            border-radius: 0;
+            padding: 32px;
+            max-width: 450px;
+            min-width: 350px;
+            width: 405px;
+            height: 720px;
+            min-height: 720px;
+            text-align: center;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .video-exercise-card img {
+            width: auto;
+            height: 50%;
+            max-width: 100%;
+            max-height: 50%;
+            object-fit: contain;
+            border-radius: 16px;
+            margin: 0 auto;
+            background: #f7f7f7;
+            display: block;
+        }
+        .video-question {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-size: 2rem;
+            color: #222;
+            font-weight: normal;
+        }
+        .video-countdown {
+            font-size: 2.2rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        .video-answer {
+            margin-bottom: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 18px;
+        }
+        .noun-m, .noun-n, .noun-f {
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+        .noun-m { color: #2980db; }
+        .noun-n { color: #27ae60; }
+        .noun-f { color: #e74c3c; }
+        .chinese {
+            font-size: 1.2rem;
+            color: #222;
+            margin-left: 8px;
+            font-family: "Kaiti", "楷体";
+        }
+        .start-video-exercise {
+            margin-top: 14px;
+            font-size: 1.3rem;
+            padding: 12px 36px;
+        }
+        .video-content-bottom {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-exercise-card" id="start-btn-container" style="display:block;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <button id="global-start-btn" class="start-video-exercise" style="margin-top:18px;">Ich spiele gern</button>
+        <img src="https://th.bing.com/th/id/OIP.ETH_Mf2Jib3yJBgAHCEJdAHaGc?w=246&h=214&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3" alt="spielen">
+    </div>
+
+    <!-- 只展示部分卡片，依次替换所有卡片内容和顺序即可 -->
+    <div class="video-exercise-card" id="card1" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://media.npr.org/assets/img/2021/04/02/lego_wide-8831c75e90bb7c74afc1fd97071ad7aff8196cd2-s1400-c100.jpg" alt="Lego">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-n">Lego</span><span class="chinese">乐高</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card2" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://th.bing.com/th/id/OIP.PbiJJWH9XxSNWY5UCRVq8AHaF3?rs=1&pid=ImgDetMain" alt="Domino">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-n">Domino</span><span class="chinese">多米诺骨牌</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card3" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://blog.openmusicschool.de/wp-content/uploads/2019/01/Klavier-lernen-Tipps.jpg" alt="Klavier">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-n">Klavier</span><span class="chinese">钢琴</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card4" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://th.bing.com/th/id/OIP.a9yMuaz656afx7p6ZUtYPAHaE8?rs=1&pid=ImgDetMain" alt="Gitarre">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-f">Gitarre</span><span class="chinese">吉他</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card5" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://www.superprof.de/blog/wp-content/uploads/2019/02/geige-lernen-playlist-anfaenger-einsteiger-1060x616.jpg" alt="Geige">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-f">Geige</span><span class="chinese">小提琴</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card6" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://sportsario.com/wp-content/uploads/2022/09/Sports-Ball-Weight-Comparison-1024x749.jpg" alt="Ball">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-m">Ball</span><span class="chinese">球</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card7" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://th.bing.com/th/id/OIP.a4WzurMtM2vXRGRWR8UusAHaDl?rs=1&pid=ImgDetMain" alt="Fußball">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-m">Fußball</span><span class="chinese">足球</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card8" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://www.thetennismom.com/wp-content/uploads/2019/07/Depositphotos_156620498_xl-2015.jpg" alt="Tennis">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-n">Tennis</span><span class="chinese">网球</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card9" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://th.bing.com/th/id/R.4072b16448dfd5d99d0a01bcc037357b?rik=8JK1oAdfm5kYJQ&pid=ImgRaw&r=0" alt="Schach">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-n">Schach</span><span class="chinese">象棋</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card10" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://www.meinspiel.de/wp-content/uploads/2022/08/Gesichter-Vorlage-Poker-auf-der-Hand.jpg" alt="Karten">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-f">Karten</span><span class="chinese">牌</span>
+        </div>
+    </div>
+
+    <div class="video-exercise-card" id="card11" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#222;">我喜欢玩... Ich spiele gern ...</h3>
+        <img src="https://th.bing.com/th/id/OIP.KMlL_x2gZ6wtvB3_ETLjOwHaFj?rs=1&pid=ImgDetMain" alt="Verstecken">
+        <div class="video-question" style="margin-top:16px;">
+            <span>Ich spiele gern</span>
+            <span class="blank" style="display:inline-block; min-width:8em; border-bottom:2px solid #030303; height:1.2em; vertical-align:middle;"></span> 
+        </div> 
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="display:none;">
+            <span class="noun-n">Verstecken</span><span class="chinese">捉迷藏</span>
+        </div>
+    </div>
+
+    <script>
+        // 语音播放函数
+        function speakDE(text) {
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(text);
+                const voices = window.speechSynthesis.getVoices();
+                utter.voice = voices.find(v => v.lang === 'de-DE' && v.name.includes('Anna')) ||
+                              voices.find(v => v.lang === 'de-DE');
+                utter.lang = 'de-DE';
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        // 卡片数据
+        const cardData = [
+            {id: 'card1', next: 'card2', answer: 'Lego'},
+            {id: 'card2', next: 'card3', answer: 'Domino'},
+            {id: 'card3', next: 'card4', answer: 'Klavier'},
+            {id: 'card4', next: 'card5', answer: 'Gitarre'},
+            {id: 'card5', next: 'card6', answer: 'Geige'},
+            {id: 'card6', next: 'card7', answer: 'Ball'},
+            {id: 'card7', next: 'card8', answer: 'Fußball'},
+            {id: 'card8', next: 'card9', answer: 'Tennis'},
+            {id: 'card9', next: 'card10', answer: 'Schach'},
+            {id: 'card10', next: 'card11', answer: 'Karten'},
+            {id: 'card11', next: null, answer: 'Verstecken'}
+        ];
+
+        function playCard(cardId, nextCardId, answerTextDE) {
+            const card = document.getElementById(cardId);
+            const countdownEl = card.querySelector('.video-countdown');
+            const answerEl = card.querySelector('.video-answer');
+            const blankEl = card.querySelector('.blank');
+            answerEl.style.display = 'none';
+            if (blankEl) blankEl.style.display = 'inline-block';
+            if (blankEl) blankEl.textContent = '';
+            let count = 3;
+            countdownEl.textContent = count;
+            countdownEl.style.display = 'block';
+            speakDE("Ich spiele gern");
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownEl.textContent = count;
+                } else {
+                    clearInterval(timer);
+                    countdownEl.textContent = '';
+                    // 隐藏下划线，显示答案
+                    if (blankEl) blankEl.style.display = 'none';
+                    answerEl.style.display = 'flex';
+                    speakDE(answerTextDE);
+                    if (nextCardId) {
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                            document.getElementById(nextCardId).style.display = 'block';
+                            autoPlayCard(nextCardId, cardData.find(c => c.id === nextCardId)?.next, cardData.find(c => c.id === nextCardId)?.answer);
+                        }, 2000);
+                    }
+                }
+            }, 1000);
+        }
+
+        function autoPlayCard(cardId, nextCardId, answerTextDE) {
+            playCard(cardId, nextCardId, answerTextDE);
+        }
+
+        // 初始化所有卡片为隐藏，只有card1在开始后显示
+        cardData.forEach(card => {
+            const el = document.getElementById(card.id);
+            if (el) el.style.display = 'none';
+        });
+
+        // 全局开始按钮逻辑
+        document.getElementById('global-start-btn').onclick = function() {
+            document.getElementById('start-btn-container').style.display = 'none';
+            document.getElementById('card1').style.display = 'block';
+            playCard('card1', 'card2', 'Lego');
+        };
+    </script>
+</body>
+</html>

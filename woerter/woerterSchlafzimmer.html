@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>卧室 das Schlafzimmer</title>
+    <style>
+        body {
+            background: #fff;
+        }
+        .video-exercise-card {
+            margin: 0 auto 24px auto;
+            border: none;
+            border-radius: 10px;
+            padding: 24px;
+            max-width: 430px;
+            min-width: 320px;
+            min-height: 568px;
+            height: 568px;
+            text-align: center;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .video-exercise-card img {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            background: #f7f7f7;
+        }
+        .video-question {
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+            color: #222;
+        }
+        .video-countdown {
+            font-size: 2rem;
+            color: #e67e22;
+            margin-bottom: 16px;
+        }
+        .video-answer {
+            margin-bottom: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 18px;
+        }
+        .noun-m, .noun-n, .noun-f {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+        .noun-m { color: #2980db; }
+        .noun-n { color: #27ae60; }
+        .noun-f { color: #e74c3c; }
+        .chinese {
+            font-size: 1.1rem;
+            color: #222;
+            margin-left: 8px;
+            font-family: "Kaiti", "楷体";
+        }
+        .start-video-exercise {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            padding: 10px 32px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3 style="text-align:center; margin-top:24px;">卧室 das Schlafzimmer</h3>
+
+    <!-- 框外的开始按钮 + 图片 -->
+    <div id="start-btn-container" style="text-align:center; margin-bottom: 24px;">
+        <button id="global-start-btn" class="start-video-exercise">Was ist das?</button>
+        <br>
+        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8U2NobGFzemltbWVyfGVufDB8fDB8fHww" style="width: 100%; max-width: 400px; margin-top: 10px;">
+    </div>
+
+    <div class="video-exercise-card" id="card1" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://images.unsplash.com/photo-1672137233327-37b0c1049e77?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8S2xlaWRlcnNjaHJhbmt8ZW58MHx8MHx8fDA%3D" alt="Kleiderschrank">
+        <div class="chinese">衣橱</div>
+        <div class="video-countdown">4</div>
+        <div class="video-answer"><span class="noun-m">der Kleiderschrank</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card2" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://plus.unsplash.com/premium_photo-1676823570572-966ea4c0e333?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVyJTIwTmFjaHR0aXNjaHxlbnwwfHwwfHx8MA%3D%3D" alt="Nachttisch">
+        <div class="chinese">床头柜</div>
+        <div class="video-countdown">4</div>
+        <div class="video-answer"><span class="noun-m">der Nachttisch</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card3" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://images.unsplash.com/photo-1589335429144-328a42be176e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGllJTIwTmFjaHR0aXNjaGxhbXBlfGVufDB8fDB8fHww" alt="Nachttischlampe">
+        <div class="chinese">床头灯</div>
+        <div class="video-countdown">4</div>
+        <div class="video-answer"><span class="noun-f">die Nachttischlampe</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card4" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://plus.unsplash.com/premium_photo-1684445035187-c4bc7c96bc5d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QmV0dHxlbnwwfHwwfHx8MA%3D%3D" alt="Bett">
+        <div class="chinese">床</div>
+        <div class="video-countdown">4</div>
+        <div class="video-answer"><span class="noun-n">das Bett</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card5" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://images.unsplash.com/photo-1640003145169-d10a2e85a64d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TWF0cmF0emV8ZW58MHx8MHx8fDA%3D" alt="Matratze">
+        <div class="chinese">床垫</div>
+        <div class="video-countdown">4</div>
+        <div class="video-answer"><span class="noun-f">die Matratze</span></div>
+    </div>
+
+    <div class="video-exercise-card" id="card6" style="display:none;">
+        <div class="video-question">Was ist das?</div>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Kopfkissen">
+        <div class="chinese">枕头</div>
+        <div class="video-countdown">4</div>
+        <div class="video-answer"><span class="noun-n">das Kopfkissen</span></div>
+    </div>
+
+    <script>
+        // 语音播放函数
+        function speakDE(text) {
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(text);
+                const voices = window.speechSynthesis.getVoices();
+                utter.voice = voices.find(v => v.lang === 'de-DE' && v.name.includes('Anna')) ||
+                              voices.find(v => v.lang === 'de-DE');
+                utter.lang = 'de-DE';
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        // 卡片数据
+        const cardData = [
+            {id: 'card1', next: 'card2', answer: 'der Kleiderschrank'},
+            {id: 'card2', next: 'card3', answer: 'der Nachttisch'},
+            {id: 'card3', next: 'card4', answer: 'die Nachttischlampe'},
+            {id: 'card4', next: 'card5', answer: 'das Bett'},
+            {id: 'card5', next: 'card6', answer: 'die Matratze'},
+            {id: 'card6', next: null, answer: 'das Kopfkissen'}
+        ];
+
+        function playCard(cardId, nextCardId, answerTextDE) {
+            const card = document.getElementById(cardId);
+            const countdownEl = card.querySelector('.video-countdown');
+            const answerEl = card.querySelector('.video-answer');
+
+            answerEl.style.display = 'none';
+            let count = 3; // 倒计时3秒
+            countdownEl.textContent = count;
+            countdownEl.style.display = 'block';
+
+            // 播放问题语音
+            speakDE("Was ist das?");
+
+            // 前多1秒
+            setTimeout(() => {
+                const timer = setInterval(() => {
+                    count--;
+                    if (count > 0) {
+                        countdownEl.textContent = count;
+                    } else {
+                        clearInterval(timer);
+                        countdownEl.textContent = '';
+                        answerEl.style.display = 'block';
+                        speakDE(answerTextDE);
+                        // 答案显示2秒
+                        setTimeout(() => {
+                            answerEl.style.display = 'none';
+                            if (nextCardId) {
+                                card.style.display = 'none';
+                                document.getElementById(nextCardId).style.display = 'block';
+                                autoPlayCard(nextCardId, cardData.find(c => c.id === nextCardId)?.next, cardData.find(c => c.id === nextCardId)?.answer);
+                            }
+                        }, 2000);
+                    }
+                }, 1000);
+            }, 1000);
+        }
+
+        function autoPlayCard(cardId, nextCardId, answerTextDE) {
+            playCard(cardId, nextCardId, answerTextDE);
+        }
+
+        // 初始化所有卡片为隐藏，只有card1在开始后显示
+        cardData.forEach(card => {
+            const el = document.getElementById(card.id);
+            if (el) el.style.display = 'none';
+        });
+
+        // 全局开始按钮逻辑
+        document.getElementById('global-start-btn').onclick = function() {
+            document.getElementById('start-btn-container').style.display = 'none';
+            document.getElementById('card1').style.display = 'block';
+            playCard('card1', 'card2', 'der Kleiderschrank');
+        };
+    </script>
+</body>
+</html>
