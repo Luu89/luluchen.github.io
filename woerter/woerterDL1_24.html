@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Was machst du gern?</title>
+    <style>
+        body {
+            background: #111;
+        }
+        .video-exercise-card {
+            margin: 0 auto 32px auto;
+            border: 2px solid #3498db;
+            border-radius: 0;
+            padding: 32px;
+            max-width: 450px;
+            min-width: 350px;
+            width: 405px;
+            height: 720px;
+            min-height: 720px;
+            text-align: center;
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .video-exercise-card img {
+            width: auto;
+            height: 50%;
+            max-width: 100%;
+            max-height: 50%;
+            object-fit: contain;
+            border-radius: 16px;
+            margin: 0 auto;
+            background: #191919;
+            display: block;
+        }
+        .video-question {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-size: 2rem;
+            color: #fff;
+            font-weight: normal;
+        }
+        .video-countdown {
+            font-size: 2.2rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        .video-answer {
+            margin-bottom: 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 18px;
+        }
+        .noun-m, .noun-n, .noun-f {
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+        .noun-m { color: #2980db; }
+        .noun-n { color: #27ae60; }
+        .noun-f { color: #e74c3c; }
+        .chinese {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-left: 8px;
+            font-family: "Kaiti", "楷体";
+        }
+        .start-video-exercise {
+            margin-top: 14px;
+            font-size: 1.3rem;
+            padding: 12px 36px;
+        }
+        .video-content-bottom {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-exercise-card" id="start-btn-container" style="display:block;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <button id="global-start-btn" class="start-video-exercise" style="margin-top:18px;">Was machst du gern?</button>
+        <img src="./photos/DL1_24_1.png" alt="Was machst du gern?">
+    </div>
+
+    <div class="video-exercise-card" id="card1" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_1.png" alt="Ich reise gern">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#2980db;">reise</span>
+                <span style="color:#fff;">gern.</span>
+            </div>
+            <div class="chinese">我喜欢旅行。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card2" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_2.png" alt="Ich lache gern">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#2980db;">lache</span>
+                <span style="color:#fff;">gern.</span>
+            </div>
+            <div class="chinese">我喜欢笑。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card3" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_3.png" alt="Ich schwimme gern">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#2980db;">schwimme</span>
+                <span style="color:#fff;">gern.</span>
+            </div>
+            <div class="chinese">我喜欢游泳。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card4" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_4.png" alt="Ich telefoniere gern">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#2980db;">telefoniere</span>
+                <span style="color:#fff;">gern.</span>
+            </div>
+            <div class="chinese">我喜欢打电话。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card5" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_5.png" alt="Ich fotografiere gern">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#2980db;">fotografiere</span>
+                <span style="color:#fff;">gern.</span>
+            </div>
+            <div class="chinese">我喜欢摄影。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card6" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_6.png" alt="Ich gehe gern spazieren">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#e74c3c;">gehe</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#e74c3c;">spazieren.</span>
+            </div>
+            <div class="chinese">我喜欢散步。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card7" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_7.png" alt="Ich gehe gern tanzen">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#e74c3c;">gehe</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#e74c3c;">tanzen.</span>
+            </div>
+            <div class="chinese">我喜欢跳舞。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card8" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_8.png" alt="Ich gehe gern shoppen">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#e74c3c;">gehe</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#e74c3c;">shoppen.</span>
+            </div>
+            <div class="chinese">我喜欢购物。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card9" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_9.png" alt="Ich gehe gern ins Kino">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#e74c3c;">gehe</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#e74c3c;">ins Kino.</span>
+            </div>
+            <div class="chinese">我喜欢去电影院。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card10" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_10.png" alt="Ich gehe gern ins Restaurant">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#e74c3c;">gehe</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#e74c3c;">ins Restaurant.</span>
+            </div>
+            <div class="chinese">我喜欢去餐馆。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card11" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_11.png" alt="Ich höre gern Musik">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#27ae60;">höre</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#27ae60;">Musik.</span>
+            </div>
+            <div class="chinese">我喜欢听音乐。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card12" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_12.png" alt="Ich mache gern Sport">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#27ae60;">mache</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#27ae60;">Sport.</span>
+            </div>
+            <div class="chinese">我喜欢运动。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card13" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_13.png" alt="Ich spiele gern Computerspiele">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#27ae60;">spiele</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#27ae60;">Computerspiele.</span>
+            </div>
+            <div class="chinese">我喜欢玩电脑游戏。</div>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card14" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">你喜欢做什么？</h3>
+        <div class="video-question">Was machst du gern?</div>
+        <img src="./photos/DL1_24_14.png" alt="Ich spiele gern Fußball">
+        <div class="video-countdown">3</div>
+        <div class="video-answer" style="flex-direction:column;align-items:center;">
+            <div style="font-size:2.4rem;font-weight:bold;">
+                <span style="color:#fff;">Ich</span>
+                <span style="color:#27ae60;">spiele</span>
+                <span style="color:#fff;">gern</span>
+                <span style="color:#27ae60;">Fußball.</span>
+            </div>
+            <div class="chinese">我喜欢踢足球。</div>
+        </div>
+    </div>
+
+    <script>
+        // 语音播放函数
+        function speakDE(text) {
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(text);
+                const voices = window.speechSynthesis.getVoices();
+                utter.voice = voices.find(v => v.lang === 'de-DE' && v.name.includes('Anna')) ||
+                              voices.find(v => v.lang === 'de-DE');
+                utter.lang = 'de-DE';
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        // 卡片数据
+        const cardData = [
+            {id: 'card1', next: 'card2', answer: 'Ich reise gern.'},
+            {id: 'card2', next: 'card3', answer: 'Ich lache gern.'},
+            {id: 'card3', next: 'card4', answer: 'Ich schwimme gern.'},
+            {id: 'card4', next: 'card5', answer: 'Ich telefoniere gern.'},
+            {id: 'card5', next: 'card6', answer: 'Ich fotografiere gern.'},
+            {id: 'card6', next: 'card7', answer: 'Ich gehe gern spazieren.'},
+            {id: 'card7', next: 'card8', answer: 'Ich gehe gern tanzen.'},
+            {id: 'card8', next: 'card9', answer: 'Ich gehe gern shoppen.'},
+            {id: 'card9', next: 'card10', answer: 'Ich gehe gern ins Kino.'},
+            {id: 'card10', next: 'card11', answer: 'Ich gehe gern ins Restaurant.'},
+            {id: 'card11', next: 'card12', answer: 'Ich höre gern Musik.'},
+            {id: 'card12', next: 'card13', answer: 'Ich mache gern Sport.'},
+            {id: 'card13', next: 'card14', answer: 'Ich spiele gern Computerspiele.'},
+            {id: 'card14', next: null, answer: 'Ich spiele gern Fußball.'}
+        ];
+
+        function playCard(cardId, nextCardId, answerTextDE) {
+            const card = document.getElementById(cardId);
+            const countdownEl = card.querySelector('.video-countdown');
+            const answerEl = card.querySelector('.video-answer');
+
+            if (answerEl) answerEl.style.display = 'none';
+            let count = 3;
+            countdownEl.textContent = count;
+            countdownEl.style.display = 'block';
+
+            speakDE("Was machst du gern?");
+
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownEl.textContent = count;
+                } else {
+                    clearInterval(timer);
+                    countdownEl.textContent = '';
+                    if (answerEl) answerEl.style.display = 'flex';
+                    speakDE(answerTextDE);
+                    if (nextCardId) {
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                            document.getElementById(nextCardId).style.display = 'block';
+                            autoPlayCard(nextCardId, cardData.find(c => c.id === nextCardId)?.next, cardData.find(c => c.id === nextCardId)?.answer);
+                        }, 2000);
+                    }
+                }
+            }, 1000);
+        }
+
+        function autoPlayCard(cardId, nextCardId, answerTextDE) {
+            playCard(cardId, nextCardId, answerTextDE);
+        }
+
+        // 初始化所有卡片为隐藏，只有card1在开始后显示
+        cardData.forEach(card => {
+            const el = document.getElementById(card.id);
+            if (el) el.style.display = 'none';
+        });
+
+        // 全局开始按钮逻辑
+        document.getElementById('global-start-btn').onclick = function() {
+            document.getElementById('start-btn-container').style.display = 'none';
+            document.getElementById('card1').style.display = 'block';
+            playCard('card1', cardData[0].next, cardData[0].answer);
+        };
+    </script>
+</body>
+</html>

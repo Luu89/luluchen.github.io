@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Woher kommt er?</title>
+    <style>
+        body {
+            background: #111;
+        }
+        .video-exercise-card {
+            margin: 0 auto 32px auto;
+            border: 2px solid #3498db;
+            border-radius: 0;
+            padding: 32px;
+            max-width: 450px;
+            min-width: 350px;
+            width: 405px;
+            height: 720px;
+            min-height: 720px;
+            text-align: center;
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .video-exercise-card img {
+            width: auto;
+            height: 50%;
+            max-width: 100%;
+            max-height: 50%;
+            object-fit: contain;
+            border-radius: 16px;
+            margin: 0 auto;
+            background: #191919;
+            display: block;
+        }
+        .video-question {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-size: 2rem;
+            color: #fff;
+            font-weight: normal;
+        }
+        .video-countdown {
+            font-size: 2.2rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        .video-answer {
+            margin-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 18px;
+        }
+        .video-answer .de {
+            color: #fff;
+            font-size: 2.4rem;
+            font-weight: bold;
+        }
+        .chinese {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 8px;
+            font-family: "Kaiti", "楷体";
+        }
+        .start-video-exercise {
+            margin-top: 14px;
+            font-size: 1.3rem;
+            padding: 12px 36px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-exercise-card" id="start-btn-container" style="display:block;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <button id="global-start-btn" class="start-video-exercise" style="margin-top:18px;">Woher kommt er?</button>
+        <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Deutschland">
+    </div>
+
+    <div class="video-exercise-card" id="card1" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg" alt="Deutschland">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#27ae60;">Deutschland</span>.</span>
+            <span class="chinese">他来自德国。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card3" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Austria.svg" alt="Österreich">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#27ae60;">Österreich</span>.</span>
+            <span class="chinese">他来自奥地利。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card4" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" alt="Schweiz">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#e74c3c;">der Schweiz</span>.</span>
+            <span class="chinese">他来自瑞士。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card5" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Türkei">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#e74c3c;">der Türkei</span>.</span>
+            <span class="chinese">他来自土耳其。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card6" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#e67e22;">den USA</span>.</span>
+            <span class="chinese">他来自美国。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card7" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Niederlande">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#e67e22;">den Niederlanden</span>.</span>
+            <span class="chinese">他来自荷兰。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card8" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="Frankreich">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#27ae60;">Frankreich</span>.</span>
+            <span class="chinese">他来自法国。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card9" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" alt="Italien">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#27ae60;">Italien</span>.</span>
+            <span class="chinese">他来自意大利。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card10" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="Spanien">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#27ae60;">Spanien</span>.</span>
+            <span class="chinese">他来自西班牙。</span>
+        </div>
+    </div>
+    <div class="video-exercise-card" id="card11" style="display:none;">
+        <h3 style="text-align:center; margin-top:0; color:#fff;">他来自于哪里？</h3>
+        <div class="video-question">Woher kommt er?</div>
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg" alt="Brasilien">
+        <div class="video-countdown">3</div>
+        <div class="video-answer">
+            <span class="de">Er kommt aus <span style="color:#27ae60;">Brasilien</span>.</span>
+            <span class="chinese">他来自巴西。</span>
+        </div>
+    </div>
+
+    <script>
+        // 语音播放函数
+        function speakDE(text) {
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(text);
+                const voices = window.speechSynthesis.getVoices();
+                utter.voice = voices.find(v => v.lang === 'de-DE' && v.name.includes('Anna')) ||
+                              voices.find(v => v.lang === 'de-DE');
+                utter.lang = 'de-DE';
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        // 卡片数据
+        const cardData = [
+            {id: 'card1', next: 'card3', answer: 'Er kommt aus Deutschland.'},
+            {id: 'card3', next: 'card4', answer: 'Er kommt aus Österreich.'},
+            {id: 'card4', next: 'card5', answer: 'Er kommt aus der Schweiz.'},
+            {id: 'card5', next: 'card6', answer: 'Er kommt aus der Türkei.'},
+            {id: 'card6', next: 'card7', answer: 'Er kommt aus den USA.'},
+            {id: 'card7', next: 'card8', answer: 'Er kommt aus den Niederlanden.'},
+            {id: 'card8', next: 'card9', answer: 'Er kommt aus Frankreich.'},
+            {id: 'card9', next: 'card10', answer: 'Er kommt aus Italien.'},
+            {id: 'card10', next: 'card11', answer: 'Er kommt aus Spanien.'},
+            {id: 'card11', next: null, answer: 'Er kommt aus Brasilien.'}
+        ];
+
+        function playCard(cardId, nextCardId, answerTextDE) {
+            const card = document.getElementById(cardId);
+            const countdownEl = card.querySelector('.video-countdown');
+            const answerEl = card.querySelector('.video-answer');
+
+            if (answerEl) answerEl.style.display = 'none';
+            let count = 3;
+            countdownEl.textContent = count;
+            countdownEl.style.display = 'block';
+
+            speakDE("Woher kommt er?");
+
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownEl.textContent = count;
+                } else {
+                    clearInterval(timer);
+                    countdownEl.textContent = '';
+                    if (answerEl) answerEl.style.display = 'flex';
+                    speakDE(answerTextDE);
+                    if (nextCardId) {
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                            document.getElementById(nextCardId).style.display = 'block';
+                            autoPlayCard(nextCardId, cardData.find(c => c.id === nextCardId)?.next, cardData.find(c => c.id === nextCardId)?.answer);
+                        }, 2000);
+                    }
+                }
+            }, 1000);
+        }
+
+        function autoPlayCard(cardId, nextCardId, answerTextDE) {
+            playCard(cardId, nextCardId, answerTextDE);
+        }
+
+        // 初始化所有卡片为隐藏，只有card1在开始后显示
+        cardData.forEach(card => {
+            const el = document.getElementById(card.id);
+            if (el) el.style.display = 'none';
+        });
+
+        // 全局开始按钮逻辑
+        document.getElementById('global-start-btn').onclick = function() {
+            document.getElementById('start-btn-container').style.display = 'none';
+            document.getElementById('card1').style.display = 'block';
+            playCard('card1', cardData[0].next, cardData[0].answer);
+        };
+    </script>
+</body>
+</html>
