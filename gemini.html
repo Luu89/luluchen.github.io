@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德语说唱旅途：智能交互学习文档</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    },
+                    colors: {
+                        masculine: '#2563eb', // 蓝色 der
+                        feminine: '#dc2626',  // 红色 die
+                        neuter: '#16a34a',    // 绿色 das
+                        adjadv: '#d97706',    // 琥珀黄 adj/adv
+                        verb: '#7c3aed',      // 紫色 verb
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 针对大行距进行布局优化 */
+        .article-line {
+            line-height: 3.6;
+        }
+        .word-box {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: bottom;
+            line-height: 1.1;
+            margin: 0 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 2px dashed transparent;
+        }
+        .word-box:hover {
+            border-bottom-color: currentColor;
+            transform: translateY(-2px);
+        }
+        .trans-text {
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 6px;
+            letter-spacing: -0.5px;
+            transition: opacity 0.3s, transform 0.3s;
+            color: #4b5563;
+        }
+        /* 翻译展示模式控制 */
+        .mode-hover .trans-text {
+            opacity: 0;
+            transform: translateY(2px);
+        }
+        .mode-hover .word-box:hover .trans-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .mode-hide .trans-text {
+            display: none !important;
+        }
+        /* 单词过滤时的淡化效果 */
+        .filter-active .word-box:not(.focus-highlight) {
+            opacity: 0.25;
+        }
+        /* 已掌握单词淡化翻译 */
+        .word-mastered .trans-text {
+            opacity: 0.15 !important;
+        }
+        .word-mastered .word-text {
+            opacity: 0.7;
+        }
+        /* 隐藏滚动条 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen transition-colors duration-300" id="body-theme">
+
+    <div class="flex flex-col lg:flex-row min-h-screen">
+        
+        <!-- 左侧：阅读与文章主体区 -->
+        <main class="flex-1 p-4 lg:p-8 overflow-y-auto max-w-4xl mx-auto w-full">
+            
+            <!-- 头部标题 -->
+            <header class="mb-8 border-b border-slate-200 pb-6">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-2">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-blue-600 text-white p-2 rounded-lg text-lg flex items-center justify-center w-10 h-10 shadow-md">
+                            <i class="fa-solid fa-music"></i>
+                        </span>
+                        <div>
+                            <h1 class="text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">Deutscher Hip-Hop unterwegs</h1>
+                            <p class="text-sm text-slate-500 font-medium">德国说唱乐在旅途 — 智能互动双语学习面板</p>
+                        </div>
+                    </div>
+                    <!-- 朗读整篇按钮 -->
+                    <button onclick="speakFullArticle()" class="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-2 px-4 rounded-xl shadow-sm hover:shadow-md transition text-sm">
+                        <i class="fa-solid fa-volume-high"></i>
+                        <span>朗读全文</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- 智能交互工具栏 -->
+            <section class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 mb-8 space-y-4">
+                <!-- 词性图例过滤栏 (点击可高亮特定词性) -->
+                <div>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5">词性聚焦过滤 (点击过滤/聚焦)</h3>
+                    <div class="flex flex-wrap gap-2" id="legend-filters">
+                        <button onclick="toggleFilter('masculine', this)" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-blue-100 text-blue-700 font-bold text-xs bg-blue-50/50 hover:bg-blue-50 transition">
+                            <span class="w-2.5 h-2.5 rounded-full bg-masculine"></span> 阳性名词 der (蓝)
+                        </button>
+                        <button onclick="toggleFilter('feminine', this)" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-red-100 text-red-700 font-bold text-xs bg-red-50/50 hover:bg-red-50 transition">
+                            <span class="w-2.5 h-2.5 rounded-full bg-feminine"></span> 阴性名词 die (红)
+                        </button>
+                        <button onclick="toggleFilter('neuter', this)" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-green-100 text-green-700 font-bold text-xs bg-green-50/50 hover:bg-green-50 transition">
+                            <span class="w-2.5 h-2.5 rounded-full bg-neuter"></span> 中性名词 das (绿)
+                        </button>
+                        <button onclick="toggleFilter('adjadv', this)" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-amber-100 text-amber-700 font-bold text-xs bg-amber-50/50 hover:bg-amber-50 transition">
+                            <span class="w-2.5 h-2.5 rounded-full bg-adjadv"></span> 形容词/副词 (黄)
+                        </button>
+                        <button onclick="toggleFilter('verb', this)" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-purple-100 text-purple-700 font-bold text-xs bg-purple-50/50 hover:bg-purple-50 transition">
+                            <span class="w-2.5 h-2.5 rounded-full bg-verb"></span> 动词 (紫)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 翻译展示模式控制 -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">中文翻译显示:</span>
+                        <div class="inline-flex bg-slate-100 p-1 rounded-xl">
+                            <button id="btn-mode-show" onclick="setTranslationMode('show')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-800 shadow-sm">总是显示</button>
+                            <button id="btn-mode-hover" onclick="setTranslationMode('hover')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-500 hover:text-slate-800">悬停显示</button>
+                            <button id="btn-mode-hide" onclick="setTranslationMode('hide')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-500 hover:text-slate-800">完全隐藏</button>
+                        </div>
+                    </div>
+
+                    <!-- 阅读器配置选项 -->
+                    <div class="flex items-center gap-3">
+                        <button onclick="openConfigModal()" class="text-slate-500 hover:text-slate-800 text-sm font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-sliders"></i> <span>版面调节</span>
+                        </button>
+                        <button onclick="resetAllMastered()" class="text-xs text-rose-500 hover:text-rose-700 font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-rotate"></i> 重置掌握进度
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 文章阅读主体区 -->
+            <article class="bg-white rounded-3xl p-6 lg:p-10 shadow-md border border-slate-100 article-line text-slate-800 font-medium tracking-normal text-lg lg:text-xl transition-all duration-200" id="reading-content">
+                
+                <!-- 段落 1 -->
+                <div class="mb-12 relative group/para">
+                    <div class="absolute -left-4 lg:-left-8 top-2 opacity-0 group-hover/para:opacity-100 transition duration-200">
+                        <button onclick="speakParagraph(1)" class="w-7 h-7 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs shadow-sm" title="朗读该段">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <span id="p1-text">
+                        2012 war LinguaPlus in Ägypten. Und das war nur der 
+                        <div class="word-box" onclick="selectWord('Anfang', event)" data-word="Anfang">
+                            <span class="word-text text-masculine font-extrabold">Anfang</span>
+                            <span class="trans-text">开始，开端</span>
+                        </div>.
+                    </span>
+                </div>
+
+                <!-- 段落 2 -->
+                <div class="mb-12 relative group/para">
+                    <div class="absolute -left-4 lg:-left-8 top-2 opacity-0 group-hover/para:opacity-100 transition duration-200">
+                        <button onclick="speakParagraph(2)" class="w-7 h-7 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs shadow-sm" title="朗读该段">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <span id="p2-text">
+                        Danach 
+                        <div class="word-box" onclick="selectWord('ist', event)" data-word="ist">
+                            <span class="word-text text-verb font-extrabold">ist</span>
+                            <span class="trans-text">是(助动词)</span>
+                        </div>
+                        die 
+                        <div class="word-box" onclick="selectWord('Band', event)" data-word="Band">
+                            <span class="word-text text-feminine font-extrabold">Band</span>
+                            <span class="trans-text">乐队</span>
+                        </div>
+                        viel für das Goethe-Institut 
+                        <div class="word-box" onclick="selectWord('gereist', event)" data-word="gereist">
+                            <span class="word-text text-verb font-extrabold">gereist</span>
+                            <span class="trans-text">旅行(过去分词)</span>
+                        </div>: nach Jordanien, in die Türkei, nach China, nach Kasachstan.
+                    </span>
+                </div>
+
+                <!-- 段落 3 -->
+                <div class="mb-12 relative group/para">
+                    <div class="absolute -left-4 lg:-left-8 top-2 opacity-0 group-hover/para:opacity-100 transition duration-200">
+                        <button onclick="speakParagraph(3)" class="w-7 h-7 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs shadow-sm" title="朗读该段">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <span id="p3-text">
+                        Das 
+                        <div class="word-box" onclick="selectWord('Besondere', event)" data-word="Besondere">
+                            <span class="word-text text-neuter font-extrabold">Besondere</span>
+                            <span class="trans-text">特殊之处</span>
+                        </div>: LinguaPlus 
+                        <div class="word-box" onclick="selectWord('gibt', event)" data-word="gibt">
+                            <span class="word-text text-verb font-extrabold">gibt</span>
+                            <span class="trans-text">举办/有</span>
+                        </div>
+                        nicht nur Hip-Hop-Konzerte. Die Band 
+                        <div class="word-box" onclick="selectWord('macht', event)" data-word="macht">
+                            <span class="word-text text-verb font-extrabold">macht</span>
+                            <span class="trans-text">做/举办</span>
+                        </div>
+                        auch 
+                        <div class="word-box" onclick="selectWord('Workshops', event)" data-word="Workshops">
+                            <span class="word-text text-masculine font-extrabold">Workshops</span>
+                            <span class="trans-text">工作坊</span>
+                        </div>
+                        mit 
+                        <div class="word-box" onclick="selectWord('Schülern', event)" data-word="Schülern">
+                            <span class="word-text text-masculine font-extrabold">Schülern</span>
+                            <span class="trans-text">(中小)学生</span>
+                        </div>
+                        und 
+                        <div class="word-box" onclick="selectWord('Studenten', event)" data-word="Studenten">
+                            <span class="word-text text-masculine font-extrabold">Studenten</span>
+                            <span class="trans-text">大学生</span>
+                        </div>.
+                    </span>
+                </div>
+
+                <!-- 段落 4 -->
+                <div class="mb-12 relative group/para">
+                    <div class="absolute -left-4 lg:-left-8 top-2 opacity-0 group-hover/para:opacity-100 transition duration-200">
+                        <button onclick="speakParagraph(4)" class="w-7 h-7 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs shadow-sm" title="朗读该段">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <span id="p4-text">
+                        Deutsch lernen mit Rap und Rhythmus, das ist bei Deutschlernern und Deutschlehrern 
+                        <div class="word-box" onclick="selectWord('beliebt', event)" data-word="beliebt">
+                            <span class="word-text text-adjadv font-extrabold">beliebt</span>
+                            <span class="trans-text">受欢迎的</span>
+                        </div>.
+                    </span>
+                </div>
+
+                <!-- 段落 5 -->
+                <div class="mb-12 relative group/para">
+                    <div class="absolute -left-4 lg:-left-8 top-2 opacity-0 group-hover/para:opacity-100 transition duration-200">
+                        <button onclick="speakParagraph(5)" class="w-7 h-7 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs shadow-sm" title="朗读该段">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <span id="p5-text">
+                        Denn mit Musik und 
+                        <div class="word-box" onclick="selectWord('Sprechgesang', event)" data-word="Sprechgesang">
+                            <span class="word-text text-masculine font-extrabold">Sprechgesang</span>
+                            <span class="trans-text">说唱/朗诵唱</span>
+                        </div>
+                        kann man super Deutsch lernen. Aber warum lernt man mit Hip-Hop so gut Deutsch?
+                    </span>
+                </div>
+
+                <!-- 段落 6 -->
+                <div class="mb-12 relative group/para">
+                    <div class="absolute -left-4 lg:-left-8 top-2 opacity-0 group-hover/para:opacity-100 transition duration-200">
+                        <button onclick="speakParagraph(6)" class="w-7 h-7 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs shadow-sm" title="朗读该段">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <span id="p6-text">
+                        Auf die 
+                        <div class="word-box" onclick="selectWord('Frage', event)" data-word="Frage">
+                            <span class="word-text text-feminine font-extrabold">Frage</span>
+                            <span class="trans-text">问题</span>
+                        </div>
+                        gibt es viele 
+                        <div class="word-box" onclick="selectWord('Antworten', event)" data-word="Antworten">
+                            <span class="word-text text-feminine font-extrabold">Antworten</span>
+                            <span class="trans-text">回答(复数)</span>
+                        </div>. Man 
+                        <div class="word-box" onclick="selectWord('spielt', event)" data-word="spielt">
+                            <span class="word-text text-verb font-extrabold">spielt</span>
+                            <span class="trans-text">玩/游戏</span>
+                        </div>
+                        mit der Sprache. Mit den 
+                        <div class="word-box" onclick="selectWord('Reimen', event)" data-word="Reimen">
+                            <span class="word-text text-masculine font-extrabold">Reimen</span>
+                            <span class="trans-text">押韵/韵脚</span>
+                        </div>
+                        kann man die 
+                        <div class="word-box" onclick="selectWord('Wörter', event)" data-word="Wörter">
+                            <span class="word-text text-neuter font-extrabold">Wörter</span>
+                            <span class="trans-text">单词(复数)</span>
+                        </div>
+                        gut lernen.
+                    </span>
+                </div>
+
+                <!-- 段落 7 -->
+                <div class="mb-12 relative group/para">
+                    <div class="absolute -left-4 lg:-left-8 top-2 opacity-0 group-hover/para:opacity-100 transition duration-200">
+                        <button onclick="speakParagraph(7)" class="w-7 h-7 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs shadow-sm" title="朗读该段">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <span id="p7-text">
+                        Man 
+                        <div class="word-box" onclick="selectWord('spricht', event)" data-word="spricht">
+                            <span class="word-text text-verb font-extrabold">spricht</span>
+                            <span class="trans-text">说/读</span>
+                        </div>
+                        im Rhythmus und 
+                        <div class="word-box" onclick="selectWord('übt', event)" data-word="übt">
+                            <span class="word-text text-verb font-extrabold">übt</span>
+                            <span class="trans-text">练习</span>
+                        </div>
+                        so 
+                        <div class="word-box" onclick="selectWord('automatisch', event)" data-word="automatisch">
+                            <span class="word-text text-adjadv font-extrabold">automatisch</span>
+                            <span class="trans-text">自动地/不知不觉</span>
+                        </div>
+                        den 
+                        <div class="word-box" onclick="selectWord('Akzent', event)" data-word="Akzent">
+                            <span class="word-text text-masculine font-extrabold">Wort- und Satzakzent</span>
+                            <span class="trans-text">单词与句子重音</span>
+                        </div>.
+                    </span>
+                </div>
+
+                <!-- 段落 8 -->
+                <div class="relative group/para">
+                    <div class="absolute -left-4 lg:-left-8 top-2 opacity-0 group-hover/para:opacity-100 transition duration-200">
+                        <button onclick="speakParagraph(8)" class="w-7 h-7 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xs shadow-sm" title="朗读该段">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                    </div>
+                    <span id="p8-text">
+                        Alle sind in 
+                        <div class="word-box" onclick="selectWord('Bewegung', event)" data-word="Bewegung">
+                            <span class="word-text text-feminine font-extrabold">Bewegung</span>
+                            <span class="trans-text">运动中</span>
+                        </div>. Man lernt mit dem 
+                        <div class="word-box" onclick="selectWord('ganzen', event)" data-word="ganzen">
+                            <span class="word-text text-adjadv font-extrabold">ganzen</span>
+                            <span class="trans-text">整个的</span>
+                        </div>
+                        <div class="word-box" onclick="selectWord('Körper', event)" data-word="Körper">
+                            <span class="word-text text-masculine font-extrabold">Körper</span>
+                            <span class="trans-text">身体</span>
+                        </div>. Das 
+                        <div class="word-box" onclick="selectWord('motiviert', event)" data-word="motiviert">
+                            <span class="word-text text-verb font-extrabold">motiviert</span>
+                            <span class="trans-text">激发/激励</span>
+                        </div>
+                        und macht 
+                        <div class="word-box" onclick="selectWord('Spaß', event)" data-word="Spaß">
+                            <span class="word-text text-masculine font-extrabold">Spaß</span>
+                            <span class="trans-text">乐趣</span>
+                        </div>!
+                    </span>
+                </div>
+
+            </article>
+
+        </main>
+
+        <!-- 右侧：智能词典与自测面板 -->
+        <aside class="w-full lg:w-[420px] bg-white border-t lg:border-t-0 lg:border-l border-slate-200 lg:h-screen lg:sticky lg:top-0 flex flex-col shadow-2xl">
+            
+            <!-- 面板 Tab 切换 -->
+            <div class="flex border-b border-slate-100 bg-slate-50/80 backdrop-blur">
+                <button id="tab-btn-lexicon" onclick="switchTab('lexicon')" class="flex-1 py-4 text-center text-sm font-bold border-b-2 border-blue-600 text-blue-600 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-book"></i> 智能词典
+                </button>
+                <button id="tab-btn-quiz" onclick="switchTab('quiz')" class="flex-1 py-4 text-center text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-gamepad"></i> 单词自测
+                </button>
+            </div>
+
+            <!-- TAB 1: 智能词典内容 -->
+            <div id="tab-lexicon" class="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar">
+                
+                <!-- 提示未点击时的占位图 -->
+                <div id="lexicon-placeholder" class="text-center py-16 px-4 space-y-4">
+                    <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-hand-pointer animate-bounce"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-slate-700">点按生词，智能解析</h4>
+                        <p class="text-xs text-slate-400 max-w-xs mx-auto">在左侧文章中点击任何带有颜色的单词，右侧会立刻呈现全方位的语法释义、单复数以及标准发音！</p>
+                    </div>
+                </div>
+
+                <!-- 单词信息展示面板 (动态渲染) -->
+                <div id="lexicon-details" class="hidden space-y-6">
+                    <div class="bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-2xl p-5 border border-slate-100">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <span id="word-tag" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full">阳性 der</span>
+                                <h2 id="word-title" class="text-3xl font-extrabold text-slate-900 mt-1">Anfang</h2>
+                            </div>
+                            <button onclick="speakSelectedWord()" class="w-10 h-10 bg-white hover:bg-slate-100 active:scale-95 transition shadow-sm rounded-xl flex items-center justify-center text-indigo-600" title="发音">
+                                <i class="fa-solid fa-volume-high text-lg"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-2 mt-4 text-sm text-slate-600">
+                            <p class="flex justify-between border-b border-slate-200/50 pb-2">
+                                <span class="font-semibold text-slate-400">词性/语法</span>
+                                <span id="word-pos" class="font-bold text-slate-700">名词 (Substantiv)</span>
+                            </p>
+                            <p id="word-meta-row" class="flex justify-between border-b border-slate-200/50 pb-2">
+                                <span id="word-meta-label" class="font-semibold text-slate-400">复数形式</span>
+                                <span id="word-meta" class="font-bold text-slate-700">die Anfänge</span>
+                            </p>
+                            <p class="flex justify-between border-b border-slate-200/50 pb-2">
+                                <span class="font-semibold text-slate-400">大纲等级</span>
+                                <span id="word-level" class="font-bold text-emerald-600 px-2 py-0.5 bg-emerald-50 rounded-md text-xs">B1 进阶词汇</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 释义 & 例句 -->
+                    <div class="space-y-4">
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">中文释义</h4>
+                            <p id="word-translation" class="text-lg font-bold text-slate-800">开始，开端</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">文章内例句</h4>
+                            <div class="bg-indigo-50/40 border-l-4 border-indigo-500 rounded-r-xl p-4">
+                                <p id="word-context-de" class="font-semibold text-slate-800 leading-relaxed text-sm">Und das war nur der Anfang.</p>
+                                <p id="word-context-zh" class="text-xs text-slate-500 mt-1">这仅仅是开始。</p>
+                            </div>
+                        </div>
+
+                        <!-- “已掌握”切换按钮 -->
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                <h5 class="text-xs font-bold text-slate-700">标记掌握进度</h5>
+                                <p class="text-[11px] text-slate-400">标记后该词翻译会淡化，便于复习</p>
+                            </div>
+                            <button id="btn-mastered" onclick="toggleMastery()" class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold border transition shadow-sm">
+                                <i class="fa-solid fa-check"></i>
+                                <span id="btn-mastered-text">标记为已掌握</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TAB 2: 单词挑战小自测 -->
+            <div id="tab-quiz" class="flex-1 overflow-y-auto p-6 space-y-6 hidden no-scrollbar">
+                <div class="space-y-2">
+                    <h3 class="text-lg font-extrabold text-slate-800">智能生成词汇测验</h3>
+                    <p class="text-xs text-slate-500">根据这篇课文的高亮核心词汇动态生成题目，自测你的词汇掌握情况。</p>
+                </div>
+
+                <!-- 测验答题卡 -->
+                <div id="quiz-card" class="bg-slate-50 rounded-2xl p-5 border border-slate-100 space-y-4">
+                    <div class="flex justify-between items-center text-xs text-slate-400">
+                        <span id="quiz-progress">第 1 / 5 题</span>
+                        <span id="quiz-score" class="font-bold text-emerald-600">得分: 0</span>
+                    </div>
+
+                    <!-- 问题核心内容 -->
+                    <div class="space-y-3">
+                        <span id="quiz-type" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-slate-200 text-slate-600">词意搭配</span>
+                        <h4 id="quiz-question" class="text-xl font-extrabold text-slate-800">"unterwegs" 的中文意思是什么？</h4>
+                    </div>
+
+                    <!-- 选项列表 -->
+                    <div id="quiz-options" class="grid grid-cols-1 gap-2 pt-2">
+                        <!-- 动态填充 -->
+                    </div>
+
+                    <!-- 解释反馈 -->
+                    <div id="quiz-feedback" class="hidden p-3 rounded-xl text-xs font-semibold leading-normal">
+                        答案正确！很棒！
+                    </div>
+                </div>
+
+                <!-- 测验操作按钮 -->
+                <div class="flex gap-2">
+                    <button onclick="startQuiz()" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-md transition text-xs flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrows-rotate"></i> 换一套题
+                    </button>
+                </div>
+            </div>
+
+            <!-- 页脚：显示支持 -->
+            <div class="p-4 border-t border-slate-100 bg-slate-50/50 text-center text-[10px] text-slate-400">
+                <i class="fa-solid fa-circle-info"></i> 智能助读软件 • 支持离线打印和标准德语发音
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- 弹窗：版面微调设置 -->
+    <div id="config-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6">
+            <div class="flex justify-between items-center">
+                <h3 class="text-lg font-extrabold text-slate-800">版面个性化调节</h3>
+                <button onclick="closeConfigModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="space-y-4 text-sm">
+                <!-- 字体大小 -->
+                <div class="space-y-2">
+                    <label class="font-bold text-slate-600 flex justify-between">
+                        <span>字体大小 (Font Size)</span>
+                        <span id="label-val-size">1.25rem</span>
+                    </label>
+                    <input type="range" min="1" max="1.6" step="0.05" value="1.25" oninput="changeFontSize(this.value)" class="w-full accent-blue-600">
+                </div>
+
+                <!-- 行高 -->
+                <div class="space-y-2">
+                    <label class="font-bold text-slate-600 flex justify-between">
+                        <span>行间距 (Line Spacing)</span>
+                        <span id="label-val-height">3.6</span>
+                    </label>
+                    <input type="range" min="2.5" max="4.5" step="0.1" value="3.6" oninput="changeLineHeight(this.value)" class="w-full accent-blue-600">
+                </div>
+
+                <!-- 语速 -->
+                <div class="space-y-2">
+                    <label class="font-bold text-slate-600 flex justify-between">
+                        <span>德语朗读语速</span>
+                        <span id="label-val-speed">0.9x</span>
+                    </label>
+                    <input type="range" min="0.6" max="1.5" step="0.1" value="0.9" oninput="changeSpeechSpeed(this.value)" class="w-full accent-blue-600">
+                </div>
+
+                <!-- 经典学习主题 -->
+                <div class="space-y-2">
+                    <label class="font-bold text-slate-600 block">学习背景主题</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setTheme('light')" class="py-2 border border-slate-200 rounded-xl font-bold text-xs bg-white text-slate-800">标准亮白</button>
+                        <button onclick="setTheme('sepia')" class="py-2 border border-amber-200 rounded-xl font-bold text-xs bg-[#f4ecd8] text-[#5c4033]">复古护眼</button>
+                        <button onclick="setTheme('dark')" class="py-2 border border-slate-700 rounded-xl font-bold text-xs bg-slate-900 text-slate-200">黑夜极客</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="closeConfigModal()" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition text-sm">保存并应用</button>
+        </div>
+    </div>
+
+    <!-- 核心数据库与驱动逻辑 -->
+    <script>
+        // 1. 本地单词数据库
+        const wordsDb = {
+            'Anfang': {
+                word: 'Anfang',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: 'die Anfänge (复数)',
+                level: 'A2 核心词',
+                translation: '开始，开端',
+                contextDe: 'Und das war nur der Anfang.',
+                contextZh: '这仅仅是开始。'
+            },
+            'unterwegs': {
+                word: 'unterwegs',
+                gender: 'adjadv',
+                pos: '副词 (Adverb)',
+                meta: '不规则/无变化',
+                level: 'B1 进阶词',
+                translation: '在途中，在路上',
+                contextDe: 'Deutscher Hip-Hop unterwegs',
+                contextZh: '德国说唱音乐正在旅途上。'
+            },
+            'ist': {
+                word: 'ist',
+                gender: 'verb',
+                pos: '动词 (sein)',
+                meta: '现在时第三人称单数 (ist - war - gewesen)',
+                level: 'A1 必备词',
+                translation: '是 (在这里作为现在完成时助动词)',
+                contextDe: 'Danach ist die Band viel gereist.',
+                contextZh: '在这之后这支乐队四处旅行。'
+            },
+            'Band': {
+                word: 'Band',
+                gender: 'feminine',
+                pos: '名词 (die)',
+                meta: 'die Bands (复数)',
+                level: 'A2 核心词',
+                translation: '乐队，乐团',
+                contextDe: 'Danach ist die Band viel für das Goethe-Institut gereist...',
+                contextZh: '在这之后这支乐队为歌德学院进行了多次旅行...'
+            },
+            'gereist': {
+                word: 'gereist',
+                gender: 'verb',
+                pos: '动词 (reisen)',
+                meta: '过去分词形式 (reiste, ist gereist)',
+                level: 'A2 核心词',
+                translation: '旅行，出游',
+                contextDe: 'Danach ist die Band viel für das Goethe-Institut gereist.',
+                contextZh: '在这之后这支乐队为了歌德学院四处旅行。'
+            },
+            'Besondere': {
+                word: 'Besondere',
+                gender: 'neuter',
+                pos: '名词化形容词 (das)',
+                meta: '单数第一/第四格 (das Besondere)',
+                level: 'B1 核心词',
+                translation: '特殊之处，特别的地方',
+                contextDe: 'Das Besondere: LinguaPlus gibt nicht nur Hip-Hop-Konzerte.',
+                contextZh: '特别的地方在于：LinguaPlus 不仅举办嘻哈音乐会。'
+            },
+            'gibt': {
+                word: 'gibt',
+                gender: 'verb',
+                pos: '动词 (geben)',
+                meta: '现在时第三人称单数 (gibt - gab - gegeben)',
+                level: 'A2 核心词',
+                translation: '给出 / 举办 / 有 (es gibt)',
+                contextDe: 'LinguaPlus gibt nicht nur Hip-Hop-Konzerte.',
+                contextZh: 'LinguaPlus 不仅举办嘻哈音乐会。'
+            },
+            'macht': {
+                word: 'macht',
+                gender: 'verb',
+                pos: '动词 (machen)',
+                meta: '现在时第三人称单数 (macht - machte - gemacht)',
+                level: 'A1 基础词',
+                translation: '做 / 举办 / 创造',
+                contextDe: 'Die Band macht auch Workshops mit Schülern...',
+                contextZh: '该乐队也面向学生开办工作坊...'
+            },
+            'Workshops': {
+                word: 'Workshops',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: 'die Workshops (复数形式)',
+                level: 'A2 核心词 (外来语)',
+                translation: '研讨会，工作坊',
+                contextDe: 'Die Band macht auch Workshops mit Schülern...',
+                contextZh: '该乐队也面向学生开办工作坊...'
+            },
+            'Schülern': {
+                word: 'Schülern',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: '复数第三格形式 (der Schüler -> die Schüler)',
+                level: 'A1 基础词',
+                translation: '(中小)学生，弟子',
+                contextDe: 'Die Band macht auch Workshops mit Schülern und Studenten.',
+                contextZh: '这支乐队也与中小学生及大学生一起创办工作坊。'
+            },
+            'Studenten': {
+                word: 'Studenten',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: '复数第三格形式 (der Student -> die Studenten)',
+                level: 'A1 基础词',
+                translation: '大学生，高校生',
+                contextDe: 'Die Band macht auch Workshops mit Schülern und Studenten.',
+                contextZh: '这支乐队也与中小学生及大学生一起创办工作坊。'
+            },
+            'beliebt': {
+                word: 'beliebt',
+                gender: 'adjadv',
+                pos: '形容词 (Adjektiv)',
+                meta: 'beliebter | am beliebtesten',
+                level: 'A2 核心词',
+                translation: '受欢迎的，受喜爱的',
+                contextDe: 'Deutsch lernen mit Rap und Rhythmus... ist bei Deutschlernern beliebt.',
+                contextZh: '通过说唱和节奏学德语在德语学习者中深受喜爱。'
+            },
+            'Sprechgesang': {
+                word: 'Sprechgesang',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: 'die Sprechgesänge (复数)',
+                level: 'B2 进阶词',
+                translation: '说唱，朗诵唱',
+                contextDe: 'Denn mit Musik und Sprechgesang kann man super Deutsch lernen.',
+                contextZh: '因为通过音乐和说唱，大家可以极好地学习德语。'
+            },
+            'kann': {
+                word: 'kann',
+                gender: 'verb',
+                pos: '情态动词 (können)',
+                meta: '第一/第三人称单数形式 (kann - konnte - gekonnt)',
+                level: 'A1 必备词',
+                translation: '能够，可以',
+                contextDe: 'Denn mit Musik und Sprechgesang kann man super Deutsch lernen.',
+                contextZh: '因为通过音乐和说唱，人们可以极佳地学习德语。'
+            },
+            'Frage': {
+                word: 'Frage',
+                gender: 'feminine',
+                pos: '名词 (die)',
+                meta: 'die Fragen (复数)',
+                level: 'A1 基础词',
+                translation: '问题，疑问',
+                contextDe: 'Auf die Frage gibt es viele Antworten.',
+                contextZh: '对于这个问题有很多种回答。'
+            },
+            'Antworten': {
+                word: 'Antworten',
+                gender: 'feminine',
+                pos: '名词 (die)',
+                meta: '复数形式 (die Antwort -> die Antworten)',
+                level: 'A1 基础词',
+                translation: '回答，答复 (复数)',
+                contextDe: 'Auf die Frage gibt es viele Antworten.',
+                contextZh: '对于这个问题有很多种答案。'
+            },
+            'spielt': {
+                word: 'spielt',
+                gender: 'verb',
+                pos: '动词 (spielen)',
+                meta: '现在时第三人称单数 (spielt - spielte - gespielt)',
+                level: 'A1 基础词',
+                translation: '玩游戏，游戏，演奏',
+                contextDe: 'Man spielt mit der Sprache.',
+                contextZh: '人们是在与这门语言进行游戏。'
+            },
+            'Reimen': {
+                word: 'Reimen',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: '复数第三格形式 (der Reim -> die Reime)',
+                level: 'B1 核心词',
+                translation: '押韵，韵脚',
+                contextDe: 'Mit den Reimen kann man die Wörter gut lernen.',
+                contextZh: '通过这些押韵，人们可以很好地记住单词。'
+            },
+            'Wörter': {
+                word: 'Wörter',
+                gender: 'neuter',
+                pos: '名词 (das)',
+                meta: '复数形式 (das Wort -> die Wörter)',
+                level: 'A1 基础词',
+                translation: '单词，词汇 (复数)',
+                contextDe: 'Mit den Reimen kann man die Wörter gut lernen.',
+                contextZh: '通过韵脚，我们可以很好地记忆单词。'
+            },
+            'spricht': {
+                word: 'spricht',
+                gender: 'verb',
+                pos: '不规则动词 (sprechen)',
+                meta: '第三人称单数现在时 (spricht - sprach - gesprochen)',
+                level: 'A1 基础词',
+                translation: '说，说话，朗读',
+                contextDe: 'Man spricht im Rhythmus...',
+                contextZh: '人在节奏中进行说话...'
+            },
+            'übt': {
+                word: 'übt',
+                gender: 'verb',
+                pos: '动词 (üben)',
+                meta: '现在时第三人称单数 (übt - übte - geübt)',
+                level: 'A2 核心词',
+                translation: '练习，演练',
+                contextDe: 'Man spricht im Rhythmus und übt so automatisch...',
+                contextZh: '在节奏中朗读，这样便会自动练习...'
+            },
+            'automatisch': {
+                word: 'automatisch',
+                gender: 'adjadv',
+                pos: '形容词/副词',
+                meta: '无变化',
+                level: 'B1 核心词',
+                translation: '自动地，不知不觉地',
+                contextDe: '...und übt so automatisch den Wort- und Satzakzent.',
+                contextZh: '...并且以这种方式不知不觉地练习了单词与句子的重音。'
+            },
+            'Akzent': {
+                word: 'Akzent',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: 'der Wort- und Satzakzent',
+                level: 'B1 进阶词',
+                translation: '单词与句子重音',
+                contextDe: '...und übt so automatisch den Wort- und Satzakzent.',
+                contextZh: '并且这样就能顺理成章地掌握词句重音。'
+            },
+            'Bewegung': {
+                word: 'Bewegung',
+                gender: 'feminine',
+                pos: '名词 (die)',
+                meta: 'die Bewegungen (in Bewegung sein: 处于运动中)',
+                level: 'B1 核心词',
+                translation: '运动，活动状态',
+                contextDe: 'Alle sind in Bewegung.',
+                contextZh: '所有人都在运动/活跃起来。'
+            },
+            'ganzen': {
+                word: 'ganzen',
+                gender: 'adjadv',
+                pos: '形容词 (ganz)',
+                meta: '阳性单数第三格变格形式',
+                level: 'A2 核心词',
+                translation: '整个的，全部的',
+                contextDe: 'Man lernt mit dem ganzen Körper.',
+                contextZh: '大家是在用整个身体在进行学习。'
+            },
+            'Körper': {
+                word: 'Körper',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: 'die Körper (复数同形)',
+                level: 'A2 核心词',
+                translation: '身体，肉体',
+                contextDe: 'Man lernt mit dem ganzen Körper.',
+                contextZh: '人用全身的力量在学习。'
+            },
+            'motiviert': {
+                word: 'motiviert',
+                gender: 'verb',
+                pos: '动词 (motivieren)',
+                meta: '现在时第三人称单数 (motiviert - motivierte - motiviert)',
+                level: 'B1 核心词',
+                translation: '激发，激励积极性',
+                contextDe: 'Das motiviert und macht Spaß!',
+                contextZh: '这激发了学习积极性，也带来了很大的乐趣！'
+            },
+            'Spaß': {
+                word: 'Spaß',
+                gender: 'masculine',
+                pos: '名词 (der)',
+                meta: 'macht Spaß (带来乐趣)',
+                level: 'A1 基础词',
+                translation: '乐趣，好玩，玩笑',
+                contextDe: 'Das motiviert und macht Spaß!',
+                contextZh: '这既可以激励人心，又充满了乐趣！'
+            }
+        };
+
+        // 2. 状态存储与配置
+        let state = {
+            currentWord: null,
+            translationMode: 'show', // 'show' | 'hover' | 'hide'
+            activeFilter: null,
+            masteredWords: JSON.parse(localStorage.getItem('mastered_words') || '{}'),
+            speechSpeed: 0.9,
+            quizScore: 0,
+            currentQuizIndex: 0,
+            quizQuestions: []
+        };
+
+        // 3. 初始加载
+        window.addEventListener('DOMContentLoaded', () => {
+            applyMasteredVisuals();
+            startQuiz();
+        });
+
+        // 4. 选择并展示单词详情
+        function selectWord(wordKey, event) {
+            if (event) event.stopPropagation();
+            
+            // 样式高亮切换
+            document.querySelectorAll('.word-box').forEach(el => el.classList.remove('ring-4', 'ring-indigo-200'));
+            const clickedBox = document.querySelector(`[data-word="${wordKey}"]`);
+            if (clickedBox) {
+                clickedBox.classList.add('ring-4', 'ring-indigo-200');
+            }
+
+            const data = wordsDb[wordKey];
+            if (!data) return;
+
+            state.currentWord = wordKey;
+            
+            // 切换 Tab 到词典页
+            switchTab('lexicon');
+
+            // 填充面板数据
+            document.getElementById('lexicon-placeholder').classList.add('hidden');
+            const details = document.getElementById('lexicon-details');
+            details.classList.remove('hidden');
+
+            document.getElementById('word-title').innerText = data.word;
+            document.getElementById('word-pos').innerText = data.pos;
+            document.getElementById('word-translation').innerText = data.translation;
+            document.getElementById('word-level').innerText = data.level;
+            document.getElementById('word-context-de').innerHTML = data.contextDe.replace(data.word, `<strong class="text-indigo-600 underline">${data.word}</strong>`);
+            document.getElementById('word-context-zh').innerText = data.contextZh;
+
+            // 渲染性别和变格等元数据
+            const tag = document.getElementById('word-tag');
+            const metaRow = document.getElementById('word-meta-row');
+            const metaLabel = document.getElementById('word-meta-label');
+            const metaVal = document.getElementById('word-meta');
+
+            // 变格标签颜色
+            tag.className = "text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full ";
+            if (data.gender === 'masculine') {
+                tag.innerText = "阳性 der";
+                tag.classList.add('bg-blue-100', 'text-blue-700');
+                metaLabel.innerText = "单复数/第三格形式";
+                metaRow.classList.remove('hidden');
+                metaVal.innerText = data.meta;
+            } else if (data.gender === 'feminine') {
+                tag.innerText = "阴性 die";
+                tag.classList.add('bg-red-100', 'text-red-700');
+                metaLabel.innerText = "单复数/形式";
+                metaRow.classList.remove('hidden');
+                metaVal.innerText = data.meta;
+            } else if (data.gender === 'neuter') {
+                tag.innerText = "中性 das";
+                tag.classList.add('bg-green-100', 'text-green-700');
+                metaLabel.innerText = "变格/复数形式";
+                metaRow.classList.remove('hidden');
+                metaVal.innerText = data.meta;
+            } else if (data.gender === 'adjadv') {
+                tag.innerText = "形容词/副词";
+                tag.classList.add('bg-amber-100', 'text-amber-700');
+                metaRow.classList.add('hidden');
+            } else if (data.gender === 'verb') {
+                tag.innerText = "动词";
+                tag.classList.add('bg-purple-100', 'text-purple-700');
+                metaLabel.innerText = "动词变位";
+                metaRow.classList.remove('hidden');
+                metaVal.innerText = data.meta;
+            }
+
+            // 更新已掌握按钮状态
+            updateMasteryBtnUI();
+
+            // 智能自动发音单字
+            speakText(data.word);
+        }
+
+        // 5. 掌握进度管理
+        function toggleMastery() {
+            const word = state.currentWord;
+            if (!word) return;
+
+            if (state.masteredWords[word]) {
+                delete state.masteredWords[word];
+            } else {
+                state.masteredWords[word] = true;
+            }
+
+            localStorage.setItem('mastered_words', JSON.stringify(state.masteredWords));
+            updateMasteryBtnUI();
+            applyMasteredVisuals();
+        }
+
+        function updateMasteryBtnUI() {
+            const word = state.currentWord;
+            const btn = document.getElementById('btn-mastered');
+            const btnText = document.getElementById('btn-mastered-text');
+
+            if (state.masteredWords[word]) {
+                btn.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-emerald-50 text-emerald-700 border-emerald-200 transition shadow-sm hover:bg-emerald-100";
+                btnText.innerText = "已掌握该词";
+            } else {
+                btn.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold bg-white text-slate-700 border-slate-200 hover:bg-slate-50 transition shadow-sm";
+                btnText.innerText = "标记为已掌握";
+            }
+        }
+
+        function applyMasteredVisuals() {
+            document.querySelectorAll('.word-box').forEach(el => {
+                const word = el.getAttribute('data-word');
+                if (state.masteredWords[word]) {
+                    el.classList.add('word-mastered');
+                } else {
+                    el.classList.remove('word-mastered');
+                }
+            });
+        }
+
+        function resetAllMastered() {
+            if (confirm("确定要重置所有单词的“已掌握”进度吗？")) {
+                state.masteredWords = {};
+                localStorage.removeItem('mastered_words');
+                applyMasteredVisuals();
+                if (state.currentWord) updateMasteryBtnUI();
+            }
+        }
+
+        // 6. 语音朗读控制 (Web Speech API)
+        function speakText(text) {
+            if (!('speechSynthesis' in window)) {
+                alert("抱歉，您的浏览器不支持 TTS 语音合成发音！建议使用 Chrome, Edge 或 Safari 浏览器。");
+                return;
+            }
+            window.speechSynthesis.cancel(); // 停止当前所有播放
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'de-DE';
+            utterance.rate = state.speechSpeed;
+            
+            // 尝试挑选优质德语人声
+            const voices = window.speechSynthesis.getVoices();
+            const deVoice = voices.find(voice => voice.lang.startsWith('de'));
+            if (deVoice) utterance.voice = deVoice;
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function speakSelectedWord() {
+            if (state.currentWord) {
+                speakText(state.currentWord);
+            }
+        }
+
+        function speakParagraph(pId) {
+            const rawText = document.getElementById(`p${pId}-text`).textContent;
+            // 清洗文本中的中文，只保留德语朗读
+            const deText = rawText.replace(/[\u4e00-\u9fa5（）()/]/g, '').trim();
+            speakText(deText);
+        }
+
+        function speakFullArticle() {
+            let fullText = "";
+            for (let i = 1; i <= 8; i++) {
+                fullText += document.getElementById(`p${i}-text`).textContent + " ";
+            }
+            const deText = fullText.replace(/[\u4e00-\u9fa5（）()/]/g, '').trim();
+            speakText(deText);
+        }
+
+        // 7. 词性过滤引擎
+        function toggleFilter(category, btnEl) {
+            const container = document.getElementById('reading-content');
+            
+            // 如果点击的是已经激活的过滤
+            if (state.activeFilter === category) {
+                state.activeFilter = null;
+                container.classList.remove('filter-active');
+                document.querySelectorAll('.word-box').forEach(el => el.classList.remove('focus-highlight'));
+                btnEl.classList.remove('ring-2', 'ring-offset-2', 'ring-indigo-500', 'bg-indigo-50');
+            } else {
+                // 清理旧状态
+                state.activeFilter = category;
+                container.classList.add('filter-active');
+                
+                // 恢复所有按钮样式，并激活当前按钮
+                document.querySelectorAll('#legend-filters button').forEach(b => {
+                    b.className = b.className.replace(/ring-2|ring-offset-2|ring-indigo-500|bg-indigo-50/g, '').trim();
+                });
+                
+                // 激活当前词性的高亮类
+                document.querySelectorAll('.word-box').forEach(el => {
+                    const data = wordsDb[el.getAttribute('data-word')];
+                    if (data && data.gender === category) {
+                        el.classList.add('focus-highlight');
+                    } else {
+                        el.classList.remove('focus-highlight');
+                    }
+                });
+
+                btnEl.classList.add('ring-2', 'ring-offset-2', 'ring-indigo-500', 'bg-indigo-50');
+            }
+        }
+
+        // 8. 翻译模式控制
+        function setTranslationMode(mode) {
+            state.translationMode = mode;
+            const content = document.getElementById('reading-content');
+            
+            content.classList.remove('mode-hover', 'mode-hide');
+            if (mode === 'hover') content.classList.add('mode-hover');
+            if (mode === 'hide') content.classList.add('mode-hide');
+
+            // 按钮状态样式
+            const btnShow = document.getElementById('btn-mode-show');
+            const btnHover = document.getElementById('btn-mode-hover');
+            const btnHide = document.getElementById('btn-mode-hide');
+
+            [btnShow, btnHover, btnHide].forEach(b => {
+                b.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-500 hover:text-slate-800";
+            });
+
+            const activeBtn = document.getElementById(`btn-mode-${mode}`);
+            activeBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition bg-white text-slate-800 shadow-sm";
+        }
+
+        // 9. 智能测验引擎 (Active Recall Quiz)
+        function startQuiz() {
+            state.quizScore = 0;
+            state.currentQuizIndex = 0;
+            document.getElementById('quiz-score').innerText = `得分: ${state.quizScore}`;
+            
+            // 随机挑选5个单词作为测试题目
+            const keys = Object.keys(wordsDb);
+            const shuffledKeys = keys.sort(() => 0.5 - Math.random()).slice(0, 5);
+            
+            state.quizQuestions = shuffledKeys.map(key => {
+                const wordObj = wordsDb[key];
+                // 决定问题类型: 0 = 问意思, 1 = 问词性
+                const qType = Math.random() > 0.5 ? 'meaning' : 'gender';
+                
+                let question = "";
+                let correctAnswer = "";
+                let options = [];
+
+                if (qType === 'meaning') {
+                    question = `单词 "${wordObj.word}" 的中文释义是？`;
+                    correctAnswer = wordObj.translation;
+                    // 生成错误答案
+                    const wrongTranslations = keys
+                        .filter(k => k !== key)
+                        .map(k => wordsDb[k].translation)
+                        .slice(0, 3);
+                    options = [correctAnswer, ...wrongTranslations].sort(() => 0.5 - Math.random());
+                } else {
+                    question = `名词 "${wordObj.word}" 的词性(冠词)是什么？`;
+                    correctAnswer = getGenderLabel(wordObj.gender);
+                    if (wordObj.gender === 'adjadv' || wordObj.gender === 'verb') {
+                        correctAnswer = wordObj.pos.split(' ')[0];
+                    }
+                    options = ["阳性 (der)", "阴性 (die)", "中性 (das)", "动词", "形容词/副词"].slice(0, 4);
+                    if (!options.includes(correctAnswer)) {
+                        options[3] = correctAnswer;
+                    }
+                    options = options.sort(() => 0.5 - Math.random());
+                }
+
+                return {
+                    word: wordObj.word,
+                    qType,
+                    question,
+                    correctAnswer,
+                    options
+                };
+            });
+
+            renderQuizQuestion();
+        }
+
+        function getGenderLabel(gender) {
+            if (gender === 'masculine') return "阳性 (der)";
+            if (gender === 'feminine') return "阴性 (die)";
+            if (gender === 'neuter') return "中性 (das)";
+            if (gender === 'verb') return "动词";
+            return "形容词/副词";
+        }
+
+        function renderQuizQuestion() {
+            const questionData = state.quizQuestions[state.currentQuizIndex];
+            if (!questionData) {
+                // 测验完成
+                document.getElementById('quiz-progress').innerText = "测验结束！";
+                document.getElementById('quiz-question').innerText = `恭喜你完成了自测！🎉`;
+                document.getElementById('quiz-options').innerHTML = `
+                    <div class="p-4 bg-emerald-50 text-emerald-800 rounded-xl text-center font-bold text-sm">
+                        您的最终得分: ${state.quizScore} / 50 分！
+                    </div>
+                `;
+                document.getElementById('quiz-type').style.display = "none";
+                document.getElementById('quiz-feedback').classList.add('hidden');
+                return;
+            }
+
+            document.getElementById('quiz-type').style.display = "inline-block";
+            document.getElementById('quiz-type').innerText = questionData.qType === 'meaning' ? "释义辨析" : "语法词性";
+            document.getElementById('quiz-progress').innerText = `第 ${state.currentQuizIndex + 1} / 5 题`;
+            document.getElementById('quiz-question').innerText = questionData.question;
+            document.getElementById('quiz-feedback').classList.add('hidden');
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = "";
+
+            questionData.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl text-xs font-bold transition flex justify-between items-center";
+                btn.innerHTML = `<span>${opt}</span> <i class="fa-solid fa-angle-right text-slate-300"></i>`;
+                btn.onclick = () => checkQuizAnswer(opt, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkQuizAnswer(selectedOption, clickedBtn) {
+            const currentQ = state.quizQuestions[state.currentQuizIndex];
+            const isCorrect = selectedOption === currentQ.correctAnswer;
+            const feedback = document.getElementById('quiz-feedback');
+
+            // 禁用所有选项按钮防止重复作答
+            document.querySelectorAll('#quiz-options button').forEach(b => b.disabled = true);
+
+            feedback.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+            if (isCorrect) {
+                state.quizScore += 10;
+                document.getElementById('quiz-score').innerText = `得分: ${state.quizScore}`;
+                clickedBtn.className = "w-full text-left p-3.5 bg-emerald-50 text-emerald-800 border-emerald-200 rounded-xl text-xs font-bold transition flex justify-between items-center";
+                feedback.classList.add('bg-emerald-50', 'text-emerald-800');
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> 答对啦！拼写和语法掌握得非常优秀！`;
+            } else {
+                clickedBtn.className = "w-full text-left p-3.5 bg-rose-50 text-rose-800 border-rose-200 rounded-xl text-xs font-bold transition flex justify-between items-center";
+                feedback.classList.add('bg-rose-50', 'text-rose-800');
+                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> 答错啦。正确答案是: <strong class="underline">${currentQ.correctAnswer}</strong>`;
+            }
+
+            // 延时进入下一题
+            setTimeout(() => {
+                state.currentQuizIndex++;
+                renderQuizQuestion();
+            }, 2500);
+        }
+
+        // 10. 全局 UI 切换
+        function switchTab(tab) {
+            const tabLexicon = document.getElementById('tab-lexicon');
+            const tabQuiz = document.getElementById('tab-quiz');
+            const btnLexicon = document.getElementById('tab-btn-lexicon');
+            const btnQuiz = document.getElementById('tab-btn-quiz');
+
+            if (tab === 'lexicon') {
+                tabLexicon.classList.remove('hidden');
+                tabQuiz.classList.add('hidden');
+                btnLexicon.className = "flex-1 py-4 text-center text-sm font-bold border-b-2 border-blue-600 text-blue-600 transition flex items-center justify-center gap-2";
+                btnQuiz.className = "flex-1 py-4 text-center text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition flex items-center justify-center gap-2";
+            } else {
+                tabLexicon.classList.add('hidden');
+                tabQuiz.classList.remove('hidden');
+                btnLexicon.className = "flex-1 py-4 text-center text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition flex items-center justify-center gap-2";
+                btnQuiz.className = "flex-1 py-4 text-center text-sm font-bold border-b-2 border-blue-600 text-blue-600 transition flex items-center justify-center gap-2";
+            }
+        }
+
+        // 11. 个性化调节
+        function openConfigModal() {
+            document.getElementById('config-modal').classList.remove('hidden');
+        }
+
+        function closeConfigModal() {
+            document.getElementById('config-modal').classList.add('hidden');
+        }
+
+        function changeFontSize(val) {
+            document.getElementById('reading-content').style.fontSize = `${val}rem`;
+            document.getElementById('label-val-size').innerText = `${val}rem`;
+        }
+
+        function changeLineHeight(val) {
+            document.getElementById('reading-content').style.lineHeight = val;
+            document.getElementById('label-val-height').innerText = val;
+        }
+
+        function changeSpeechSpeed(val) {
+            state.speechSpeed = parseFloat(val);
+            document.getElementById('label-val-speed').innerText = `${val}x`;
+        }
+
+        function setTheme(theme) {
+            const body = document.getElementById('body-theme');
+            const article = document.getElementById('reading-content');
+
+            body.className = "transition-colors duration-300 min-h-screen ";
+            article.className = article.className.replace(/bg-\[\#[a-f0-9]+\]|bg-slate-900|text-slate-200|text-[#5c4033]|text-slate-800|bg-white/g, '').trim();
+
+            if (theme === 'light') {
+                body.classList.add('bg-slate-50', 'text-slate-800');
+                article.classList.add('bg-white', 'text-slate-800');
+            } else if (theme === 'sepia') {
+                body.classList.add('bg-[#faf6eb]', 'text-[#5c4033]');
+                article.classList.add('bg-[#f4ecd8]', 'text-[#5c4033]', 'border-amber-200/40');
+            } else if (theme === 'dark') {
+                body.classList.add('bg-slate-950', 'text-slate-100');
+                article.classList.add('bg-slate-900', 'text-slate-200', 'border-slate-800');
+            }
+        }
+    </script>
+</body>
+</html>
